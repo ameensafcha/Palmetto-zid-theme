@@ -1,22 +1,8 @@
 {
   "id": "963b972d-3029-41ed-a875-b19ba0f30606",
   "path": "C:\\Users\\User\\Desktop\\Per",
-  "updatedAt": "2026-05-08T14:15:38.709Z",
+  "updatedAt": "2026-05-08T14:28:29.996Z",
   "installations": [
-    {
-      "id": "11f9ba14-f3ac-433f-887b-3adedfb340aa",
-      "store_id": "3059022",
-      "store_name": "qwerty",
-      "installed_at": "2026-05-08T13:51:23.368Z",
-      "version": "1.0.10"
-    },
-    {
-      "id": "11f9ba14-f3ac-433f-887b-3adedfb340aa",
-      "store_id": "3059022",
-      "store_name": "qwerty",
-      "installed_at": "2026-05-08T13:52:34.989Z",
-      "version": "1.0.11"
-    },
     {
       "id": "11f9ba14-f3ac-433f-887b-3adedfb340aa",
       "store_id": "3059022",
@@ -72,6 +58,20 @@
       "store_name": "qwerty",
       "installed_at": "2026-05-08T14:15:38.707Z",
       "version": "1.0.19"
+    },
+    {
+      "id": "11f9ba14-f3ac-433f-887b-3adedfb340aa",
+      "store_id": "3059022",
+      "store_name": "qwerty",
+      "installed_at": "2026-05-08T14:25:22.279Z",
+      "version": "1.0.20"
+    },
+    {
+      "id": "11f9ba14-f3ac-433f-887b-3adedfb340aa",
+      "store_id": "3059022",
+      "store_name": "qwerty",
+      "installed_at": "2026-05-08T14:28:29.994Z",
+      "version": "1.0.21"
     }
   ]
 }
