@@ -1,0 +1,38 @@
+{
+  "name": { "ar": "كتالوج المنتجات", "en": "Products Catalog" },
+  "template": "sections/win95-catalog.jinja",
+  "icon": "fal fa-box",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show",
+      "label": { "ar": "إظهار القسم", "en": "Show Section" },
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": { "ar": "عنوان القسم", "en": "Section Title" },
+      "default": "The Catalog"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": { "ar": "النص الفرعي", "en": "Subtitle" },
+      "default": "Eight pieces. One price."
+    },
+    {
+      "type": "text",
+      "id": "subtitle_ar",
+      "label": { "ar": "النص الفرعي (عربي)", "en": "Subtitle (Arabic)" },
+      "default": "ثماني قطع. سعرٌ واحد."
+    },
+    {
+      "id": "products",
+      "type": "products",
+      "label": { "ar": "المنتجات", "en": "Select Products" }
+    }
+  ],
+  "section_id": "uuid",
+  "meta": { "type": "products" }
+}

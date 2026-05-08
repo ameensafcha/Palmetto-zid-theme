@@ -1,0 +1,405 @@
+{% set is_shown = settings.show if settings.show is defined else true %}
+{% if is_shown %}
+<style>
+  .panel{
+    background: var(--paper);
+    border-style:solid; border-width:2px;
+    border-color: var(--lo) var(--hi) var(--hi) var(--lo);
+    margin: 10px;
+    padding: 22px 26px;
+  }
+  .panel h3{
+    margin: 0 0 10px;
+    font-family: "Times New Roman", serif;
+    font-size: 22px; font-weight:700;
+  }
+  .panel h3 .ar{ font-size: 18px; font-style:italic; opacity:.7; margin-left:8px;}
+  .panel p{ font-family:"Times New Roman",serif; font-size:15px; line-height:1.6; margin: 0 0 10px;}
+  .panel .signoff{ font-style:italic; color:#444; margin-top: 14px;}
+  .two-col{ display:grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items:start;}
+  .two-col > .col-ar{ border-left: 1px dashed #b0a890; padding-left: 22px;}
+
+  .palm-archive .list{
+    font-family: "Courier New", monospace;
+    font-size: 14px;
+    line-height: 1.9;
+    padding: 6px 0 6px 8px;
+  }
+  .palm-archive .list .num{ color:#000; font-weight:700;}
+  .palm-archive .list .dots{ color:#888;}
+  .palm-archive .photos{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+    margin-top: 14px;
+  }
+  .palm-archive .photo{
+    aspect-ratio: 4/5;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,0) 30%),
+      repeating-linear-gradient(180deg, #d9cfa6 0 8px, #cdc193 8px 16px);
+    border:1px solid #000;
+    box-shadow: inset 0 0 0 5px var(--paper);
+    position:relative;
+    display:grid; place-items:end stretch;
+  }
+  .palm-archive .photo .cap{
+    margin: 0 8px 8px;
+    background: var(--paper);
+    border:1px solid #000;
+    padding: 4px 6px;
+    font-family:"Courier New",monospace; font-size:11px;
+    display:flex; justify-content:space-between; gap:6px;
+  }
+  .palm-archive .archive-link{
+    margin-top: 14px;
+    text-align:center;
+    font-family:"Courier New",monospace; font-size: 14px;
+  }
+  .palm-archive .archive-link a{
+    text-decoration:underline; font-weight:700;
+  }
+
+  .size-guide .grid{ display:grid; grid-template-columns: 220px 1fr; gap: 22px; align-items:start;}
+  .size-guide .legend{
+    font-family:"Times New Roman",serif; font-style:italic; font-size:13px;
+    margin-top: 8px; color:#333;
+  }
+  table.size-table{
+    width:100%; border-collapse: collapse;
+    font-family:"Times New Roman", serif; font-size:14px;
+  }
+  table.size-table th, table.size-table td{
+    border:1px solid #000;
+    padding: 6px 10px;
+    text-align:left;
+    background:#fff;
+  }
+  table.size-table thead th{
+    background: var(--chrome);
+    font-family:"Tahoma",sans-serif; font-size:11px;
+    text-transform: uppercase; letter-spacing:.5px;
+  }
+  table.size-table td.size{ font-weight:700; font-family:"Courier New", monospace; width:60px;}
+  table.size-table .imp{ color:#666; font-size:12px;}
+  .size-guide .footnote{ font-size:12px; color:#444; font-style:italic; margin-top:6px;}
+
+  .contact-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:24px; }
+  .contact-grid .field-row{
+    display:grid; grid-template-columns: 110px 1fr; gap:10px;
+    margin-bottom: 8px;
+    align-items:center;
+  }
+  .contact-grid .lbl{
+    font-family:"Tahoma",sans-serif; font-size:11px; text-align:right;
+  }
+  .contact-grid .val{
+    background:#fff; border-style:solid; border-width:2px;
+    border-color: var(--lo) var(--hi) var(--hi) var(--lo);
+    padding: 4px 8px; font-family:"Courier New", monospace; font-size:13px;
+  }
+
+  .ship-row{
+    display:grid; grid-template-columns: 110px 1fr; gap:14px;
+    align-items:start; margin-bottom:14px;
+  }
+  .ship-row .tag{
+    font-family:"Tahoma",sans-serif; font-size:11px; font-weight:700;
+    background:var(--chrome);
+    border-style:solid; border-width:2px;
+    border-color: var(--hi) var(--lo-2) var(--lo-2) var(--hi);
+    padding: 4px 6px; text-align:center;
+  }
+
+  @media (max-width: 760px) {
+    .two-col{ grid-template-columns: 1fr; }
+    .two-col > .col-ar{ border-left: none; padding-left: 0; border-top: 1px dashed #b0a890; padding-top: 18px; }
+  }
+</style>
+
+<!-- For New Visitors -->
+<section class="win" id="welcome">
+  <div class="titlebar">
+    <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="2" width="8" height="6" fill="#ffd84a" stroke="#000"/></svg></span>
+    <span class="t-title"><span>For New Visitors</span><span class="ar">للزوّار الجدد</span></span>
+    <span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span>
+  </div>
+  <div class="panel">
+    <div class="two-col">
+      <div class="col-en">
+        <p>If this is your first time here — welcome. You've landed on the home of Palmetto Studios, a creative studio that uses fashion as its medium.</p>
+        <p>What you'll find on the site: the current catalog of essentials, a lookbook, and the studio's ongoing work. New collections drop episodically rather than seasonally — each one a new world rather than a new wardrobe — so the site changes shape over time. What's here today won't be what's here next time.</p>
+        <p>If you want the deeper context, the About page covers what the studio is and how it works. Otherwise, take your time, and feel free to write to us if anything catches your eye.</p>
+        <p class="signoff">— Palmetto Studios</p>
+      </div>
+      <div class="col-ar ar">
+        <p>إن كانت هذه زيارتك الأولى — أهلاً بك. لقد وصلت إلى موقع ستوديوهات بالميتو، استوديو إبداعي يتّخذ الأزياء وسيطَه.</p>
+        <p>ما ستجده هنا: مجموعة الأساسيات الحالية، وكتاب المظهر، والأعمال الجارية للاستوديو. المجموعات الجديدة تصدر على شكل حلقات — كلٌّ منها عالم جديد لا موسم جديد — لذا يتبدّل الموقع شكله مع الوقت. ما هو هنا اليوم ليس بالضرورة ما سيكون هنا غداً.</p>
+        <p>إن كنت تبحث عن السياق الأعمق، صفحة "عن الاستوديو" تشرح ما هو وكيف يعمل. وإلا، خذ وقتك، وتجوّل، ولا تتردّد في الكتابة إلينا إن لفتك شيء.</p>
+        <p class="signoff" style="font-style:italic;">— ستوديوهات بالميتو</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Palmetto Studios -->
+<section class="win" id="about">
+  <div class="titlebar">
+    <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="1" width="8" height="8" fill="#7d2a2a" stroke="#000"/><rect x="2" y="2" width="6" height="6" fill="#fff"/></svg></span>
+    <span class="t-title"><span>About Palmetto Studios</span><span class="ar">عن ستوديوهات بالميتو</span></span>
+    <span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span>
+  </div>
+  <div class="panel">
+    <div class="two-col">
+      <div class="col-en">
+        <p>Palmetto Studios is a creative studio that uses fashion as its primary medium. Its core practice is world-building through art direction and design — each collection is an episode, a self-contained world with its own visual language, references, and lore.</p>
+        <p>The studio operates from Saudi Arabia and is built on four ideas that show up in everything it makes: nostalgia, Arabic identity, satire, and playfulness. Drops are thematic rather than seasonal — a new collection is a new world, not a new wardrobe.</p>
+        <p>Apparel is where the studio enters, not where it ends. Palmetto is built to expand into objects, collaborations, spaces, and cultural projects.</p>
+        <p style="font-family:'Times New Roman',serif; font-size:17px; font-style:italic; margin-top:18px; border-top:1px dashed #b0a890; padding-top:12px;">Most fashion brands sell product. Palmetto sells worlds. The product is how you enter them.</p>
+      </div>
+      <div class="col-ar ar">
+        <p>ستوديوهات بالميتو استوديو إبداعي يتّخذ الأزياء وسيطَه الأساسي. ممارسته الجوهرية هي بناء العوالم عبر الإخراج الفني والتصميم — كل مجموعة حلقة قائمة بذاتها، عالم مستقل بلغته البصرية ومرجعياته وحكاياته.</p>
+        <p>يعمل الاستوديو من المملكة العربية السعودية، وقائم على أربع أفكار تتجلّى في كل ما يصنعه: الحنين، والهوية العربية، والسخرية، والمرح. الإصدارات موضوعاتية لا موسمية — كل مجموعة جديدة عالمٌ جديد، لا خزانة ملابس جديدة.</p>
+        <p>الأزياء هي مدخل الاستوديو، لا منتهاه. بالميتو مبنيّ ليتوسّع في الأشياء والتعاونات والفضاءات والمشاريع الثقافية.</p>
+        <p style="font-size:20px; font-style:italic; margin-top:18px; border-top:1px dashed #b0a890; padding-top:12px;">معظم دور الأزياء تبيع منتجات. بالميتو يبيع عوالم — والمنتج هو بابك إليها.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Palm Tree Collective -->
+<section class="win palm-archive" id="palm-collective">
+  <div class="titlebar">
+    <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,1 9,5 5,5 5,9" fill="#2e7d32" stroke="#000"/><rect x="4" y="5" width="2" height="4" fill="#7a4f1c"/></svg></span>
+    <span class="t-title"><span>Palm Tree Collective</span><span class="ar">جمعيّة النخيل</span></span>
+    <span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span>
+  </div>
+  <div class="panel">
+    <div class="two-col">
+      <div class="col-en">
+        <p>An ongoing studio archive of palm trees — photographed in the field and catalogued by number, location, and date. New entries added when something worth adding turns up.</p>
+        <p style="font-style:italic; margin-top:8px; margin-bottom:6px;">Selected entries:</p>
+        <div class="list">
+          <div><span class="num">Palm No. 001</span> <span class="dots">— Khobar, 2024</span></div>
+          <div><span class="num">Palm No. 002</span> <span class="dots">— Hofuf, 2024</span></div>
+          <div><span class="num">Palm No. 003</span> <span class="dots">— Buraidah, 2023</span></div>
+          <div><span class="num">Palm No. 047</span> <span class="dots">— Riyadh, 2024</span></div>
+          <div><span class="num">Palm No. 112</span> <span class="dots">— Eastern Province, undated</span></div>
+        </div>
+        <div class="archive-link">
+          [ <a href="#palm-collective">View the full archive</a> ]
+        </div>
+        <p class="signoff" style="text-align:center; margin-top:8px;">— Palmetto Studios</p>
+      </div>
+      <div class="col-ar ar">
+        <p>أرشيف مستمرّ للاستوديو يضمّ صوراً لأشجار نخيل — تُلتقط ميدانيّاً وتُفهرس بحسب الرقم والموقع والتاريخ. تُضاف الإدخالات الجديدة حين يطرأ ما يستحقّ الإضافة.</p>
+        <p style="font-style:italic; margin-top:8px; margin-bottom:6px;">مختارات من الأرشيف:</p>
+        <div class="list" dir="rtl" style="font-family:'Amiri',serif; font-size:16px; line-height:2;">
+          <div>نخلة رقم ٠٠١ — الخبر، ٢٠٢٤</div>
+          <div>نخلة رقم ٠٠٢ — الهفوف، ٢٠٢٤</div>
+          <div>نخلة رقم ٠٠٣ — بريدة، ٢٠٢٣</div>
+          <div>نخلة رقم ٠٤٧ — الرياض، ٢٠٢٤</div>
+          <div>نخلة رقم ١١٢ — المنطقة الشرقية، غير مؤرّخة</div>
+        </div>
+        <div class="archive-link" style="font-family:'Amiri',serif;">[ <a href="#palm-collective">تصفّح الأرشيف الكامل</a> ]</div>
+        <p class="signoff" style="text-align:center; font-style:italic; margin-top:8px;">— ستوديوهات بالميتو</p>
+      </div>
+    </div>
+    <div class="photos" aria-label="Palm photo archive (placeholders)">
+      <div class="photo"><div class="cap"><span>No. 001</span><span>Khobar · 2024</span></div></div>
+      <div class="photo"><div class="cap"><span>No. 002</span><span>Hofuf · 2024</span></div></div>
+      <div class="photo"><div class="cap"><span>No. 003</span><span>Buraidah · 2023</span></div></div>
+      <div class="photo"><div class="cap"><span>No. 047</span><span>Riyadh · 2024</span></div></div>
+      <div class="photo"><div class="cap"><span>No. 112</span><span>E. Province · n.d.</span></div></div>
+      <div class="photo"><div class="cap"><span>No. ___</span><span>[ pending ]</span></div></div>
+    </div>
+    <p style="text-align:center; font-family:'Courier New', monospace; font-size:11px; color:#5a5037; margin-top:12px;">[ photos pending — Aziz to deliver 6–9 entries · placeholder striped frames shown above ]</p>
+  </div>
+</section>
+
+<!-- Size Guide -->
+<section class="win size-guide" id="sizing">
+  <div class="titlebar">
+    <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="3" width="8" height="4" fill="#f4d56a" stroke="#000"/></svg></span>
+    <span class="t-title"><span>Size Guide</span><span class="ar">دليل المقاسات</span></span>
+    <span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span>
+  </div>
+  <div class="panel">
+    <div class="grid">
+      <div>
+        <div class="field" style="padding:14px; background:#fffef7;">
+          <svg viewBox="0 0 220 240" width="100%" style="display:block;" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="#000" stroke-width="1.4" stroke-linejoin="miter" stroke-linecap="square">
+              <polygon points="78,30 66,24 38,46 50,72 70,64 70,210 150,210 150,64 170,72 182,46 154,24 142,30"/>
+              <path d="M78,30 C90,42 130,42 142,30"/>
+              <line x1="70" y1="86" x2="150" y2="86" stroke-dasharray="3 3"/>
+              <line x1="70" y1="80" x2="70" y2="92"/>
+              <line x1="150" y1="80" x2="150" y2="92"/>
+              <line x1="110" y1="32" x2="110" y2="210" stroke-dasharray="3 3"/>
+              <line x1="104" y1="32" x2="116" y2="32"/>
+              <line x1="104" y1="210" x2="116" y2="210"/>
+              <line x1="70" y1="64" x2="50" y2="72" stroke-dasharray="3 3" stroke="#000"/>
+            </g>
+            <g font-family="Times New Roman, serif" font-size="14" font-style="italic" fill="#000">
+              <text x="156" y="90">A</text>
+              <text x="116" y="124">B</text>
+              <text x="40" y="86">C</text>
+            </g>
+          </svg>
+        </div>
+        <div class="legend">
+          A — Chest (pit to pit, ½)<br>
+          B — Body length (shoulder → hem)<br>
+          C — Sleeve (shoulder seam → cuff)
+        </div>
+      </div>
+      <div>
+        <p style="margin-top:0;">Apparel is unisex, oversized fit, with dropped shoulders. For a more fitted look, size down. If you're between sizes, size up.</p>
+        <table class="size-table" aria-label="Size chart in centimetres and inches">
+          <thead>
+            <tr><th>Size</th><th>A — Chest</th><th>B — Length</th><th>C — Sleeve</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="size">XS</td>  <td>53.5 cm <span class="imp">/ 21.1″</span></td><td>72.5 cm <span class="imp">/ 28.5″</span></td><td>24 cm <span class="imp">/ 9.4″</span></td></tr>
+            <tr><td class="size">S</td>   <td>57 cm <span class="imp">/ 22.4″</span></td>  <td>75 cm <span class="imp">/ 29.5″</span></td>  <td>22.5 cm <span class="imp">/ 8.9″</span></td></tr>
+            <tr><td class="size">M</td>   <td>61 cm <span class="imp">/ 24.0″</span></td>  <td>77.5 cm <span class="imp">/ 30.5″</span></td><td>21.5 cm <span class="imp">/ 8.5″</span></td></tr>
+            <tr><td class="size">L</td>   <td>65 cm <span class="imp">/ 25.6″</span></td>  <td>78.5 cm <span class="imp">/ 30.9″</span></td><td>21 cm <span class="imp">/ 8.3″</span></td></tr>
+            <tr><td class="size">XL</td>  <td>68.5 cm <span class="imp">/ 27.0″</span></td><td>80 cm <span class="imp">/ 31.5″</span></td>  <td>20.5 cm <span class="imp">/ 8.1″</span></td></tr>
+            <tr><td class="size">XXL</td> <td>71 cm <span class="imp">/ 28.0″</span></td>  <td>81 cm <span class="imp">/ 31.9″</span></td>  <td>21 cm <span class="imp">/ 8.3″</span></td></tr>
+          </tbody>
+        </table>
+        <div class="footnote">Measurements may vary by 1–2 cm. Sleeve measured from the dropped shoulder seam — values reflect the cut, not arm length.</div>
+        <p style="margin-top:14px;">If anything's unclear, write to us — we'll help you figure it out.</p>
+        <p class="signoff">— Palmetto Studios</p>
+
+        <hr style="border:none; border-top:1px dashed #b0a890; margin:18px 0;">
+
+        <div class="ar">
+          <p style="margin-top:0;">الملابس بقصّة فضفاضة (أوفرسايز) للجنسَين، بأكتاف منسدلة. إن كنت تفضّل قصّةً أضيق، انزل مقاساً. إن كنت بين مقاسَين، اصعد مقاساً.</p>
+          <table class="size-table" dir="rtl" aria-label="جدول المقاسات">
+            <thead>
+              <tr><th>المقاس</th><th>A — الصدر</th><th>B — الطول</th><th>C — الكُمّ</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="size">XS</td>  <td>٥٣٫٥ سم</td><td>٧٢٫٥ سم</td><td>٢٤ سم</td></tr>
+              <tr><td class="size">S</td>   <td>٥٧ سم</td>  <td>٧٥ سم</td>  <td>٢٢٫٥ سم</td></tr>
+              <tr><td class="size">M</td>   <td>٦١ سم</td>  <td>٧٧٫٥ سم</td><td>٢١٫٥ سم</td></tr>
+              <tr><td class="size">L</td>   <td>٦٥ سم</td>  <td>٧٨٫٥ سم</td><td>٢١ سم</td></tr>
+              <tr><td class="size">XL</td>  <td>٦٨٫٥ سم</td><td>٨٠ سم</td>  <td>٢٠٫٥ سم</td></tr>
+              <tr><td class="size">XXL</td> <td>٧١ سم</td>  <td>٨١ سم</td>  <td>٢١ سم</td></tr>
+            </tbody>
+          </table>
+          <div class="footnote" style="font-size:13px;">قد تتفاوت المقاسات بمقدار ١–٢ سم.</div>
+          <p style="margin-top:10px;">إن كان لديك أي استفسار حول المقاس، اكتب إلينا وسنساعدك.</p>
+          <p class="signoff" style="font-style:italic;">— ستوديوهات بالميتو</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Shipping -->
+<section class="win" id="shipping">
+  <div class="titlebar">
+    <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="3" width="6" height="4" fill="#fff" stroke="#000"/><circle cx="3" cy="8" r="1" fill="#000"/><circle cx="7" cy="8" r="1" fill="#000"/></svg></span>
+    <span class="t-title"><span>Shipping</span><span class="ar">الشحن</span></span>
+    <span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span>
+  </div>
+  <div class="panel">
+    <div class="two-col">
+      <div class="col-en">
+        <p style="margin-top:0;">Palmetto ships worldwide.</p>
+        <div class="ship-row">
+          <div class="tag">Saudi Arabia</div>
+          <div>Orders ship within <b>1–2 business days</b> and arrive within <b>2–5 business days</b> depending on your city. <b>Free domestic shipping</b> on orders over <b>350 SAR</b>.</div>
+        </div>
+        <div class="ship-row">
+          <div class="tag">International</div>
+          <div>Rates and delivery times vary by destination and shipping method. Both are calculated at checkout, so you'll see the full cost before you pay.</div>
+        </div>
+        <p>If your order hasn't arrived in the expected window, write to us and we'll track it down.</p>
+        <p class="signoff">— Palmetto Studios</p>
+      </div>
+      <div class="col-ar ar">
+        <p style="margin-top:0;">بالميتو يشحن إلى جميع أنحاء العالم.</p>
+        <p><b>المملكة العربية السعودية</b> — تُشحن الطلبات خلال يوم إلى يومَي عمل، وتصل خلال يومَين إلى خمسة أيام عمل بحسب مدينتك. الشحن الداخلي مجّاني للطلبات التي تتجاوز ٣٥٠ ريال.</p>
+        <p><b>الشحن الدولي</b> — تختلف الرسوم وأوقات التوصيل بحسب الوجهة وطريقة الشحن. تُحتسب جميعها عند إتمام الطلب، لتكون الكلفة كاملةً واضحةً قبل الدفع.</p>
+        <p>إن لم يصل طلبك خلال المدة المتوقّعة، لا تتردّد في الكتابة إلينا وسنتتبّعه لك.</p>
+        <p class="signoff" style="font-style:italic;">— ستوديوهات بالميتو</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Returns -->
+<section class="win" id="returns">
+  <div class="titlebar">
+    <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><polygon points="2,5 5,2 5,4 8,4 8,8 5,8 5,8" fill="none" stroke="#000"/></svg></span>
+    <span class="t-title"><span>Returns</span><span class="ar">الإرجاع</span></span>
+    <span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span>
+  </div>
+  <div class="panel">
+    <div class="two-col">
+      <div class="col-en">
+        <p style="margin-top:0;">Returns are available for orders shipped within Saudi Arabia.</p>
+        <p>You have <b>30 days</b> from the date your order arrives to return it. Items must be unworn, unwashed, with original tags attached. Return shipping is on us — write to us and we'll arrange the pickup. Refunds are processed within 5–7 business days of the item arriving back at the studio.</p>
+        <p><b>International orders are final sale.</b> If something arrives damaged or incorrect, write to us and we'll make it right.</p>
+        <p class="signoff">— Palmetto Studios</p>
+      </div>
+      <div class="col-ar ar">
+        <p style="margin-top:0;">تتوفّر خدمة الإرجاع للطلبات داخل المملكة العربية السعودية.</p>
+        <p>لديك ثلاثون يوماً من تاريخ استلامك للطلب لإرجاعه. يجب أن تكون القطعة غير مستخدمة وغير مغسولة، مع بطاقاتها الأصلية. شحن الإرجاع علينا — اكتب إلينا وسنتولّى ترتيب الاستلام. تُعالَج عمليات استرداد المبلغ خلال خمسة إلى سبعة أيام عمل من وصول القطعة إلى الاستوديو.</p>
+        <p>الطلبات الدولية نهائية وغير قابلة للإرجاع. إن وصلك طلب تالف أو غير صحيح، اكتب إلينا وسنُصلح الأمر.</p>
+        <p class="signoff" style="font-style:italic;">— ستوديوهات بالميتو</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="win" id="contact">
+  <div class="titlebar">
+    <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="2" width="8" height="3" rx="1" fill="#222" stroke="#000"/><rect x="1" y="5" width="8" height="3" fill="#ddd" stroke="#000"/></svg></span>
+    <span class="t-title"><span>Contact</span><span class="ar">التواصل</span></span>
+    <span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span>
+  </div>
+  <div class="panel">
+    <div class="two-col">
+      <div class="col-en">
+        <p style="margin-top:0;">For inquiries, collaborations, and anything else — get in touch.</p>
+        <div class="contact-grid" style="grid-template-columns:1fr;">
+          <div class="field-row" style="grid-template-columns:90px 1fr;">
+            <div class="lbl">Email:</div>
+            <div class="val"><a href="mailto:palmetto.sa@gmail.com">palmetto.sa@gmail.com</a></div>
+          </div>
+          <div class="field-row" style="grid-template-columns:90px 1fr;">
+            <div class="lbl">Instagram:</div>
+            <div class="val"><a href="https://instagram.com/palmetto.studios" target="_blank" rel="noopener">@palmetto.studios</a></div>
+          </div>
+          <div class="field-row" style="grid-template-columns:90px 1fr;">
+            <div class="lbl">Studio:</div>
+            <div class="val">Khobar, Saudi Arabia</div>
+          </div>
+        </div>
+        <p class="signoff">— Palmetto Studios</p>
+      </div>
+      <div class="col-ar ar">
+        <p style="margin-top:0;">للاستفسارات والتعاونات وكل ما عدا ذلك — لا تتردّد في الكتابة إلينا.</p>
+        <div class="contact-grid" style="grid-template-columns:1fr; direction:rtl;">
+          <div class="field-row" style="grid-template-columns:120px 1fr;">
+            <div class="lbl" style="text-align:left;">البريد الإلكتروني:</div>
+            <div class="val">palmetto.sa@gmail.com</div>
+          </div>
+          <div class="field-row" style="grid-template-columns:120px 1fr;">
+            <div class="lbl" style="text-align:left;">إنستغرام:</div>
+            <div class="val">‎@palmetto.studios</div>
+          </div>
+          <div class="field-row" style="grid-template-columns:120px 1fr;">
+            <div class="lbl" style="text-align:left;">الاستوديو:</div>
+            <div class="val">الخبر، المملكة العربية السعودية</div>
+          </div>
+        </div>
+        <p class="signoff" style="font-style:italic;">— ستوديوهات بالميتو</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}

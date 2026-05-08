@@ -1,0 +1,13 @@
+{
+  "name": { "ar": "محتوى الصفحة الرئيسية", "en": "Home Page Content" },
+  "template": "sections/win95-home-content.jinja",
+  "icon": "fal fa-file",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show",
+      "label": { "ar": "إظهار المحتوى", "en": "Show Content" },
+      "default": true
+    }
+  ]
+}
