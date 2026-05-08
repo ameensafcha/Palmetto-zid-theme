@@ -88,6 +88,25 @@
     .product-grid{ grid-template-columns: repeat(2, 1fr); }
     .badges{ flex-direction:column; align-items:center; }
   }
+
+  .product-grid-wrap{
+    display:flex; flex-direction:column;
+  }
+  .pag-bar{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    padding: 10px 14px 14px;
+    border-top:1px solid var(--hi);
+  }
+  .pag-bar .page-info{
+    font-family:"Tahoma",sans-serif; font-size:11px;
+    min-width:90px; text-align:center;
+  }
+  .pag-bar .btn{ flex:0 0 auto; min-width:70px; }
+  .pag-bar .btn:disabled{ opacity:0.4; cursor:not-allowed; }
+
+  @media (max-width: 480px) {
+    .product-grid{ grid-template-columns: repeat(1, 1fr); }
+  }
 </style>
 
 <section class="win">
@@ -101,7 +120,8 @@
     <div class="r"></div>
   </div>
 
-  <div class="product-grid">
+  <div class="product-grid-wrap">
+    <div class="product-grid">
     {% set products_list = safeget(settings, "products.results", []) %}
     {% if products_list | length > 0 %}
       {% for product in products_list %}
@@ -141,6 +161,19 @@
         {{ _("No products selected yet. Choose products in the Theme Editor.") }}
       </div>
     {% endif %}
+    </div>
+
+    {% set total_pages = ((products_list | length + 7) // 8) %}
+    {% if products_list | length > 8 %}
+    <div class="pag-bar" id="pag-bar"
+         data-page-label="{{ _('Page') }}"
+         data-of-label="{{ _('of') }}"
+         data-total="{{ total_pages }}">
+      <button class="btn" id="pag-prev" disabled>{{ _("← Prev") }}</button>
+      <span class="page-info" id="page-info">{{ _("Page") }} 1 / {{ total_pages }}</span>
+      <button class="btn" id="pag-next">{{ _("Next →") }}</button>
+    </div>
+    {% endif %}
   </div>
 
   <div class="badges">
@@ -167,4 +200,32 @@
     <div class="cell fixed">{{ _("🌐 Internet zone") }}</div>
   </div>
 </section>
+
+<script>
+(function(){
+  var grid = document.querySelector('.product-grid');
+  var cards = grid ? Array.from(grid.querySelectorAll('.card')) : [];
+  if (cards.length <= 8) return;
+  var perPage = 8, current = 1;
+  var total = Math.ceil(cards.length / perPage);
+  var pagBar = document.getElementById('pag-bar');
+  var prevBtn = document.getElementById('pag-prev');
+  var nextBtn = document.getElementById('pag-next');
+  var pageInfo = document.getElementById('page-info');
+  var pLbl = pagBar.getAttribute('data-page-label') || 'Page';
+  var oLbl = pagBar.getAttribute('data-of-label') || 'of';
+  function show(p){
+    current = p;
+    for(var i=0;i<cards.length;i++){
+      cards[i].style.display = (i >= (p-1)*perPage && i < p*perPage) ? '' : 'none';
+    }
+    prevBtn.disabled = p === 1;
+    nextBtn.disabled = p === total;
+    pageInfo.textContent = pLbl + ' ' + p + ' / ' + total;
+  }
+  show(1);
+  prevBtn.addEventListener('click',function(){ if(current>1) show(current-1); });
+  nextBtn.addEventListener('click',function(){ if(current<total) show(current+1); });
+})();
+</script>
 {% endif %}
