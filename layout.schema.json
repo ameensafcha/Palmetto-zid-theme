@@ -1,0 +1,17 @@
+{
+  "name": { "ar": "الإعدادات العامة", "en": "Global Settings" },
+  "groups": [
+    {
+      "id": "branding",
+      "name": { "ar": "العلامة التجارية", "en": "Branding" },
+      "settings": [
+        {
+          "type": "text",
+          "id": "store_tagline",
+          "label": { "ar": "شعار المتجر", "en": "Store Tagline" },
+          "default": "A Creative Studio"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": { "ar": "الترويسة", "en": "Header" },
+  "groups": [
+    {
+      "id": "header",
+      "name": { "ar": "الإعدادات", "en": "Settings" },
+      "settings": []
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": { "ar": "التذييل", "en": "Footer" },
+  "groups": [
+    {
+      "id": "footer",
+      "name": { "ar": "الإعدادات", "en": "Settings" },
+      "settings": []
+    }
+  ]
+}
