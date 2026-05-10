@@ -51,6 +51,13 @@
     .ar{ direction:rtl; text-align:right; font-family: "Amiri", "Traditional Arabic", "Times New Roman", serif; font-size:18px; line-height:1.85; }
     .ar.small{ font-size:14px; }
     .container { max-width: 960px; margin: 0 auto; width: 96vw; }
+    <script>
+      window.i18n = {
+        addToCart: "{{ _('Add To Cart') }}",
+        continueShopping: "{{ _('Continue Shopping') }}",
+        cartEmpty: "{{ _('Your cart is empty') }}"
+      };
+    </script>
     {% vitrin_head %}
   </style>
 </head>
@@ -59,7 +66,8 @@
   {% include 'header.jinja' %}
   <main>{% block content %}{% endblock %}</main>
   {% include 'footer.jinja' %}
-  {% include 'cart-drawer.jinja' %}
+  {% include 'components/cart-sidebar.jinja' %}
   <script src="{{ 'main.js' | asset_url }}"></script>
+  {% include 'components/cart-script.jinja' %}
 </body>
 </html>

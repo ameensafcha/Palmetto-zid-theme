@@ -31,33 +31,129 @@
   .card .titlebar{ height:20px; font-size:11px; }
   .card .titlebar .t-title{ font-size:11px;}
   .card .img{
-    aspect-ratio: 1/1;
-    margin: 6px;
+    aspect-ratio: 4/5;
+    margin: 6px 6px 4px;
     background:var(--paper);
     border-style:solid; border-width:2px;
     border-color: var(--lo) var(--hi) var(--hi) var(--lo);
     position:relative;
     overflow:hidden;
+    cursor: zoom-in;
+  }
+  .card .img:hover{ outline: 1px dashed #000; outline-offset:-1px; }
+  .card .img .zoom-hint{
+    position:absolute; right:4px; bottom:4px;
+    background: rgba(0,0,0,.65); color:#fff;
+    font-family:"Tahoma",sans-serif; font-size:10px;
+    padding: 1px 5px;
+    pointer-events:none;
+    opacity:0; transition: opacity .12s;
+  }
+  .card .img:hover .zoom-hint{ opacity:1; }
+  .card .img .nav-arrow{
+    position:absolute; top:50%; transform: translateY(-50%);
+    width:22px; height:32px;
+    display:grid; place-items:center;
+    background:var(--chrome);
+    border-style:solid; border-width:2px;
+    border-color: var(--hi) var(--lo-2) var(--lo-2) var(--hi);
+    box-shadow: inset 1px 1px 0 var(--hi-2), inset -1px -1px 0 var(--lo);
+    color:#000; font-family:"Tahoma",sans-serif; font-size:14px; font-weight:700;
+    cursor:default;
+    user-select:none;
+    line-height:1;
+    opacity:.92;
+  }
+  .card .img .nav-arrow:hover{ opacity:1; }
+  .card .img .nav-arrow:active{
+    border-color: var(--lo) var(--hi) var(--hi) var(--lo);
+    box-shadow: inset 1px 1px 0 var(--lo-2), inset -1px -1px 0 var(--hi-2);
+  }
+  .card .img .nav-arrow.prev{ left:4px; }
+  .card .img .nav-arrow.next{ right:4px; }
+  .card .img .view-count{
+    position:absolute; left:4px; bottom:4px;
+    background: rgba(0,0,0,.65); color:#fff;
+    font-family:"Tahoma",sans-serif; font-size:10px;
+    padding: 1px 5px;
+    pointer-events:none;
   }
   .card .img .ph{
     position:absolute; inset:0;
     background-image: repeating-linear-gradient(135deg, #efe9d2 0 8px, #f6f1de 8px 16px);
   }
+  .card .img .prod-img{ width:100%; height:100%; object-fit:cover; display:block; }
   .card .img .ph::after{
     content: attr(data-label);
     position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
     font-family:"Courier New",monospace; font-size:10px; color:#5a5037; letter-spacing:1px;
     background: rgba(255,255,247,.85); padding: 2px 6px; border:1px dashed #5a5037;
   }
-  .card .meta{ padding: 4px 8px 8px; }
+  .card .meta{
+    padding: 4px 8px 8px;
+  }
   .card .meta .row{ display:flex; align-items:baseline; justify-content:space-between; gap:6px;}
   .card .meta .name{ font-family:"Times New Roman",serif; font-size:15px; font-weight:700;}
   .card .meta .price{ font-family:"Courier New",monospace; font-weight:700; font-size:13px;}
+  .card .meta .color{ font-family:"Times New Roman",serif; font-style:italic; font-size:13px; color:#222; margin-top:2px;}
   .card .meta .desc{ font-family:"Times New Roman",serif; font-size:11px; color:#3a3a3a; margin-top:4px; line-height:1.3; }
   .card .meta .desc.ar{ font-size:12px; }
+  .card .sizes{
+    padding: 0 8px 6px;
+  }
+  .card .sizes select{
+    width:100%;
+    background:var(--paper);
+    border-style:solid; border-width:2px;
+    border-color: var(--lo) var(--hi) var(--hi) var(--lo);
+    box-shadow: inset 1px 1px 0 var(--lo-2), inset -1px -1px 0 var(--hi-2);
+    font-family:"Tahoma",sans-serif; font-size:11px;
+    padding: 3px 4px;
+    color:#000;
+  }
+  .card .sizes .option-row{
+    display:flex; gap:4px; flex-wrap:wrap;
+    margin-bottom:4px;
+  }
+  .card .sizes .option-label{
+    font-family:"Tahoma",sans-serif; font-size:10px; font-weight:700;
+    color:#444; margin-bottom:2px;
+  }
+  .card .sizes button{
+    flex:1; min-width:32px;
+    background:var(--chrome);
+    border-style:solid; border-width:2px;
+    border-color: var(--hi) var(--lo-2) var(--lo-2) var(--hi);
+    box-shadow: inset 1px 1px 0 var(--hi-2), inset -1px -1px 0 var(--lo);
+    font-family:"Tahoma",sans-serif; font-size:10px; font-weight:700;
+    padding: 3px 0; cursor:default;
+    color:#000;
+  }
+  .card .sizes button.active{
+    border-color: var(--lo) var(--hi) var(--hi) var(--lo);
+    box-shadow: inset 1px 1px 0 var(--lo-2), inset -1px -1px 0 var(--hi-2);
+    background: rgba(0,0,128,.10);
+  }
   .card .actions{
     display:flex; gap:6px; padding: 4px 8px 8px;
   }
+  .btn{
+    flex:1;
+    background:var(--chrome);
+    border-style:solid; border-width:2px;
+    border-color: var(--hi) var(--lo-2) var(--lo-2) var(--hi);
+    box-shadow: inset 1px 1px 0 var(--hi-2), inset -1px -1px 0 var(--lo);
+    padding: 4px 8px;
+    font-family: "Tahoma", sans-serif; font-size:11px; color:#000;
+    cursor: default; text-align:center;
+  }
+  .btn:hover{ filter:brightness(1.02);}
+  .btn:active, .btn.pressed{
+    border-color: var(--lo) var(--hi) var(--hi) var(--lo);
+    box-shadow: inset 1px 1px 0 var(--lo-2), inset -1px -1px 0 var(--hi-2);
+    padding: 5px 7px 3px 9px;
+  }
+  .btn.primary{ font-weight:700; }
 
   .badges{
     display:flex; gap:14px; justify-content:center;
@@ -107,6 +203,64 @@
   @media (max-width: 480px) {
     .product-grid{ grid-template-columns: repeat(1, 1fr); }
   }
+
+  .modal-veil{
+    position:fixed; inset:0;
+    background: rgba(0,0,0,.25);
+    display:none; place-items:center;
+    z-index: 50;
+  }
+  .modal-veil.open{ display:grid; }
+  .modal{
+    width: 360px; max-width: 92vw;
+    background:var(--chrome);
+    border-style:solid; border-width:2px;
+    border-color: var(--hi) var(--lo-2) var(--lo-2) var(--hi);
+    box-shadow: inset 1px 1px 0 var(--hi-2), inset -1px -1px 0 var(--lo), 4px 4px 0 rgba(0,0,0,.3);
+  }
+  .modal.lightbox{ width: min(720px, 94vw); }
+  .modal .body-pad{ padding: 18px; display:flex; gap:14px; align-items:flex-start;}
+  .modal .body-pad.stack{ display:block; }
+  .modal .icon-warn{
+    width:40px; height:40px; flex:0 0 40px;
+    border-radius: 50%;
+    background: var(--warn-yellow);
+    border:2px solid #000;
+    display:grid; place-items:center;
+    color:#000; font-family:"Times New Roman",serif; font-weight:900; font-size:30px; line-height:1;
+  }
+  .modal .msg{ font-family:"Tahoma",sans-serif; font-size:12px; line-height:1.45;}
+  .modal .actions{ display:flex; gap:8px; justify-content:flex-end; padding: 0 12px 12px; }
+  .modal .actions .btn{ flex: 0 0 80px; }
+  .modal .lb-img-wrap{
+    background:#fffef7;
+    border-style:solid; border-width:2px;
+    border-color: var(--lo) var(--hi) var(--hi) var(--lo);
+    padding:6px;
+  }
+  .modal .lb-img-wrap img{
+    display:block; width:100%; height:auto; max-height:70vh; object-fit:contain;
+  }
+  .modal .lb-cap{
+    font-family:"Times New Roman",serif; font-size:14px;
+    padding: 8px 4px 2px;
+    display:flex; justify-content:space-between; align-items:baseline; gap:10px;
+  }
+  .modal .dt-name{
+    font-family:"Times New Roman",serif; font-size:20px; font-weight:700;
+  }
+  .modal .dt-color{
+    font-family:"Times New Roman",serif; font-style:italic; font-size:15px; color:#333; margin-bottom:10px;
+  }
+  .modal .dt-body{
+    font-family:"Times New Roman",serif; font-size:14px; line-height:1.6;
+  }
+  .modal .dt-body p{ margin:0 0 8px; }
+  .modal .dt-meta{
+    margin-top:12px; padding-top:10px; border-top:1px dashed #b0a890;
+    font-family:"Tahoma",sans-serif; font-size:11px; color:#444;
+    display:grid; grid-template-columns: 1fr 1fr; gap:6px;
+  }
 </style>
 
 <section class="win">
@@ -128,11 +282,18 @@
         {% set p = product.selected_product %}
         {% set img_url = p.media[0].image.medium if p.media and p.media[0] and p.media[0].image and p.media[0].image.medium else '' %}
         {% set has_sale = p.formatted_sale_price and p.formatted_sale_price != p.formatted_price %}
+        {% set views_imgs = [] %}
+        {% for m in p.media %}
+          {% if m and m.image and m.image.medium %}
+            {% set _ = views_imgs.append(m.image.medium) %}
+          {% endif %}
+        {% endfor %}
+        {% set views_str = views_imgs | join('|') %}
         <article class="card" data-product="{{ product.id }}">
           <div class="titlebar"><span class="t-title">{{ product.name }}</span><span class="tb-btn">✕</span></div>
-          <div class="img">
+          <div class="img"{% if views_str %} data-views="{{ views_str }}"{% endif %}>
             {% if img_url %}
-              <img src="{{ img_url }}" alt="{{ product.name }}" style="display:block;width:100%;height:100%;object-fit:cover;">
+              <img class="prod-img" src="{{ img_url }}" alt="{{ product.name }}">
             {% else %}
               <div class="ph" data-label="{{ product.slug }}.jpg"></div>
             {% endif %}
@@ -142,17 +303,32 @@
               <div class="name">{{ product.name }}</div>
               <div class="price">{% if has_sale %}<span style="text-decoration:line-through;color:#999;margin-right:4px;">{{ p.formatted_price }}</span> {{ p.formatted_sale_price }}{% else %}{{ p.formatted_price }}{% endif %}</div>
             </div>
-            {% if product.short_description %}
-            <div class="desc">{{ product.short_description | striptags | truncate(100) }}</div>
+            {% if product.options and product.options[0] %}
+            <div class="color">{{ product.options[0].values | join(', ') }}</div>
+            {% endif %}
+            {% if product.short_description and not product.options %}
+            <div class="desc">{{ product.short_description | striptags | truncate(60) }}</div>
             {% endif %}
           </div>
+          {% if product.has_variants %}
+          <div class="sizes js-variant-loader" data-pid="{{ product.id }}">
+            <div class="js-loading" style="font-family:'Tahoma',sans-serif;font-size:10px;color:#888;">{{ _("Loading options...") }}</div>
+          </div>
+          {% endif %}
+          {% set in_stock = p.in_stock is defined and p.in_stock and product.quantity != 0 %}
+          {% set is_variant = product.has_variants or product.structure == 'parent' %}
+          {% set is_bundle = product.product_class == 'dynamic_bundle' %}
           <div class="actions">
-            {% if p.in_stock %}
-            <button class="btn primary" data-add>{{ _("Add to Cart") }}</button>
-            {% else %}
+            {% if not in_stock %}
             <button class="btn" disabled style="opacity:0.5;cursor:not-allowed;">{{ _("Sold Out") }}</button>
+            {% elif is_bundle %}
+            <a href="{{ url_for('product_details', slug=product.slug) }}" class="btn primary" style="text-decoration:none;color:#000;">{{ _("View Bundle") }}</a>
+            {% elif is_variant %}
+            <button class="btn primary" data-add-variant>{{ _("Add to Cart") }}</button>
+            {% else %}
+            <button class="btn primary" data-add>{{ _("Add to Cart") }}</button>
             {% endif %}
-            <a href="{{ url_for('product_details', slug=product.slug) }}" class="btn">{{ _("Details") }}</a>
+            <button class="btn" data-details="{{ product.id }}">{{ _("Details") }}</button>
           </div>
         </article>
       {% endfor %}
@@ -197,23 +373,289 @@
     <div class="cell">{{ _("Done") }}</div>
     <div class="cell fixed">https://palmetto.studios/</div>
     <div class="cell fixed">800 × 600</div>
-    <div class="cell fixed">{{ _("🌐 Internet zone") }}</div>
+    <div class="cell fixed">{{ _("Internet zone") }}</div>
   </div>
 </section>
+
+<div class="modal-veil" id="catalog-lb" role="dialog" aria-modal="true" aria-labelledby="catalog-lb-title">
+  <div class="modal lightbox">
+    <div class="titlebar">
+      <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="1" width="8" height="8" fill="#fff" stroke="#000"/><circle cx="5" cy="5" r="2" fill="none" stroke="#000"/></svg></span>
+      <span class="t-title" id="catalog-lb-title">{{ _("Image Viewer") }}</span>
+      <span class="tb-btn" data-close-lb>_</span>
+      <span class="tb-btn" data-close-lb>▢</span>
+      <span class="tb-btn" data-close-lb>✕</span>
+    </div>
+    <div style="padding:8px;background:var(--chrome);">
+      <div class="lb-img-wrap">
+        <img id="catalog-lb-img" src="" alt="">
+      </div>
+      <div class="lb-cap" id="catalog-lb-cap">
+        <span></span>
+        <span class="mono" style="font-family:'Courier New',monospace;font-size:12px;color:#444;"></span>
+      </div>
+    </div>
+    <div class="actions"><button class="btn primary" data-close-lb>{{ _("Close") }}</button></div>
+  </div>
+</div>
+
+<div class="modal-veil" id="catalog-dv" role="dialog" aria-modal="true" aria-labelledby="catalog-dv-title">
+  <div class="modal" style="width:420px;">
+    <div class="titlebar">
+      <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="1" width="8" height="8" fill="#fff" stroke="#000"/><text x="5" y="8" text-anchor="middle" font-family="Times New Roman" font-size="9" font-weight="700" fill="#000">i</text></svg></span>
+      <span class="t-title" id="catalog-dv-title">{{ _("Product Details") }}</span>
+      <span class="tb-btn" data-close-dv>✕</span>
+    </div>
+    <div class="body-pad stack" style="padding:16px 18px;">
+      <div class="dt-name" id="catalog-dv-name"></div>
+      <div class="dt-color" id="catalog-dv-color"></div>
+      <div class="dt-body" id="catalog-dv-body"></div>
+      <div class="dt-meta" id="catalog-dv-meta"></div>
+    </div>
+    <div class="actions"><button class="btn primary" data-close-dv>{{ _("OK") }}</button></div>
+  </div>
+</div>
 
 <script>
 (function(){
   var grid = document.querySelector('.product-grid');
   var cards = grid ? Array.from(grid.querySelectorAll('.card')) : [];
+
+  function getCardData(card){
+    return {
+      name: (card.querySelector('.name') || {}).textContent || '',
+      color: (card.querySelector('.color') || {}).textContent || '',
+      price: (card.querySelector('.price') || {}).textContent || '',
+      desc: (card.querySelector('.desc') || {}).textContent || ''
+    };
+  }
+
+  // ---- Image carousel per card ----
+  cards.forEach(function(card){
+    var box = card.querySelector('.img');
+    if (!box) return;
+    var first = box.querySelector('img.prod-img');
+    if (!first) return;
+    var views = (box.dataset.views ? box.dataset.views.split('|') : [first.src]);
+    if (views.length <= 1) return;
+    var labels = ['Front','Back','Detail','View 4','View 5','View 6','View 7','View 8'];
+    var imgs = views.map(function(u, idx){
+      var im = (idx === 0) ? first : document.createElement('img');
+      if (idx !== 0){ im.src = u; im.className = 'prod-img'; im.alt = first.alt || '';
+        im.style.position = 'absolute'; im.style.inset = '0';
+        im.style.opacity = '0'; im.style.transition = 'opacity 80ms linear';
+        im.style.pointerEvents = 'none';
+        im.decoding = 'async'; im.loading = 'eager';
+        box.insertBefore(im, first.nextSibling);
+      }
+      return im;
+    });
+    var i = 0;
+    var counter = document.createElement('div');
+    counter.className = 'view-count';
+    counter.textContent = labels[0] + ' · 1/' + views.length;
+    box.appendChild(counter);
+    function go(delta){
+      var prevI = i;
+      i = (i + delta + views.length) % views.length;
+      imgs[i].style.opacity = '1';
+      imgs[prevI].style.opacity = '0';
+      counter.textContent = labels[i] + ' · ' + (i+1) + '/' + views.length;
+    }
+    var prevBtn = document.createElement('button');
+    prevBtn.type='button'; prevBtn.className='nav-arrow prev'; prevBtn.setAttribute('aria-label','Previous view'); prevBtn.textContent = '◀';
+    var nextBtn = document.createElement('button');
+    nextBtn.type='button'; nextBtn.className='nav-arrow next'; nextBtn.setAttribute('aria-label','Next view'); nextBtn.textContent = '▶';
+    prevBtn.addEventListener('click', function(e){ e.stopPropagation(); go(-1); });
+    nextBtn.addEventListener('click', function(e){ e.stopPropagation(); go(1); });
+    box.appendChild(prevBtn); box.appendChild(nextBtn);
+
+    // zoom hint
+    var zh = document.createElement('span');
+    zh.className = 'zoom-hint';
+    zh.textContent = 'click to enlarge';
+    box.appendChild(zh);
+  });
+
+  // ---- Lightbox ----
+  var lb = document.getElementById('catalog-lb');
+  var lbImg = document.getElementById('catalog-lb-img');
+  var lbTitle = document.getElementById('catalog-lb-title');
+  var lbCap = document.getElementById('catalog-lb-cap');
+  cards.forEach(function(card){
+    var box = card.querySelector('.img');
+    if (!box) return;
+    box.addEventListener('click', function(e){
+      if (e.target.closest('.nav-arrow')) return;
+      var data = getCardData(card);
+      var imgs = box.querySelectorAll('img');
+      var img = null;
+      imgs.forEach(function(im){ if (im.style.opacity !== '0') img = im; });
+      if (!img) img = imgs[0];
+      if (!img || !img.src) return;
+      lbImg.src = img.src;
+      lbImg.alt = data.name;
+      lbTitle.textContent = data.name + (data.color ? ' — ' + data.color : '');
+      lbCap.children[0].textContent = data.name;
+      lbCap.children[1].textContent = img.src.split('/').pop();
+      lb.classList.add('open');
+    });
+  });
+  lb.addEventListener('click', function(e){
+    if (e.target === lb || e.target.matches('[data-close-lb]')) lb.classList.remove('open');
+  });
+
+  // ---- Details modal ----
+  var dv = document.getElementById('catalog-dv');
+  var dvName = document.getElementById('catalog-dv-name');
+  var dvColor = document.getElementById('catalog-dv-color');
+  var dvBody = document.getElementById('catalog-dv-body');
+  var dvMeta = document.getElementById('catalog-dv-meta');
+  cards.forEach(function(card){
+    var btn = card.querySelector('[data-details]');
+    if (!btn) return;
+    btn.addEventListener('click', function(){
+      var data = getCardData(card);
+      dvName.textContent = data.name;
+      dvColor.textContent = data.color;
+      dvColor.style.display = data.color ? '' : 'none';
+      dvBody.innerHTML = '<p>' + (data.desc || 'No description available.') + '</p>';
+      dvMeta.innerHTML = '<div><b>Price:</b> <span class="mono" style="font-family:\'Courier New\',monospace;">' + data.price + '</span></div>';
+      dv.classList.add('open');
+    });
+  });
+  dv.addEventListener('click', function(e){
+    if (e.target === dv || e.target.matches('[data-close-dv]')) dv.classList.remove('open');
+  });
+
+  // ---- ESC close modals ----
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape'){ lb.classList.remove('open'); dv.classList.remove('open'); }
+  });
+
+  // ---- Button press effect ----
+  document.querySelectorAll('.btn').forEach(function(b){
+    b.addEventListener('mousedown', function(){ b.classList.add('pressed'); });
+    ['mouseup','mouseleave','blur'].forEach(function(ev){
+      b.addEventListener(ev, function(){ b.classList.remove('pressed'); });
+    });
+  });
+
+  // ---- Variant options (fetched via REST API) ----
+  document.querySelectorAll('.js-variant-loader').forEach(function(el){
+    var pid = el.dataset.pid;
+    if (!pid) { el.style.display = 'none'; return; }
+    fetch('/api/v1/products/' + pid, {
+      headers: { 'Accept': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }
+    })
+    .then(function(r){
+      if (!r.ok) throw new Error('Status: ' + r.status);
+      return r.json();
+    })
+    .then(function(product){
+      var opts = product.options || [];
+      if (!opts.length) {
+        el.style.display = 'none';
+        return;
+      }
+      var card = el.closest('.card');
+      if (!card) return;
+      card._variants = product.variants || [];
+      card._optionGroups = opts;
+
+      el.innerHTML = '';
+      opts.forEach(function(opt, oi){
+        var choices = opt.choices || opt.values || [];
+        var lbl = document.createElement('div');
+        lbl.className = 'option-label';
+        lbl.textContent = opt.name || '';
+        el.appendChild(lbl);
+        var row = document.createElement('div');
+        row.className = 'option-row';
+        choices.forEach(function(v){
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.textContent = typeof v === 'object' ? (v.name || v.value || '') : v;
+          b.dataset.optIndex = oi;
+          b.dataset.choiceVal = b.textContent;
+          row.appendChild(b);
+        });
+        el.appendChild(row);
+      });
+
+      function applyVariant(){
+        var sel = {};
+        el.querySelectorAll('button.active').forEach(function(b){
+          sel[b.dataset.optIndex] = b.dataset.choiceVal;
+        });
+        var match = null;
+        card._variants.forEach(function(v){
+          var ok = true;
+          v.attributes.forEach(function(attr){
+            var found = false;
+            opts.forEach(function(opt, oi){
+              if (opt.id === attr.attribute_id && sel[oi] === attr.value) found = true;
+            });
+            if (!found) ok = false;
+          });
+          if (ok) match = v;
+        });
+        if (!match && card._variants.length) return;
+        card.dataset.selectedVariant = match ? match.id : '';
+
+        var img = card.querySelector('img.prod-img');
+        var vImg = match && match.main_image && match.main_image.image && match.main_image.image.medium;
+        if (vImg && img && img.src !== vImg) img.src = vImg;
+
+        var priceEl = card.querySelector('.price');
+        if (priceEl && match) {
+          var hasSale = match.formatted_sale_price && match.formatted_sale_price !== match.formatted_price;
+          if (hasSale) {
+            priceEl.innerHTML = '<span style="text-decoration:line-through;color:#999;margin-right:4px;">' + match.formatted_price + '</span> ' + match.formatted_sale_price;
+          } else {
+            priceEl.textContent = match.formatted_price;
+          }
+        }
+      }
+
+      var sv = product.selected_variant;
+      if (sv && sv.attributes) {
+        sv.attributes.forEach(function(attr){
+          var btn = el.querySelector('button[data-choice-val="' + attr.value + '"]');
+          if (btn) btn.classList.add('active');
+        });
+      }
+      if (!el.querySelector('.active')) {
+        var firstBtn = el.querySelector('button');
+        if (firstBtn) firstBtn.classList.add('active');
+      }
+
+      el.addEventListener('click', function(e){
+        var b = e.target.closest('button');
+        if (!b) return;
+        var row = b.parentNode;
+        row.querySelectorAll('button').forEach(function(x){ x.classList.remove('active'); });
+        b.classList.add('active');
+        applyVariant();
+      });
+
+      applyVariant();
+    })
+    .catch(function(err){
+      el.style.display = 'none';
+    });
+  });
+
+  // ---- Pagination ----
   if (cards.length <= 8) return;
   var perPage = 8, current = 1;
   var total = Math.ceil(cards.length / perPage);
   var pagBar = document.getElementById('pag-bar');
+  if (!pagBar) return;
   var prevBtn = document.getElementById('pag-prev');
   var nextBtn = document.getElementById('pag-next');
   var pageInfo = document.getElementById('page-info');
   var pLbl = pagBar.getAttribute('data-page-label') || 'Page';
-  var oLbl = pagBar.getAttribute('data-of-label') || 'of';
   function show(p){
     current = p;
     for(var i=0;i<cards.length;i++){

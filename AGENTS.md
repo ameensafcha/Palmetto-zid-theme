@@ -46,9 +46,20 @@ product.name, product.slug, product.short_description
 
 Merchant picks products in Theme Editor → schema `"type": "products"` → `safeget(settings, "products.results", [])` → `{% for product in ... %}` → Win95-styled cards with `[data-add]` for cart.
 
-## Cart wiring
+## Cart wiring (Zid API)
 
-Cart JS in `cart-drawer.jinja` reads `.name`, `.price`, `[data-product]` from the card DOM. Products from Zid include all these fields.
+Cart JS in `cart-drawer.jinja` uses Zid's real Cart API — not a fake JS cart.
+
+| Function | API | Purpose |
+|---|---|---|
+| `loadCart()` | `GET /api/v1/cart` | Fetch cart state, render items, update badge + total |
+| `addToCart(pid, qty, btn)` | `POST /api/v1/cart/items` `{ product_id, quantity }` | Add item, then `loadCart()` + `openCart()` |
+| `updateCartItem(id, qty, btn)` | `PATCH /api/v1/cart/items/{id}` form-urlencoded | Update quantity |
+| `removeCartItem(id, btn)` | `DELETE /api/v1/cart/items/{id}` | Remove item |
+
+All cart functions are **global** — callable from inline `onclick` attributes. Catalog buttons use `onclick="addToCart('{{ product.id }}', 1, this)"`. Cart opens automatically on add. Badge updates from API response.
+
+`window.i18n.addToCart` etc. defined in `layout.jinja` for JS translation strings.
 
 ## Design system
 

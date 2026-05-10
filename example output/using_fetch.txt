@@ -1,0 +1,1155 @@
+{
+    "id": "059b528e-b141-4087-83e8-ede2ce15d7fa",
+    "product_class": null,
+    "sku": "Z.1776855503410586",
+    "barcode": "",
+    "name": "Copy of سافشا 40 جرام",
+    "slug": "سافشا-40-جرام-1",
+    "price": 64,
+    "sale_price": 44,
+    "formatted_price": "64.00  ر.س ",
+    "formatted_sale_price": "44.00  ر.س ",
+    "currency": "SAR",
+    "currency_symbol": " ر.س ",
+    "display_order": null,
+    "images": [
+        {
+            "id": "a4ad01ea-e6ff-4eee-9f41-371444ba8e63",
+            "image": {
+                "full_size": "https://media.zid.store/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895.png",
+                "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-1000x1000.png",
+                "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-770x770.png",
+                "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-500x500.png",
+                "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-370x370.png"
+            },
+            "alt_text": null,
+            "display_order": 1
+        },
+        {
+            "id": "28d42c9b-a61e-44db-bb51-132460cfe1bb",
+            "image": {
+                "full_size": "https://media.zid.store/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7.jpg",
+                "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-1000x1000-70.jpg",
+                "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-770x770-70.jpg",
+                "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-500x500-70.jpg",
+                "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-370x370-70.jpg"
+            },
+            "alt_text": null,
+            "display_order": 2
+        }
+    ],
+    "structure": "parent",
+    "created_at": "2026-04-22T10:58:23.416056Z",
+    "updated_at": "2026-04-22T11:01:11.219230Z",
+    "quantity": null,
+    "is_infinite": true,
+    "badge": null,
+    "parent_id": null,
+    "short_description": "<p>40g arabic short desc</p>",
+    "custom_user_input_fields": [],
+    "custom_option_fields": [],
+    "attributes": [],
+    "categories": [
+        {
+            "id": 1483779,
+            "name": "alll",
+            "slug": "alll",
+            "description": "",
+            "cover_image": null,
+            "image": null,
+            "display_order": null,
+            "meta": {
+                "childs": [],
+                "parents": []
+            },
+            "seo": null,
+            "parent_category": null,
+            "url": null,
+            "image_full_size": null,
+            "img_alt_text": null,
+            "products_count": 0,
+            "sub_categories": null,
+            "parent_id": null,
+            "metafields": null,
+            "products": null,
+            "is_published": null
+        }
+    ],
+    "has_options": true,
+    "has_fields": false,
+    "videos": [],
+    "html_url": "https://02cjhi.zid.store/products/سافشا-40-جرام-1",
+    "weight": {
+        "value": 40,
+        "unit": "g"
+    },
+    "keywords": [],
+    "requires_shipping": true,
+    "is_taxable": true,
+    "seo": {
+        "title": "",
+        "description": ""
+    },
+    "rating": {
+        "average": 0,
+        "total_count": 0,
+        "1_ratings": {
+            "percentage": 0,
+            "count": 0
+        },
+        "2_ratings": {
+            "percentage": 0,
+            "count": 0
+        },
+        "3_ratings": {
+            "percentage": 0,
+            "count": 0
+        },
+        "4_ratings": {
+            "percentage": 0,
+            "count": 0
+        },
+        "5_ratings": {
+            "percentage": 0,
+            "count": 0
+        }
+    },
+    "purchase_restrictions": {
+        "min_quantity_per_cart": 1,
+        "max_quantity_per_cart": 100,
+        "availability_period_start": null,
+        "availability_period_end": null,
+        "sale_price_period_start": null,
+        "sale_price_period_end": null
+    },
+    "metafields": null,
+    "meta": null,
+    "related_products_settings": "AUTO_GENERATED",
+    "related_products_title": null,
+    "group_products": null,
+    "preorder_campaign": null,
+    "stocks": [],
+    "sold_products_count": null,
+    "options": [
+        {
+            "id": "5fe50c82-7b51-4b46-a1d1-23f790cc297d",
+            "name": "سافشا 40 جرام",
+            "slug": "bundle-1",
+            "choices": [
+                "44",
+                "12",
+                "14"
+            ]
+        }
+    ],
+    "related_products": [
+        {
+            "id": "7f543ad8-b483-49db-ac91-50df999c32fa",
+            "product_class": null,
+            "sku": "Z.17765155143894887",
+            "barcode": "",
+            "name": "سافشا 40 جرام",
+            "slug": "سافشا-40-جرام",
+            "price": 60,
+            "sale_price": 55,
+            "formatted_price": "60.00  ر.س ",
+            "formatted_sale_price": "55.00  ر.س ",
+            "currency": "SAR",
+            "currency_symbol": " ر.س ",
+            "display_order": null,
+            "images": [
+                {
+                    "id": "bd1fa102-63b5-4573-9fd6-2bb9c164c895",
+                    "image": {
+                        "full_size": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-1000x1000.png",
+                        "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-1000x1000.png",
+                        "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-770x770.png",
+                        "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-500x500.png",
+                        "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-370x370.png"
+                    },
+                    "alt_text": null,
+                    "display_order": 1
+                },
+                {
+                    "id": "bd69dc98-2f58-4d8f-9515-7c7b72bf91d7",
+                    "image": {
+                        "full_size": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-1000x1000-70.jpg",
+                        "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-1000x1000-70.jpg",
+                        "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-770x770-70.jpg",
+                        "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-500x500-70.jpg",
+                        "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-370x370-70.jpg"
+                    },
+                    "alt_text": null,
+                    "display_order": 2
+                }
+            ],
+            "structure": "standalone",
+            "created_at": "2026-04-18T12:31:54.396342Z",
+            "updated_at": "2026-04-18T13:31:26.939757Z",
+            "quantity": null,
+            "is_infinite": true,
+            "badge": null,
+            "parent_id": null,
+            "short_description": "<p>40g arabic short desc</p>",
+            "custom_user_input_fields": [],
+            "custom_option_fields": [],
+            "attributes": [],
+            "categories": [
+                {
+                    "id": 1483779,
+                    "name": "alll",
+                    "slug": "alll",
+                    "description": "",
+                    "cover_image": null,
+                    "image": null,
+                    "display_order": null,
+                    "meta": {
+                        "childs": [],
+                        "parents": []
+                    },
+                    "seo": null,
+                    "parent_category": null,
+                    "url": null,
+                    "image_full_size": null,
+                    "img_alt_text": null,
+                    "products_count": 0,
+                    "sub_categories": null,
+                    "parent_id": null,
+                    "metafields": null,
+                    "products": null,
+                    "is_published": null
+                }
+            ],
+            "has_options": false,
+            "has_fields": false,
+            "videos": [],
+            "html_url": "https://02cjhi.zid.store/products/سافشا-40-جرام",
+            "weight": {
+                "value": 40,
+                "unit": "g"
+            },
+            "keywords": [],
+            "requires_shipping": true,
+            "is_taxable": true,
+            "seo": {
+                "title": "",
+                "description": ""
+            },
+            "rating": {
+                "average": 0,
+                "total_count": 0,
+                "1_ratings": {
+                    "percentage": 0,
+                    "count": 0
+                },
+                "2_ratings": {
+                    "percentage": 0,
+                    "count": 0
+                },
+                "3_ratings": {
+                    "percentage": 0,
+                    "count": 0
+                },
+                "4_ratings": {
+                    "percentage": 0,
+                    "count": 0
+                },
+                "5_ratings": {
+                    "percentage": 0,
+                    "count": 0
+                }
+            },
+            "purchase_restrictions": {
+                "min_quantity_per_cart": 1,
+                "max_quantity_per_cart": 100,
+                "availability_period_start": null,
+                "availability_period_end": null,
+                "sale_price_period_start": null,
+                "sale_price_period_end": null
+            },
+            "metafields": null,
+            "meta": null,
+            "related_products_settings": "AUTO_GENERATED",
+            "related_products_title": null,
+            "group_products": null,
+            "preorder_campaign": null,
+            "stocks": [
+                {
+                    "id": "fe2c74ec-ef58-4f64-9b23-050f7f6204c0",
+                    "location": {
+                        "id": "7c205cd1-0162-4336-b9ce-238c4656a522",
+                        "name": "jiij",
+                        "type": "PHYSICAL",
+                        "full_address": "XMM3+94 King Khalid International Airport, Riyadh Saudi Arabia"
+                    },
+                    "available_quantity": null,
+                    "is_infinite": true
+                }
+            ],
+            "sold_products_count": null,
+            "options": null,
+            "related_products": null,
+            "additions_price": null,
+            "formatted_additions_price": null,
+            "variants": null,
+            "is_draft": false,
+            "store_id": 3059022,
+            "discount_percentage": 9,
+            "in_stock": true,
+            "effective_price": 55,
+            "main_image": {
+                "id": "bd1fa102-63b5-4573-9fd6-2bb9c164c895",
+                "image": {
+                    "full_size": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-1000x1000.png",
+                    "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-1000x1000.png",
+                    "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-770x770.png",
+                    "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-500x500.png",
+                    "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-370x370.png"
+                },
+                "alt_text": null,
+                "display_order": 1
+            },
+            "selected_variant": null,
+            "effective_preorder_campaign": null,
+            "preorder_slot": null,
+            "preorder_slots_exhausted": false,
+            "preorder_slots_available": false,
+            "preorder_stock_behavior": null,
+            "can_be_preordered": false,
+            "custom_input_fields": [],
+            "media": [
+                {
+                    "id": "bd1fa102-63b5-4573-9fd6-2bb9c164c895",
+                    "image": {
+                        "full_size": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-1000x1000.png",
+                        "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-1000x1000.png",
+                        "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-770x770.png",
+                        "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-500x500.png",
+                        "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-370x370.png"
+                    },
+                    "alt_text": null,
+                    "display_order": 1
+                },
+                {
+                    "id": "bd69dc98-2f58-4d8f-9515-7c7b72bf91d7",
+                    "image": {
+                        "full_size": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-1000x1000-70.jpg",
+                        "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-1000x1000-70.jpg",
+                        "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-770x770-70.jpg",
+                        "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-500x500-70.jpg",
+                        "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-370x370-70.jpg"
+                    },
+                    "alt_text": null,
+                    "display_order": 2
+                }
+            ]
+        }
+    ],
+    "additions_price": null,
+    "formatted_additions_price": null,
+    "variants": [
+        {
+            "id": "489d17ab-4afb-43dd-928a-da9e7061a246",
+            "product_class": null,
+            "sku": "Z.3059022.6379119999999553497",
+            "barcode": "",
+            "name": "Copy of سافشا 40 جرام - 14",
+            "slug": "en-copy-of-safch-40g-14",
+            "price": 69,
+            "sale_price": 55,
+            "formatted_price": "69.00  ر.س ",
+            "formatted_sale_price": "55.00  ر.س ",
+            "currency": "SAR",
+            "currency_symbol": " ر.س ",
+            "display_order": null,
+            "images": [],
+            "structure": "child",
+            "created_at": "2026-04-22T10:59:48.170049Z",
+            "updated_at": "2026-04-22T10:59:48.170060Z",
+            "quantity": null,
+            "is_infinite": true,
+            "badge": null,
+            "parent_id": "059b528e-b141-4087-83e8-ede2ce15d7fa",
+            "short_description": "<p>40g arabic short desc</p>",
+            "custom_user_input_fields": [],
+            "custom_option_fields": [],
+            "attributes": [
+                {
+                    "id": "6e471822-f896-4ef1-9b3d-817cead19ab3",
+                    "slug": "bundle-1",
+                    "name": "سافشا 40 جرام",
+                    "value": "14",
+                    "type": "default",
+                    "attribute_id": "5fe50c82-7b51-4b46-a1d1-23f790cc297d",
+                    "display_order": 3,
+                    "type_value": null,
+                    "product_id": "489d17ab-4afb-43dd-928a-da9e7061a246",
+                    "attribute_image_id": null,
+                    "attribute_display_order": 1,
+                    "use_as_filter": false
+                }
+            ],
+            "categories": [
+                {
+                    "id": 1483779,
+                    "name": "alll",
+                    "slug": "alll",
+                    "description": "",
+                    "cover_image": null,
+                    "image": null,
+                    "display_order": null,
+                    "meta": {
+                        "childs": [],
+                        "parents": []
+                    },
+                    "seo": null,
+                    "parent_category": null,
+                    "url": null,
+                    "image_full_size": null,
+                    "img_alt_text": null,
+                    "products_count": 0,
+                    "sub_categories": null,
+                    "parent_id": null,
+                    "metafields": null,
+                    "products": null,
+                    "is_published": null
+                }
+            ],
+            "has_options": false,
+            "has_fields": false,
+            "videos": [],
+            "html_url": "https://02cjhi.zid.store/products/سافشا-40-جرام-1",
+            "weight": {
+                "value": 40,
+                "unit": "g"
+            },
+            "keywords": [],
+            "requires_shipping": true,
+            "is_taxable": true,
+            "seo": null,
+            "rating": {
+                "average": 0,
+                "total_count": 0,
+                "1_ratings": {
+                    "percentage": 0,
+                    "count": 0
+                },
+                "2_ratings": {
+                    "percentage": 0,
+                    "count": 0
+                },
+                "3_ratings": {
+                    "percentage": 0,
+                    "count": 0
+                },
+                "4_ratings": {
+                    "percentage": 0,
+                    "count": 0
+                },
+                "5_ratings": {
+                    "percentage": 0,
+                    "count": 0
+                }
+            },
+            "purchase_restrictions": {
+                "min_quantity_per_cart": 1,
+                "max_quantity_per_cart": 100,
+                "availability_period_start": null,
+                "availability_period_end": null,
+                "sale_price_period_start": null,
+                "sale_price_period_end": null
+            },
+            "metafields": null,
+            "meta": null,
+            "related_products_settings": "AUTO_GENERATED",
+            "related_products_title": null,
+            "group_products": null,
+            "preorder_campaign": null,
+            "stocks": [
+                {
+                    "id": "c5b73fd1-d353-4483-ac55-44cf01c74779",
+                    "location": {
+                        "id": "7c205cd1-0162-4336-b9ce-238c4656a522",
+                        "name": "jiij",
+                        "type": "PHYSICAL",
+                        "full_address": "XMM3+94 King Khalid International Airport, Riyadh Saudi Arabia"
+                    },
+                    "available_quantity": null,
+                    "is_infinite": true
+                }
+            ],
+            "sold_products_count": null,
+            "options": null,
+            "related_products": null,
+            "additions_price": null,
+            "formatted_additions_price": null,
+            "variants": null,
+            "is_draft": false,
+            "store_id": 3059022,
+            "discount_percentage": 21,
+            "in_stock": true,
+            "effective_price": 55,
+            "main_image": {
+                "id": "a4ad01ea-e6ff-4eee-9f41-371444ba8e63",
+                "image": {
+                    "full_size": "https://media.zid.store/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895.png",
+                    "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-1000x1000.png",
+                    "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-770x770.png",
+                    "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-500x500.png",
+                    "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-370x370.png"
+                },
+                "alt_text": null,
+                "display_order": 1
+            },
+            "selected_variant": null,
+            "effective_preorder_campaign": null,
+            "preorder_slot": null,
+            "preorder_slots_exhausted": false,
+            "preorder_slots_available": false,
+            "preorder_stock_behavior": null,
+            "can_be_preordered": false,
+            "custom_input_fields": [],
+            "media": [
+                {
+                    "id": "a4ad01ea-e6ff-4eee-9f41-371444ba8e63",
+                    "image": {
+                        "full_size": "https://media.zid.store/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895.png",
+                        "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-1000x1000.png",
+                        "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-770x770.png",
+                        "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-500x500.png",
+                        "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-370x370.png"
+                    },
+                    "alt_text": null,
+                    "display_order": 1
+                },
+                {
+                    "id": "28d42c9b-a61e-44db-bb51-132460cfe1bb",
+                    "image": {
+                        "full_size": "https://media.zid.store/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7.jpg",
+                        "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-1000x1000-70.jpg",
+                        "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-770x770-70.jpg",
+                        "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-500x500-70.jpg",
+                        "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-370x370-70.jpg"
+                    },
+                    "alt_text": null,
+                    "display_order": 2
+                }
+            ]
+        },
+        {
+            "id": "3cc9e34d-c63d-44c0-8b76-b298616a64a1",
+            "product_class": null,
+            "sku": "Z.3059022.6379119999999553641",
+            "barcode": "",
+            "name": "Copy of سافشا 40 جرام - 12",
+            "slug": "en-copy-of-safch-40g-12",
+            "price": 64,
+            "sale_price": 44,
+            "formatted_price": "64.00  ر.س ",
+            "formatted_sale_price": "44.00  ر.س ",
+            "currency": "SAR",
+            "currency_symbol": " ر.س ",
+            "display_order": null,
+            "images": [],
+            "structure": "child",
+            "created_at": "2026-04-22T10:59:48.169934Z",
+            "updated_at": "2026-04-22T10:59:48.169947Z",
+            "quantity": null,
+            "is_infinite": true,
+            "badge": null,
+            "parent_id": "059b528e-b141-4087-83e8-ede2ce15d7fa",
+            "short_description": "<p>40g arabic short desc</p>",
+            "custom_user_input_fields": [],
+            "custom_option_fields": [],
+            "attributes": [
+                {
+                    "id": "416ef62e-dbe4-41a9-896e-8414815884b4",
+                    "slug": "bundle-1",
+                    "name": "سافشا 40 جرام",
+                    "value": "12",
+                    "type": "default",
+                    "attribute_id": "5fe50c82-7b51-4b46-a1d1-23f790cc297d",
+                    "display_order": 2,
+                    "type_value": null,
+                    "product_id": "3cc9e34d-c63d-44c0-8b76-b298616a64a1",
+                    "attribute_image_id": null,
+                    "attribute_display_order": 1,
+                    "use_as_filter": false
+                }
+            ],
+            "categories": [
+                {
+                    "id": 1483779,
+                    "name": "alll",
+                    "slug": "alll",
+                    "description": "",
+                    "cover_image": null,
+                    "image": null,
+                    "display_order": null,
+                    "meta": {
+                        "childs": [],
+                        "parents": []
+                    },
+                    "seo": null,
+                    "parent_category": null,
+                    "url": null,
+                    "image_full_size": null,
+                    "img_alt_text": null,
+                    "products_count": 0,
+                    "sub_categories": null,
+                    "parent_id": null,
+                    "metafields": null,
+                    "products": null,
+                    "is_published": null
+                }
+            ],
+            "has_options": false,
+            "has_fields": false,
+            "videos": [],
+            "html_url": "https://02cjhi.zid.store/products/سافشا-40-جرام-1",
+            "weight": {
+                "value": 40,
+                "unit": "g"
+            },
+            "keywords": [],
+            "requires_shipping": true,
+            "is_taxable": true,
+            "seo": null,
+            "rating": {
+                "average": 0,
+                "total_count": 0,
+                "1_ratings": {
+                    "percentage": 0,
+                    "count": 0
+                },
+                "2_ratings": {
+                    "percentage": 0,
+                    "count": 0
+                },
+                "3_ratings": {
+                    "percentage": 0,
+                    "count": 0
+                },
+                "4_ratings": {
+                    "percentage": 0,
+                    "count": 0
+                },
+                "5_ratings": {
+                    "percentage": 0,
+                    "count": 0
+                }
+            },
+            "purchase_restrictions": {
+                "min_quantity_per_cart": 1,
+                "max_quantity_per_cart": 100,
+                "availability_period_start": null,
+                "availability_period_end": null,
+                "sale_price_period_start": null,
+                "sale_price_period_end": null
+            },
+            "metafields": null,
+            "meta": null,
+            "related_products_settings": "AUTO_GENERATED",
+            "related_products_title": null,
+            "group_products": null,
+            "preorder_campaign": null,
+            "stocks": [
+                {
+                    "id": "86359c87-92da-462b-8d93-1c9029ec2414",
+                    "location": {
+                        "id": "7c205cd1-0162-4336-b9ce-238c4656a522",
+                        "name": "jiij",
+                        "type": "PHYSICAL",
+                        "full_address": "XMM3+94 King Khalid International Airport, Riyadh Saudi Arabia"
+                    },
+                    "available_quantity": null,
+                    "is_infinite": true
+                }
+            ],
+            "sold_products_count": null,
+            "options": null,
+            "related_products": null,
+            "additions_price": null,
+            "formatted_additions_price": null,
+            "variants": null,
+            "is_draft": false,
+            "store_id": 3059022,
+            "discount_percentage": 32,
+            "in_stock": true,
+            "effective_price": 44,
+            "main_image": {
+                "id": "a4ad01ea-e6ff-4eee-9f41-371444ba8e63",
+                "image": {
+                    "full_size": "https://media.zid.store/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895.png",
+                    "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-1000x1000.png",
+                    "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-770x770.png",
+                    "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-500x500.png",
+                    "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-370x370.png"
+                },
+                "alt_text": null,
+                "display_order": 1
+            },
+            "selected_variant": null,
+            "effective_preorder_campaign": null,
+            "preorder_slot": null,
+            "preorder_slots_exhausted": false,
+            "preorder_slots_available": false,
+            "preorder_stock_behavior": null,
+            "can_be_preordered": false,
+            "custom_input_fields": [],
+            "media": [
+                {
+                    "id": "a4ad01ea-e6ff-4eee-9f41-371444ba8e63",
+                    "image": {
+                        "full_size": "https://media.zid.store/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895.png",
+                        "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-1000x1000.png",
+                        "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-770x770.png",
+                        "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-500x500.png",
+                        "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-370x370.png"
+                    },
+                    "alt_text": null,
+                    "display_order": 1
+                },
+                {
+                    "id": "28d42c9b-a61e-44db-bb51-132460cfe1bb",
+                    "image": {
+                        "full_size": "https://media.zid.store/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7.jpg",
+                        "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-1000x1000-70.jpg",
+                        "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-770x770-70.jpg",
+                        "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-500x500-70.jpg",
+                        "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-370x370-70.jpg"
+                    },
+                    "alt_text": null,
+                    "display_order": 2
+                }
+            ]
+        },
+        {
+            "id": "aa138d4a-1876-45f9-b8be-f9552babd99f",
+            "product_class": null,
+            "sku": "Z.3059022.6379119999999553206",
+            "barcode": "",
+            "name": "Copy of سافشا 40 جرام - 44",
+            "slug": "en-copy-of-safch-40g-44",
+            "price": 60,
+            "sale_price": 55,
+            "formatted_price": "60.00  ر.س ",
+            "formatted_sale_price": "55.00  ر.س ",
+            "currency": "SAR",
+            "currency_symbol": " ر.س ",
+            "display_order": null,
+            "images": [],
+            "structure": "child",
+            "created_at": "2026-04-22T10:59:48.169731Z",
+            "updated_at": "2026-04-22T10:59:48.169758Z",
+            "quantity": null,
+            "is_infinite": true,
+            "badge": null,
+            "parent_id": "059b528e-b141-4087-83e8-ede2ce15d7fa",
+            "short_description": "<p>40g arabic short desc</p>",
+            "custom_user_input_fields": [],
+            "custom_option_fields": [],
+            "attributes": [
+                {
+                    "id": "fb8b8956-d577-40e7-9593-bb4fb42a67a2",
+                    "slug": "bundle-1",
+                    "name": "سافشا 40 جرام",
+                    "value": "44",
+                    "type": "default",
+                    "attribute_id": "5fe50c82-7b51-4b46-a1d1-23f790cc297d",
+                    "display_order": 1,
+                    "type_value": null,
+                    "product_id": "aa138d4a-1876-45f9-b8be-f9552babd99f",
+                    "attribute_image_id": null,
+                    "attribute_display_order": 1,
+                    "use_as_filter": false
+                }
+            ],
+            "categories": [
+                {
+                    "id": 1483779,
+                    "name": "alll",
+                    "slug": "alll",
+                    "description": "",
+                    "cover_image": null,
+                    "image": null,
+                    "display_order": null,
+                    "meta": {
+                        "childs": [],
+                        "parents": []
+                    },
+                    "seo": null,
+                    "parent_category": null,
+                    "url": null,
+                    "image_full_size": null,
+                    "img_alt_text": null,
+                    "products_count": 0,
+                    "sub_categories": null,
+                    "parent_id": null,
+                    "metafields": null,
+                    "products": null,
+                    "is_published": null
+                }
+            ],
+            "has_options": false,
+            "has_fields": false,
+            "videos": [],
+            "html_url": "https://02cjhi.zid.store/products/سافشا-40-جرام-1",
+            "weight": {
+                "value": 40,
+                "unit": "g"
+            },
+            "keywords": [],
+            "requires_shipping": true,
+            "is_taxable": true,
+            "seo": null,
+            "rating": {
+                "average": 0,
+                "total_count": 0,
+                "1_ratings": {
+                    "percentage": 0,
+                    "count": 0
+                },
+                "2_ratings": {
+                    "percentage": 0,
+                    "count": 0
+                },
+                "3_ratings": {
+                    "percentage": 0,
+                    "count": 0
+                },
+                "4_ratings": {
+                    "percentage": 0,
+                    "count": 0
+                },
+                "5_ratings": {
+                    "percentage": 0,
+                    "count": 0
+                }
+            },
+            "purchase_restrictions": {
+                "min_quantity_per_cart": 1,
+                "max_quantity_per_cart": 100,
+                "availability_period_start": null,
+                "availability_period_end": null,
+                "sale_price_period_start": null,
+                "sale_price_period_end": null
+            },
+            "metafields": null,
+            "meta": null,
+            "related_products_settings": "AUTO_GENERATED",
+            "related_products_title": null,
+            "group_products": null,
+            "preorder_campaign": null,
+            "stocks": [
+                {
+                    "id": "2a3097c6-e0a9-4521-9557-2052352888ab",
+                    "location": {
+                        "id": "7c205cd1-0162-4336-b9ce-238c4656a522",
+                        "name": "jiij",
+                        "type": "PHYSICAL",
+                        "full_address": "XMM3+94 King Khalid International Airport, Riyadh Saudi Arabia"
+                    },
+                    "available_quantity": null,
+                    "is_infinite": true
+                }
+            ],
+            "sold_products_count": null,
+            "options": null,
+            "related_products": null,
+            "additions_price": null,
+            "formatted_additions_price": null,
+            "variants": null,
+            "is_draft": false,
+            "store_id": 3059022,
+            "discount_percentage": 9,
+            "in_stock": true,
+            "effective_price": 55,
+            "main_image": {
+                "id": "a4ad01ea-e6ff-4eee-9f41-371444ba8e63",
+                "image": {
+                    "full_size": "https://media.zid.store/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895.png",
+                    "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-1000x1000.png",
+                    "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-770x770.png",
+                    "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-500x500.png",
+                    "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-370x370.png"
+                },
+                "alt_text": null,
+                "display_order": 1
+            },
+            "selected_variant": null,
+            "effective_preorder_campaign": null,
+            "preorder_slot": null,
+            "preorder_slots_exhausted": false,
+            "preorder_slots_available": false,
+            "preorder_stock_behavior": null,
+            "can_be_preordered": false,
+            "custom_input_fields": [],
+            "media": [
+                {
+                    "id": "a4ad01ea-e6ff-4eee-9f41-371444ba8e63",
+                    "image": {
+                        "full_size": "https://media.zid.store/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895.png",
+                        "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-1000x1000.png",
+                        "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-770x770.png",
+                        "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-500x500.png",
+                        "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-370x370.png"
+                    },
+                    "alt_text": null,
+                    "display_order": 1
+                },
+                {
+                    "id": "28d42c9b-a61e-44db-bb51-132460cfe1bb",
+                    "image": {
+                        "full_size": "https://media.zid.store/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7.jpg",
+                        "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-1000x1000-70.jpg",
+                        "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-770x770-70.jpg",
+                        "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-500x500-70.jpg",
+                        "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-370x370-70.jpg"
+                    },
+                    "alt_text": null,
+                    "display_order": 2
+                }
+            ]
+        }
+    ],
+    "is_draft": false,
+    "store_id": 3059022,
+    "description": "<p>40 g long desc </p>\n<p>40 g long desc </p>\n<p>40 g long desc </p>\n<p>40 g long desc </p>\n<p>40 g long desc </p>\n<p>40 g long desc </p>\n<p>40 g long desc arabic</p>",
+    "discount_percentage": 32,
+    "in_stock": true,
+    "effective_price": 44,
+    "main_image": {
+        "id": "a4ad01ea-e6ff-4eee-9f41-371444ba8e63",
+        "image": {
+            "full_size": "https://media.zid.store/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895.png",
+            "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-1000x1000.png",
+            "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-770x770.png",
+            "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-500x500.png",
+            "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-370x370.png"
+        },
+        "alt_text": null,
+        "display_order": 1
+    },
+    "selected_variant": {
+        "id": "3cc9e34d-c63d-44c0-8b76-b298616a64a1",
+        "product_class": null,
+        "sku": "Z.3059022.6379119999999553641",
+        "barcode": "",
+        "name": "Copy of سافشا 40 جرام - 12",
+        "slug": "en-copy-of-safch-40g-12",
+        "price": 64,
+        "sale_price": 44,
+        "formatted_price": "64.00  ر.س ",
+        "formatted_sale_price": "44.00  ر.س ",
+        "currency": "SAR",
+        "currency_symbol": " ر.س ",
+        "display_order": null,
+        "images": [],
+        "structure": "child",
+        "created_at": "2026-04-22T10:59:48.169934Z",
+        "updated_at": "2026-04-22T10:59:48.169947Z",
+        "quantity": null,
+        "is_infinite": true,
+        "badge": null,
+        "parent_id": "059b528e-b141-4087-83e8-ede2ce15d7fa",
+        "short_description": "<p>40g arabic short desc</p>",
+        "custom_user_input_fields": [],
+        "custom_option_fields": [],
+        "attributes": [
+            {
+                "id": "416ef62e-dbe4-41a9-896e-8414815884b4",
+                "slug": "bundle-1",
+                "name": "سافشا 40 جرام",
+                "value": "12",
+                "type": "default",
+                "attribute_id": "5fe50c82-7b51-4b46-a1d1-23f790cc297d",
+                "display_order": 2,
+                "type_value": null,
+                "product_id": "3cc9e34d-c63d-44c0-8b76-b298616a64a1",
+                "attribute_image_id": null,
+                "attribute_display_order": 1,
+                "use_as_filter": false
+            }
+        ],
+        "categories": [
+            {
+                "id": 1483779,
+                "name": "alll",
+                "slug": "alll",
+                "description": "",
+                "cover_image": null,
+                "image": null,
+                "display_order": null,
+                "meta": {
+                    "childs": [],
+                    "parents": []
+                },
+                "seo": null,
+                "parent_category": null,
+                "url": null,
+                "image_full_size": null,
+                "img_alt_text": null,
+                "products_count": 0,
+                "sub_categories": null,
+                "parent_id": null,
+                "metafields": null,
+                "products": null,
+                "is_published": null
+            }
+        ],
+        "has_options": false,
+        "has_fields": false,
+        "videos": [],
+        "html_url": "https://02cjhi.zid.store/products/سافشا-40-جرام-1",
+        "weight": {
+            "value": 40,
+            "unit": "g"
+        },
+        "keywords": [],
+        "requires_shipping": true,
+        "is_taxable": true,
+        "seo": null,
+        "rating": {
+            "average": 0,
+            "total_count": 0,
+            "1_ratings": {
+                "percentage": 0,
+                "count": 0
+            },
+            "2_ratings": {
+                "percentage": 0,
+                "count": 0
+            },
+            "3_ratings": {
+                "percentage": 0,
+                "count": 0
+            },
+            "4_ratings": {
+                "percentage": 0,
+                "count": 0
+            },
+            "5_ratings": {
+                "percentage": 0,
+                "count": 0
+            }
+        },
+        "purchase_restrictions": {
+            "min_quantity_per_cart": 1,
+            "max_quantity_per_cart": 100,
+            "availability_period_start": null,
+            "availability_period_end": null,
+            "sale_price_period_start": null,
+            "sale_price_period_end": null
+        },
+        "metafields": null,
+        "meta": null,
+        "related_products_settings": "AUTO_GENERATED",
+        "related_products_title": null,
+        "group_products": null,
+        "preorder_campaign": null,
+        "stocks": [
+            {
+                "id": "86359c87-92da-462b-8d93-1c9029ec2414",
+                "location": {
+                    "id": "7c205cd1-0162-4336-b9ce-238c4656a522",
+                    "name": "jiij",
+                    "type": "PHYSICAL",
+                    "full_address": "XMM3+94 King Khalid International Airport, Riyadh Saudi Arabia"
+                },
+                "available_quantity": null,
+                "is_infinite": true
+            }
+        ],
+        "sold_products_count": null,
+        "options": null,
+        "related_products": null,
+        "additions_price": null,
+        "formatted_additions_price": null,
+        "variants": null,
+        "is_draft": false,
+        "store_id": 3059022,
+        "discount_percentage": 32,
+        "in_stock": true,
+        "effective_price": 44,
+        "main_image": {
+            "id": "a4ad01ea-e6ff-4eee-9f41-371444ba8e63",
+            "image": {
+                "full_size": "https://media.zid.store/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895.png",
+                "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-1000x1000.png",
+                "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-770x770.png",
+                "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-500x500.png",
+                "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-370x370.png"
+            },
+            "alt_text": null,
+            "display_order": 1
+        },
+        "selected_variant": null,
+        "effective_preorder_campaign": null,
+        "preorder_slot": null,
+        "preorder_slots_exhausted": false,
+        "preorder_slots_available": false,
+        "preorder_stock_behavior": null,
+        "can_be_preordered": false,
+        "custom_input_fields": [],
+        "media": [
+            {
+                "id": "a4ad01ea-e6ff-4eee-9f41-371444ba8e63",
+                "image": {
+                    "full_size": "https://media.zid.store/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895.png",
+                    "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-1000x1000.png",
+                    "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-770x770.png",
+                    "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-500x500.png",
+                    "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-370x370.png"
+                },
+                "alt_text": null,
+                "display_order": 1
+            },
+            {
+                "id": "28d42c9b-a61e-44db-bb51-132460cfe1bb",
+                "image": {
+                    "full_size": "https://media.zid.store/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7.jpg",
+                    "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-1000x1000-70.jpg",
+                    "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-770x770-70.jpg",
+                    "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-500x500-70.jpg",
+                    "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-370x370-70.jpg"
+                },
+                "alt_text": null,
+                "display_order": 2
+            }
+        ]
+    },
+    "effective_preorder_campaign": null,
+    "preorder_slot": null,
+    "preorder_slots_exhausted": false,
+    "preorder_slots_available": false,
+    "preorder_stock_behavior": null,
+    "can_be_preordered": false,
+    "custom_input_fields": [],
+    "media": [
+        {
+            "id": "a4ad01ea-e6ff-4eee-9f41-371444ba8e63",
+            "image": {
+                "full_size": "https://media.zid.store/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895.png",
+                "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-1000x1000.png",
+                "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-770x770.png",
+                "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-500x500.png",
+                "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd1fa102-63b5-4573-9fd6-2bb9c164c895-thumbnail-370x370.png"
+            },
+            "alt_text": null,
+            "display_order": 1
+        },
+        {
+            "id": "28d42c9b-a61e-44db-bb51-132460cfe1bb",
+            "image": {
+                "full_size": "https://media.zid.store/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7.jpg",
+                "large": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-1000x1000-70.jpg",
+                "medium": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-770x770-70.jpg",
+                "small": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-500x500-70.jpg",
+                "thumbnail": "https://media.zid.store/thumbs/6ca7b44c-950e-407b-807e-a5557171d2d6/bd69dc98-2f58-4d8f-9515-7c7b72bf91d7-thumbnail-370x370-70.jpg"
+            },
+            "alt_text": null,
+            "display_order": 2
+        }
+    ]
+}

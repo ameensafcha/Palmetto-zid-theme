@@ -1,0 +1,15 @@
+{% if products.pages_count > 1 %}
+<div class="pag-bar">
+  {% if products.page > 1 %}
+    <a href="?page={{ products.page - 1 }}" class="btn">{{ _("← Prev") }}</a>
+  {% else %}
+    <button class="btn" disabled>{{ _("← Prev") }}</button>
+  {% endif %}
+  <span class="page-info">{{ _("Page") }} {{ products.page }} / {{ products.pages_count }}</span>
+  {% if products.page < products.pages_count %}
+    <a href="?page={{ products.page + 1 }}" class="btn">{{ _("Next →") }}</a>
+  {% else %}
+    <button class="btn" disabled>{{ _("Next →") }}</button>
+  {% endif %}
+</div>
+{% endif %}

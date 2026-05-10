@@ -1,0 +1,37 @@
+{% set p = product %}
+{% set img_url = p.main_image.image.medium if p.main_image and p.main_image.image and p.main_image.image.medium else (p.media[0].image.medium if p.media and p.media[0] and p.media[0].image and p.media[0].image.medium else '') %}
+{% set has_sale = p.formatted_sale_price and p.formatted_sale_price != p.formatted_price %}
+{% set in_stock = p.in_stock is defined and p.in_stock and p.quantity != 0 %}
+{% set is_variant = p.has_variants or p.structure == 'parent' %}
+{% set is_bundle = p.product_class == 'dynamic_bundle' %}
+<article class="card" data-product="{{ p.id }}">
+  <div class="titlebar"><span class="t-title">{{ p.name }}</span><span class="tb-btn">✕</span></div>
+  <div class="img">
+    {% if img_url %}
+      <img src="{{ img_url }}" alt="{{ p.name }}" style="display:block;width:100%;height:100%;object-fit:cover;">
+    {% else %}
+      <div class="ph" data-label="{{ p.slug }}.jpg"></div>
+    {% endif %}
+  </div>
+  <div class="meta">
+    <div class="row">
+      <div class="name">{{ p.name }}</div>
+      <div class="price">{% if has_sale %}<span style="text-decoration:line-through;color:#999;margin-right:4px;">{{ p.formatted_price }}</span> {{ p.formatted_sale_price }}{% else %}{{ p.formatted_price }}{% endif %}</div>
+    </div>
+    {% if p.short_description %}
+    <div class="desc">{{ p.short_description | striptags | truncate(100) }}</div>
+    {% endif %}
+  </div>
+  <div class="actions">
+    {% if not in_stock %}
+      <button class="btn" disabled style="opacity:0.5;cursor:not-allowed;">{{ _("Sold Out") }}</button>
+    {% elif is_bundle %}
+      <a href="{{ url_for('product_details', slug=p.slug) }}" class="btn primary" style="text-decoration:none;color:#000;">{{ _("View Bundle") }}</a>
+    {% elif is_variant %}
+      <a href="{{ url_for('product_details', slug=p.slug) }}" class="btn primary" style="text-decoration:none;color:#000;">{{ _("Select Options") }}</a>
+    {% else %}
+      <button class="btn primary" data-add>{{ _("Add to Cart") }}</button>
+    {% endif %}
+    <a href="{{ url_for('product_details', slug=p.slug) }}" class="btn" style="text-decoration:none;color:#000;">{{ _("Details") }}</a>
+  </div>
+</article>

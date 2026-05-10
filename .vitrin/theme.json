@@ -1,36 +1,8 @@
 {
   "id": "963b972d-3029-41ed-a875-b19ba0f30606",
   "path": "C:\\Users\\User\\Desktop\\Per",
-  "updatedAt": "2026-05-08T19:35:43.607Z",
+  "updatedAt": "2026-05-09T11:42:06.531Z",
   "installations": [
-    {
-      "id": "11f9ba14-f3ac-433f-887b-3adedfb340aa",
-      "store_id": "3059022",
-      "store_name": "qwerty",
-      "installed_at": "2026-05-08T14:08:15.709Z",
-      "version": "1.0.16"
-    },
-    {
-      "id": "11f9ba14-f3ac-433f-887b-3adedfb340aa",
-      "store_id": "3059022",
-      "store_name": "qwerty",
-      "installed_at": "2026-05-08T14:11:25.669Z",
-      "version": "1.0.17"
-    },
-    {
-      "id": "11f9ba14-f3ac-433f-887b-3adedfb340aa",
-      "store_id": "3059022",
-      "store_name": "qwerty",
-      "installed_at": "2026-05-08T14:13:50.974Z",
-      "version": "1.0.18"
-    },
-    {
-      "id": "11f9ba14-f3ac-433f-887b-3adedfb340aa",
-      "store_id": "3059022",
-      "store_name": "qwerty",
-      "installed_at": "2026-05-08T14:15:38.707Z",
-      "version": "1.0.19"
-    },
     {
       "id": "11f9ba14-f3ac-433f-887b-3adedfb340aa",
       "store_id": "3059022",
@@ -72,6 +44,34 @@
       "store_name": "qwerty",
       "installed_at": "2026-05-08T19:35:43.606Z",
       "version": "1.0.56"
+    },
+    {
+      "id": "11f9ba14-f3ac-433f-887b-3adedfb340aa",
+      "store_id": "3059022",
+      "store_name": "qwerty",
+      "installed_at": "2026-05-09T10:38:17.878Z",
+      "version": "1.0.57"
+    },
+    {
+      "id": "11f9ba14-f3ac-433f-887b-3adedfb340aa",
+      "store_id": "3059022",
+      "store_name": "qwerty",
+      "installed_at": "2026-05-09T10:45:02.656Z",
+      "version": "1.0.58"
+    },
+    {
+      "id": "11f9ba14-f3ac-433f-887b-3adedfb340aa",
+      "store_id": "3059022",
+      "store_name": "qwerty",
+      "installed_at": "2026-05-09T10:55:57.488Z",
+      "version": "1.0.60"
+    },
+    {
+      "id": "11f9ba14-f3ac-433f-887b-3adedfb340aa",
+      "store_id": "3059022",
+      "store_name": "qwerty",
+      "installed_at": "2026-05-09T11:42:06.530Z",
+      "version": "1.0.61"
     }
   ]
 }

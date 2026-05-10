@@ -1,0 +1,822 @@
+{% extends "layout.jinja" %}
+{% block content %}
+<style>
+  .pdp .body-pad { padding: 14px; }
+
+  .product-detail {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 18px;
+  }
+
+  /* ---------- Gallery ---------- */
+  .gallery { position: relative; }
+  .gallery .main-img-wrap {
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background: var(--paper);
+  }
+  .gallery .main-img-wrap img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .gallery .main-img-wrap .ph {
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(135deg, #efe9d2 0 8px, #f6f1de 8px 16px);
+    position: relative;
+  }
+  .gallery .main-img-wrap .ph::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-family: "Courier New", monospace;
+    font-size: 10px;
+    color: #5a5037;
+    letter-spacing: 1px;
+    background: rgba(255,255,247,.85);
+    padding: 2px 6px;
+    border: 1px dashed #5a5037;
+  }
+  .gallery .thumb-strip {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+  .gallery .thumb-strip .thumb-btn {
+    width: 52px;
+    height: 52px;
+    flex: 0 0 auto;
+    padding: 0;
+    border: 2px solid var(--hi);
+    outline: 1px solid var(--lo);
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--paper);
+  }
+  .gallery .thumb-strip .thumb-btn:hover {
+    border-color: var(--tb-1);
+    outline-color: var(--tb-1);
+  }
+  .gallery .thumb-strip .thumb-btn img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .gallery .badge-ribbon {
+    position: absolute;
+    top: 8px;
+    left: -4px;
+    background: var(--warn-yellow);
+    border: 1px solid #000;
+    padding: 2px 8px;
+    font-family: "Tahoma", sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    box-shadow: 1px 1px 0 rgba(0,0,0,.3);
+    z-index: 2;
+  }
+
+  /* ---------- Info ---------- */
+  .info { display: flex; flex-direction: column; gap: 8px; }
+  .info .name {
+    margin: 0;
+    font-family: "Times New Roman", serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .info .name .ar {
+    display: block;
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 4px;
+    color: #3a3a3a;
+  }
+  .info .price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .info .price-row .price {
+    font-family: "Courier New", monospace;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .info .price-row .price.old {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+    font-weight: 400;
+  }
+  .info .price-row .discount-badge {
+    font-family: "Tahoma", sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--red);
+    background: var(--paper);
+    border: 1px solid var(--red);
+    padding: 1px 5px;
+  }
+  .info .rating-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    color: #555;
+  }
+  .info .rating-row .stars {
+    color: #cc8800;
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  .info .short-desc {
+    font-family: "Times New Roman", serif;
+    font-size: 13px;
+    line-height: 1.45;
+    color: #3a3a3a;
+    border-top: 1px dashed #b0a890;
+    border-bottom: 1px dashed #b0a890;
+    padding: 8px 0;
+  }
+  .info .short-desc.ar { font-size: 15px; }
+
+  /* ---------- Option groups (variant picker) ---------- */
+  .info .option-group {
+    margin: 4px 0;
+  }
+  .info .option-group label {
+    display: block;
+    font-family: "Tahoma", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+  .info .option-group select {
+    width: 100%;
+    padding: 3px 4px;
+    font-family: "Tahoma", sans-serif;
+    font-size: 11px;
+    background: var(--paper);
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--lo) var(--hi) var(--hi) var(--lo);
+    box-shadow: inset 1px 1px 0 var(--lo-2), inset -1px -1px 0 var(--hi-2);
+  }
+  .info .option-group .opt-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .info .option-group .opt-row label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 400;
+    cursor: pointer;
+  }
+  .info .option-group .opt-row input[type="radio"],
+  .info .option-group .opt-row input[type="checkbox"] {
+    margin: 0;
+    accent-color: var(--tb-1);
+  }
+
+  /* ---------- Quantity ---------- */
+  .info .qty-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .info .qty-row .qty-label {
+    font-family: "Tahoma", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 36px;
+  }
+  .info .qty-row .qty-btn {
+    width: 26px;
+    height: 26px;
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .info .qty-row .qty-num {
+    min-width: 24px;
+    text-align: center;
+    font-family: "Courier New", monospace;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 3px 2px;
+  }
+
+  /* ---------- Add to Cart ---------- */
+  .info .actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .info .actions .btn.primary {
+    flex: 2;
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  .info .actions .btn.secondary {
+    flex: 1;
+  }
+  .info .actions .btn:disabled,
+  .info .actions .btn.opacity-50 {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .info .actions .btn:disabled:active {
+    border-color: var(--hi) var(--lo-2) var(--lo-2) var(--hi);
+    box-shadow: inset 1px 1px 0 var(--hi-2), inset -1px -1px 0 var(--lo);
+    padding: 6px 12px;
+  }
+
+  /* ---------- Stock / Meta ---------- */
+  .info .stock-row {
+    display: flex;
+    gap: 10px;
+    font-family: "Tahoma", sans-serif;
+    font-size: 10px;
+  }
+  .info .stock-row .in-stock { color: var(--green); font-weight: 700; }
+  .info .stock-row .out-of-stock { color: var(--red); font-weight: 700; }
+  .info .meta-row {
+    display: flex;
+    gap: 14px;
+    font-family: "Tahoma", sans-serif;
+    font-size: 10px;
+    color: #666;
+    border-top: 1px solid var(--hi);
+    padding-top: 6px;
+    margin-top: auto;
+  }
+
+  /* ---------- Description Panel ---------- */
+  .desc-panel {
+    margin-top: 18px;
+    border-top: 1px solid var(--hi);
+    padding-top: 14px;
+  }
+  .desc-panel .field {
+    padding: 14px;
+    background: var(--paper);
+  }
+  .desc-panel .field p {
+    margin: 0 0 8px;
+    font-family: "Times New Roman", serif;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  /* ---------- Related Products ---------- */
+  .related-section {
+    margin-top: 18px;
+    border-top: 1px solid var(--hi);
+    padding-top: 14px;
+  }
+  .related-section h3 {
+    margin: 0 0 10px;
+    font-family: "Times New Roman", serif;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .related-section h3 .ar {
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: 8px;
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .related-grid .card {
+    background: var(--chrome);
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--hi) var(--lo-2) var(--lo-2) var(--hi);
+    box-shadow: inset 1px 1px 0 var(--hi-2), inset -1px -1px 0 var(--lo);
+    overflow: hidden;
+  }
+  .related-grid .card .titlebar {
+    height: 18px;
+    font-size: 10px;
+  }
+  .related-grid .card .titlebar .t-title { font-size: 10px; }
+  .related-grid .card .r-img {
+    aspect-ratio: 1/1;
+    margin: 4px;
+    background: var(--paper);
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--lo) var(--hi) var(--hi) var(--lo);
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+  }
+  .related-grid .card .r-img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .related-grid .card .r-img .ph {
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(135deg, #efe9d2 0 8px, #f6f1de 8px 16px);
+  }
+  .related-grid .card .r-meta {
+    padding: 3px 6px 6px;
+  }
+  .related-grid .card .r-meta .r-name {
+    font-family: "Times New Roman", serif;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .related-grid .card .r-meta .r-price {
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .related-grid .card .r-meta .r-price .old {
+    text-decoration: line-through;
+    color: #999;
+    font-weight: 400;
+    margin-right: 4px;
+  }
+  .related-grid .card .actions {
+    display: flex;
+    gap: 4px;
+    padding: 2px 6px 6px;
+  }
+  .related-grid .card .actions .btn {
+    font-size: 10px;
+    padding: 2px 4px;
+  }
+
+  /* ---------- Statusbar ---------- */
+  .pdp .statusbar .cell { font-size: 10px; }
+  .hidden { display: none !important; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 760px) {
+    .product-detail { grid-template-columns: 1fr; }
+    .related-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .related-grid { grid-template-columns: 1fr; }
+    .info .actions { flex-direction: column; }
+  }
+</style>
+
+<!-- ============================================================
+     Product Detail Window
+============================================================ -->
+{% set p = product.selected_product if product.selected_product else product %}
+{% set has_sale = p.formatted_sale_price and p.formatted_sale_price != p.formatted_price %}
+{% set in_stock = product.in_stock is defined and product.in_stock and (product.quantity is not defined or product.quantity != 0) %}
+{% set is_bundle = product.product_class == 'dynamic_bundle' %}
+{% set is_variant = product.has_variants %}
+{% set img_url = p.media[0].image.full_size if p.media and p.media[0] and p.media[0].image and p.media[0].image.full_size else (product.main_image.image.full_size if product.main_image and product.main_image.image and product.main_image.image.full_size else '') %}
+{% set cat_name = product.categories[0].name if product.categories and product.categories[0] and product.categories[0].name else '' %}
+{% set has_badge = product.badge and product.badge.body and product.badge.body.en %}
+{% set sku_text = p.sku if p.sku else product.sku %}
+{% set has_rating = product.rating and product.rating.average is defined and product.rating.total_count > 0 %}
+{% set discount_pct = product.discount_percentage if product.discount_percentage and product.discount_percentage > 0 else 0 %}
+{% set all_media = p.media if p.media and p.media | length > 0 else (product.media if product.media and product.media | length > 0 else []) %}
+
+<section class="win pdp">
+  <div class="titlebar">
+    <span class="tb-btn" aria-hidden="true">
+      <svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="1" width="8" height="8" fill="#ffd84a" stroke="#000"/><rect x="1" y="1" width="8" height="2" fill="#b97e00"/></svg>
+    </span>
+    <span class="t-title">
+      <span>{{ product.name }}</span>
+      <span class="ar">{{ product.name }}</span>
+    </span>
+    <span class="tb-btn" title="Minimize">_</span>
+    <span class="tb-btn" title="Maximize">▢</span>
+    <span class="tb-btn" title="Close">✕</span>
+  </div>
+
+  <div class="body-pad">
+    <div class="product-detail">
+
+      <!-- ============================================================
+           Left Column — Image Gallery
+      ============================================================ -->
+      <div class="gallery">
+        {% if has_badge %}
+        <div class="badge-ribbon">{{ product.badge.body.en }}</div>
+        {% endif %}
+        <div class="field main-img-wrap">
+          {% if all_media[0] and all_media[0].image %}
+          <img id="product-main-image" src="{{ all_media[0].image.full_size or all_media[0].image.medium }}" alt="{{ product.name }}">
+          {% else %}
+          <div class="ph" data-label="{{ product.slug }}.jpg"></div>
+          {% endif %}
+        </div>
+        <div class="thumb-strip" id="thumb-strip">
+          {% for m in all_media %}
+          {% set src = m.image.full_size or m.image.medium or '' %}
+          {% set thumb = m.image.medium or m.image.small or src %}
+          <button type="button" class="thumb-btn" data-thumb-src="{{ src }}">
+            <img src="{{ thumb }}" alt="">
+          </button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- ============================================================
+           Right Column — Product Info
+      ============================================================ -->
+      <div class="info">
+        <h1 class="name">
+          {{ product.name }}
+          <span class="ar">{{ product.name }}</span>
+        </h1>
+
+        <div class="price-row">
+          <span class="price" data-product-price>{{ p.formatted_sale_price if has_sale else p.formatted_price }}</span>
+          {% if has_sale %}
+          <span class="price old" data-product-price-old>{{ p.formatted_price }}</span>
+          {% endif %}
+          {% if discount_pct %}
+          <span class="discount-badge" data-product-discount>&ndash;{{ discount_pct }}%</span>
+          {% endif %}
+        </div>
+
+        {% if has_rating %}
+        <div class="rating-row">
+          <span class="stars">
+            {% set full = product.rating.average | round(0, 'floor') | int %}
+            {% for i in range(1,6) %}
+            {%- if i <= full %}★{% else %}☆{% endif -%}
+            {% endfor %}
+          </span>
+          <span>({{ product.rating.total_count }})</span>
+        </div>
+        {% endif %}
+
+        {% if product.short_description %}
+        <div class="short-desc">{{ product.short_description | safe }}</div>
+        {% endif %}
+
+        <!-- Stock status -->
+        <div class="stock-row">
+          <span class="in-stock" data-in-stock>{{ _("In Stock") }}</span>
+          <span class="out-of-stock hidden" data-out-of-stock>{{ _("Out of Stock") }}</span>
+        </div>
+
+        <!-- Product Form (used by zid.cart.addProduct) -->
+        <form id="product-form">
+          <input type="hidden" name="product_id" value="{{ product.id }}" id="product-id">
+          <input type="hidden" name="quantity" value="1" id="product-quantity">
+
+          {% if is_bundle %}
+          {% include 'vitrin:products/bundle-products.jinja' %}
+          {% endif %}
+
+          {% if is_variant %}
+          {% include 'vitrin:products/variants_list.jinja' %}
+          {% endif %}
+        </form>
+
+        <!-- Quantity Selector -->
+        <div class="qty-row" data-quantity-wrapper>
+          <span class="qty-label">{{ _("Qty") }}:</span>
+          <button class="btn qty-btn" id="qty-minus" type="button">−</button>
+          <span class="qty-num" id="product-qty">1</span>
+          <button class="btn qty-btn" id="qty-plus" type="button">+</button>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+          <button class="btn primary"
+            data-add-to-cart-form="product-form"
+            data-success-text="{{ _('Added!') }}"
+            id="add-btn">
+            {% if is_bundle %}
+            {{ _("Add Bundle to Cart") }}
+            {% else %}
+            {{ _("Add to Cart") }}
+            {% endif %}
+          </button>
+          <a href="{{ url_for('home') }}" class="btn secondary" style="text-decoration:none;color:#000;">{{ _("Back to Shop") }}</a>
+        </div>
+
+        <!-- Meta Row (SKU, Category) -->
+        <div class="meta-row">
+          {% if sku_text %}
+          <span>{{ _("SKU") }}: {{ sku_text }}</span>
+          {% endif %}
+          {% if cat_name %}
+          <span>{{ _("Category") }}: {{ cat_name }}</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         Full Description
+    ============================================================ -->
+    {% set has_desc = product.description is defined and product.description %}
+    {% if has_desc %}
+    <div class="desc-panel">
+      <div class="field">
+        {{ product.description | safe }}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- ============================================================
+         Related Products
+    ============================================================ -->
+    {% set related = product.related_products if product.related_products is defined and product.related_products else [] %}
+    {% if related | length > 0 %}
+    <div class="related-section">
+      <h3>
+        {{ _("You May Also Like") }}
+        <span class="ar">{{ _("قد يعجبك أيضاً") }}</span>
+      </h3>
+      <div class="related-grid">
+        {% for r in related %}
+        {% set rp = r.selected_product if r.selected_product else r %}
+        {% set r_img = rp.media[0].image.medium if rp.media and rp.media[0] and rp.media[0].image and rp.media[0].image.medium else (r.main_image.image.medium if r.main_image and r.main_image.image and r.main_image.image.medium else '') %}
+        {% set r_has_sale = rp.formatted_sale_price and rp.formatted_sale_price != rp.formatted_price %}
+        {% set r_in_stock = r.in_stock is defined and r.in_stock %}
+        <article class="card" data-product="{{ r.id }}">
+          <div class="titlebar"><span class="t-title">{{ r.name }}</span><span class="tb-btn">✕</span></div>
+          <a href="{{ url_for('product_details', slug=r.slug) }}" style="text-decoration:none;color:inherit;">
+            <div class="r-img">
+              {% if r_img %}
+              <img src="{{ r_img }}" alt="{{ r.name }}">
+              {% else %}
+              <div class="ph"></div>
+              {% endif %}
+            </div>
+            <div class="r-meta">
+              <div class="r-name">{{ r.name }}</div>
+              <div class="r-price">
+                {% if r_has_sale %}
+                <span class="old">{{ rp.formatted_price }}</span> {{ rp.formatted_sale_price }}
+                {% else %}
+                {{ rp.formatted_price }}
+                {% endif %}
+              </div>
+            </div>
+          </a>
+          <div class="actions">
+            {% if r_in_stock and not r.has_variants and r.product_class != 'dynamic_bundle' %}
+            <button class="btn primary" onclick="addToCart('{{ r.id }}', 1, this)" style="font-size:10px;padding:2px 4px;">{{ _("Add") }}</button>
+            {% elif r.has_variants or r.product_class == 'dynamic_bundle' %}
+            <a href="{{ url_for('product_details', slug=r.slug) }}" class="btn" style="font-size:10px;padding:2px 4px;text-decoration:none;color:#000;">{{ _("View") }}</a>
+            {% else %}
+            <button class="btn" disabled style="font-size:10px;padding:2px 4px;opacity:0.5;">{{ _("Sold") }}</button>
+            {% endif %}
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+
+  <div class="statusbar">
+    <div class="cell">{{ _("Product details") }}</div>
+    <div class="cell fixed">{% if sku_text %}{{ sku_text }}{% endif %}</div>
+    <div class="cell fixed">{% if in_stock %}{{ _("In Stock") }}{% else %}{{ _("Sold Out") }}{% endif %}</div>
+  </div>
+</section>
+
+<script>
+// ─── Product Variants ─────────────────────────────────────────────────
+// Called by ZID platform after variant option changes
+window.productOptionsChanged = function(selectedProduct) {
+  if (!selectedProduct) {
+    showOutOfStock();
+    return;
+  }
+  updateProductId(selectedProduct);
+  updatePrice(selectedProduct);
+  updateStock(selectedProduct);
+  updateImages(selectedProduct);
+  window.dispatchEvent(new CustomEvent('product:variant-changed', {
+    detail: { selectedProduct: selectedProduct }
+  }));
+};
+
+// Helpers
+function show(el) { if (el) el.classList.remove('hidden'); }
+function hide(el) { if (el) el.classList.add('hidden'); }
+
+function updateProductId(p) {
+  var input = document.getElementById('product-id');
+  if (input && p && p.id) input.value = p.id;
+}
+
+function updatePrice(p) {
+  var priceEl = document.querySelector('[data-product-price]');
+  var oldPriceEl = document.querySelector('[data-product-price-old]');
+  var discountEl = document.querySelector('[data-product-discount]');
+  if (priceEl) priceEl.textContent = p.formatted_sale_price || p.formatted_price;
+  if (oldPriceEl) {
+    if (p.formatted_sale_price) {
+      oldPriceEl.textContent = p.formatted_price;
+      show(oldPriceEl);
+    } else {
+      oldPriceEl.textContent = '';
+      hide(oldPriceEl);
+    }
+  }
+  if (discountEl) {
+    if (p.formatted_sale_price && p.discount_percent) {
+      discountEl.textContent = '\u2013' + p.discount_percent + '%';
+      show(discountEl);
+    } else {
+      discountEl.textContent = '';
+      hide(discountEl);
+    }
+  }
+}
+
+function showOutOfStock() {
+  hide(document.querySelector('[data-in-stock]'));
+  show(document.querySelector('[data-out-of-stock]'));
+  hide(document.querySelector('[data-quantity-wrapper]'));
+}
+
+function updateStock(p) {
+  if (!p.in_stock) { showOutOfStock(); return; }
+  show(document.querySelector('[data-in-stock]'));
+  hide(document.querySelector('[data-out-of-stock]'));
+  show(document.querySelector('[data-quantity-wrapper]'));
+  if (window._setProductQtyMax && !p.is_infinite) {
+    window._setProductQtyMax(Math.min(p.quantity, 100));
+  }
+}
+
+function updateImages(p) {
+  var media = p.media || [];
+  if (!media.length) return;
+  var mainImg = document.getElementById('product-main-image');
+  if (mainImg) {
+    var first = media[0].image;
+    mainImg.src = first.full_size || first.medium || '';
+  }
+  var thumbStrip = document.getElementById('thumb-strip');
+  if (!thumbStrip) return;
+  if (media.length > 1) {
+    thumbStrip.innerHTML = media.map(function(item, i) {
+      var img = item.image || {};
+      var src = img.full_size || img.medium || '';
+      var thumb = img.medium || img.small || src;
+      return (
+        '<button type="button" data-thumb-src="' + src + '" class="thumb-btn" style="border-color: ' +
+        (i === 0 ? 'var(--tb-1)' : 'var(--hi)') + '">' +
+        '<img src="' + thumb + '" alt="" class="w-full h-full object-cover">' +
+        '</button>'
+      );
+    }).join('');
+    thumbStrip.classList.remove('hidden');
+  } else {
+    thumbStrip.innerHTML = '';
+    thumbStrip.classList.add('hidden');
+  }
+  if (typeof window._rebindGalleryThumbs === 'function') {
+    window._rebindGalleryThumbs();
+  }
+}
+
+// ─── Quantity ─────────────────────────────────────────────────────────
+(function() {
+  var qty = 1;
+  var maxQty = 100;
+  window._productQty = qty;
+
+  var minusBtn = document.getElementById('qty-minus');
+  var plusBtn = document.getElementById('qty-plus');
+  var qtyDisplay = document.getElementById('product-qty');
+  var qtyInput = document.getElementById('product-quantity');
+
+  if (!minusBtn || !plusBtn || !qtyDisplay) return;
+
+  function render() {
+    qtyDisplay.textContent = qty;
+    window._productQty = qty;
+    minusBtn.disabled = qty <= 1;
+    plusBtn.disabled = qty >= maxQty;
+    if (qtyInput) qtyInput.value = qty;
+  }
+
+  minusBtn.addEventListener('click', function() { if (qty > 1) { qty--; render(); } });
+  plusBtn.addEventListener('click', function() { if (qty < maxQty) { qty++; render(); } });
+
+  window._setProductQtyMax = function(max) {
+    maxQty = max;
+    if (qty > maxQty) qty = maxQty;
+    render();
+  };
+
+  render();
+})();
+
+// ─── Gallery ──────────────────────────────────────────────────────────
+(function() {
+  var mainImg = document.getElementById('product-main-image');
+
+  function bindThumbs() {
+    document.querySelectorAll('#thumb-strip .thumb-btn').forEach(function(btn, i) {
+      btn.addEventListener('click', function() {
+        var src = btn.getAttribute('data-thumb-src');
+        if (src && mainImg) mainImg.src = src;
+        document.querySelectorAll('#thumb-strip .thumb-btn').forEach(function(b) {
+          b.style.borderColor = 'var(--hi)';
+        });
+        btn.style.borderColor = 'var(--tb-1)';
+      });
+      if (i === 0) btn.style.borderColor = 'var(--tb-1)';
+    });
+  }
+  bindThumbs();
+  window._rebindGalleryThumbs = bindThumbs;
+})();
+
+// ─── Bundle + Add to Cart ────────────────────────────────────────────
+(function() {
+  var FORM_ID = 'product-form';
+  var addBtn = document.querySelector('[data-add-to-cart-form="' + FORM_ID + '"]');
+  if (!addBtn) return;
+
+  window.addEventListener('vitrin:bundle-selections:updated', function(event) {
+    var cartData = event && event.detail && event.detail.data;
+    var bundlePayload = cartData && cartData.cartPayload;
+    var isValid = cartData && cartData.isSelectionsValid;
+    window.bundleCartPayload = bundlePayload;
+    document.querySelectorAll('[data-add-to-cart-form]').forEach(function(btn) {
+      btn.disabled = !isValid;
+      btn.classList.toggle('opacity-50', !isValid);
+    });
+  });
+
+  addBtn.addEventListener('click', function() {
+    if (addBtn.disabled) return;
+    var originalContent = addBtn.innerHTML;
+    addBtn.disabled = true;
+    addBtn.innerHTML = '...';
+    if (!window.zid || !window.zid.cart) {
+      console.error('[ATC] ZID SDK not available');
+      addBtn.innerHTML = originalContent;
+      addBtn.disabled = false;
+      return;
+    }
+    var bundlePayload = window.bundleCartPayload;
+    var options = bundlePayload
+      ? Object.assign({}, bundlePayload, { form_id: FORM_ID })
+      : { form_id: FORM_ID };
+    window.zid.cart.addProduct(options, { showErrorNotification: true })
+      .then(function() {
+        var successText = addBtn.dataset.successText || 'Added!';
+        addBtn.innerHTML = successText;
+        if (typeof loadCart === 'function') loadCart();
+        if (typeof openCart === 'function') openCart();
+        setTimeout(function() {
+          addBtn.innerHTML = originalContent;
+          addBtn.disabled = false;
+        }, 1500);
+      })
+      .catch(function(err) {
+        console.error('[ATC] addProduct failed:', err);
+        addBtn.innerHTML = originalContent;
+        addBtn.disabled = false;
+      });
+  });
+})();
+
+console.log("Full Product Data:", {{ product | tojson | safe }});
+
+// Baki ka code...
+window.productOptionsChanged = function(selectedProduct) { ... }
+</script>
+{% endblock %}
