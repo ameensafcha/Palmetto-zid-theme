@@ -101,16 +101,6 @@
   .card .sizes{
     padding: 0 8px 6px;
   }
-  .card .sizes select{
-    width:100%;
-    background:var(--paper);
-    border-style:solid; border-width:2px;
-    border-color: var(--lo) var(--hi) var(--hi) var(--lo);
-    box-shadow: inset 1px 1px 0 var(--lo-2), inset -1px -1px 0 var(--hi-2);
-    font-family:"Tahoma",sans-serif; font-size:11px;
-    padding: 3px 4px;
-    color:#000;
-  }
   .card .sizes .option-row{
     display:flex; gap:4px; flex-wrap:wrap;
     margin-bottom:4px;
@@ -210,6 +200,7 @@
     display:none; place-items:center;
     z-index: 50;
   }
+  
   .modal-veil.open{ display:grid; }
   .modal{
     width: 360px; max-width: 92vw;
@@ -261,6 +252,7 @@
     font-family:"Tahoma",sans-serif; font-size:11px; color:#444;
     display:grid; grid-template-columns: 1fr 1fr; gap:6px;
   }
+
 </style>
 
 <section class="win">
@@ -300,8 +292,8 @@
           </div>
           <div class="meta">
             <div class="row">
-              <div class="name">{{ product.name }}</div>
-              <div class="price">{% if has_sale %}<span style="text-decoration:line-through;color:#999;margin-right:4px;">{{ p.formatted_price }}</span> {{ p.formatted_sale_price }}{% else %}{{ p.formatted_price }}{% endif %}</div>
+              <div class="name">{{ product.name | truncate(20, True) }}</div>
+              <div class="price">{{ ((p.formatted_sale_price if has_sale else p.formatted_price) | string).split('.')[0] }} {{ p.currency_symbol | default('ر.س') }}</div>
             </div>
             {% if product.options and product.options[0] %}
             <div class="color">{{ product.options[0].values | join(', ') }}</div>
@@ -309,6 +301,7 @@
             {% if product.short_description and not product.options %}
             <div class="desc">{{ product.short_description | striptags | truncate(60) }}</div>
             {% endif %}
+            <span class="longdesc" style="display:none">{{ product.description }}</span>
           </div>
           {% if product.has_variants %}
           <div class="sizes js-variant-loader" data-pid="{{ product.id }}">
@@ -324,7 +317,7 @@
             {% elif is_bundle %}
             <a href="{{ url_for('product_details', slug=product.slug) }}" class="btn primary" style="text-decoration:none;color:#000;">{{ _("View Bundle") }}</a>
             {% elif is_variant %}
-            <button class="btn primary" data-add-variant>{{ _("Add to Cart") }}</button>
+            <button class="btn primary" data-add-variant disabled>{{ _("Add to Cart") }}</button>
             {% else %}
             <button class="btn primary" data-add>{{ _("Add to Cart") }}</button>
             {% endif %}
@@ -430,51 +423,66 @@
     };
   }
 
-  // ---- Image carousel per card ----
+  // ---- Image carousel per card (reusable init) ----
   cards.forEach(function(card){
     var box = card.querySelector('.img');
     if (!box) return;
     var first = box.querySelector('img.prod-img');
     if (!first) return;
-    var views = (box.dataset.views ? box.dataset.views.split('|') : [first.src]);
-    if (views.length <= 1) return;
-    var labels = ['Front','Back','Detail','View 4','View 5','View 6','View 7','View 8'];
-    var imgs = views.map(function(u, idx){
-      var im = (idx === 0) ? first : document.createElement('img');
-      if (idx !== 0){ im.src = u; im.className = 'prod-img'; im.alt = first.alt || '';
-        im.style.position = 'absolute'; im.style.inset = '0';
-        im.style.opacity = '0'; im.style.transition = 'opacity 80ms linear';
-        im.style.pointerEvents = 'none';
-        im.decoding = 'async'; im.loading = 'eager';
-        box.insertBefore(im, first.nextSibling);
-      }
-      return im;
-    });
-    var i = 0;
-    var counter = document.createElement('div');
-    counter.className = 'view-count';
-    counter.textContent = labels[0] + ' · 1/' + views.length;
-    box.appendChild(counter);
-    function go(delta){
-      var prevI = i;
-      i = (i + delta + views.length) % views.length;
-      imgs[i].style.opacity = '1';
-      imgs[prevI].style.opacity = '0';
-      counter.textContent = labels[i] + ' · ' + (i+1) + '/' + views.length;
-    }
-    var prevBtn = document.createElement('button');
-    prevBtn.type='button'; prevBtn.className='nav-arrow prev'; prevBtn.setAttribute('aria-label','Previous view'); prevBtn.textContent = '◀';
-    var nextBtn = document.createElement('button');
-    nextBtn.type='button'; nextBtn.className='nav-arrow next'; nextBtn.setAttribute('aria-label','Next view'); nextBtn.textContent = '▶';
-    prevBtn.addEventListener('click', function(e){ e.stopPropagation(); go(-1); });
-    nextBtn.addEventListener('click', function(e){ e.stopPropagation(); go(1); });
-    box.appendChild(prevBtn); box.appendChild(nextBtn);
 
-    // zoom hint
-    var zh = document.createElement('span');
-    zh.className = 'zoom-hint';
-    zh.textContent = 'click to enlarge';
-    box.appendChild(zh);
+    function initCarousel(viewsArg){
+      var views = viewsArg || (box.dataset.views ? box.dataset.views.split('|') : [first.src]);
+      // Clean old carousel artifacts
+      box.querySelectorAll('.nav-arrow, .view-count').forEach(function(el){ el.remove(); });
+      var extras = box.querySelectorAll('.prod-img');
+      for (var ei = 1; ei < extras.length; ei++) extras[ei].remove();
+      first.style.position = ''; first.style.inset = ''; first.style.opacity = ''; first.style.transition = '';
+
+      if (views.length <= 1) return;
+
+      var labels = ['Front','Back','Detail','View 4','View 5','View 6','View 7','View 8'];
+      var imgs = views.map(function(u, idx){
+        var im = (idx === 0) ? first : document.createElement('img');
+        if (idx !== 0){
+          im.src = u; im.className = 'prod-img'; im.alt = first.alt || '';
+          im.style.position = 'absolute'; im.style.inset = '0';
+          im.style.opacity = '0'; im.style.transition = 'opacity 80ms linear';
+          im.style.pointerEvents = 'none';
+          im.decoding = 'async'; im.loading = 'eager';
+          box.insertBefore(im, first.nextSibling);
+        }
+        return im;
+      });
+      var i = 0;
+      var counter = document.createElement('div');
+      counter.className = 'view-count';
+      counter.textContent = labels[0] + ' · 1/' + views.length;
+      box.appendChild(counter);
+      function go(delta){
+        var prevI = i;
+        i = (i + delta + views.length) % views.length;
+        imgs[i].style.opacity = '1';
+        imgs[prevI].style.opacity = '0';
+        counter.textContent = labels[i] + ' · ' + (i+1) + '/' + views.length;
+      }
+      var prevBtn = document.createElement('button');
+      prevBtn.type='button'; prevBtn.className='nav-arrow prev'; prevBtn.setAttribute('aria-label','Previous view'); prevBtn.textContent = '◀';
+      var nextBtn = document.createElement('button');
+      nextBtn.type='button'; nextBtn.className='nav-arrow next'; nextBtn.setAttribute('aria-label','Next view'); nextBtn.textContent = '▶';
+      prevBtn.addEventListener('click', function(e){ e.stopPropagation(); go(-1); });
+      nextBtn.addEventListener('click', function(e){ e.stopPropagation(); go(1); });
+      box.appendChild(prevBtn); box.appendChild(nextBtn);
+
+      if (!box.querySelector('.zoom-hint')){
+        var zh = document.createElement('span');
+        zh.className = 'zoom-hint';
+        zh.textContent = 'click to enlarge';
+        box.appendChild(zh);
+      }
+    }
+
+    box._initCarousel = initCarousel;
+    initCarousel();
   });
 
   // ---- Lightbox ----
@@ -519,8 +527,19 @@
       dvName.textContent = data.name;
       dvColor.textContent = data.color;
       dvColor.style.display = data.color ? '' : 'none';
-      dvBody.innerHTML = '<p>' + (data.desc || 'No description available.') + '</p>';
-      dvMeta.innerHTML = '<div><b>Price:</b> <span class="mono" style="font-family:\'Courier New\',monospace;">' + data.price + '</span></div>';
+      var dd = card._parsedDesc;
+      if (dd) {
+        dvBody.innerHTML = dd.textHtml;
+        var g = '<div><b>Price:</b> <span class="mono" style="font-family:\'Courier New\',monospace;">' + data.price + '</span></div>';
+        for (var pi = 0; pi < dd.pairs.length; pi++) {
+          g += '<div><b>' + dd.pairs[pi].label + ':</b> ' + dd.pairs[pi].value + '</div>';
+        }
+        dvMeta.innerHTML = g;
+      } else {
+        var longDesc = card.querySelector('.longdesc');
+        dvBody.innerHTML = longDesc ? longDesc.innerHTML : '<p>No description available.</p>';
+        dvMeta.innerHTML = '<div><b>Price:</b> <span class="mono" style="font-family:\'Courier New\',monospace;">' + data.price + '</span></div>';
+      }
       dv.classList.add('open');
     });
   });
@@ -553,6 +572,7 @@
       return r.json();
     })
     .then(function(product){
+      console.log("API /api/v1/products/" + pid + " response:", product);
       var opts = product.options || [];
       if (!opts.length) {
         el.style.display = 'none';
@@ -563,13 +583,32 @@
       card._variants = product.variants || [];
       card._optionGroups = opts;
 
+      // Parse product.description → text <p> blocks (EN then AR RTL) + key-value <div> pairs
+      if (product.description) {
+        var textHtml = '', pairs = [];
+        var pRe = /<p>([\s\S]*?)<\/p>/g;
+        var m;
+        while ((m = pRe.exec(product.description))) {
+          var content = m[1];
+          if (/[\u0600-\u06FF]/.test(content)) {
+            textHtml += '<p style="direction:rtl;text-align:right;font-family:\'Amiri\',serif;font-size:16px;margin:0 0 8px;">' + content + '</p>';
+          } else {
+            textHtml += '<p style="margin:0 0 8px;">' + content + '</p>';
+          }
+        }
+        var dRe = /<div>([\s\S]*?)<\/div>/g;
+        while ((m = dRe.exec(product.description))) {
+          var sm = m[1].match(/<strong>(.*?)<\/strong>\s*(.*)/);
+          if (sm && sm[1].trim().toLowerCase() !== 'price') {
+            pairs.push({ label: sm[1].trim().replace(/:\s*$/, ''), value: sm[2].trim() });
+          }
+        }
+        card._parsedDesc = { textHtml: textHtml, pairs: pairs };
+      }
+
       el.innerHTML = '';
       opts.forEach(function(opt, oi){
         var choices = opt.choices || opt.values || [];
-        var lbl = document.createElement('div');
-        lbl.className = 'option-label';
-        lbl.textContent = opt.name || '';
-        el.appendChild(lbl);
         var row = document.createElement('div');
         row.className = 'option-row';
         choices.forEach(function(v){
@@ -607,14 +646,32 @@
         var vImg = match && match.main_image && match.main_image.image && match.main_image.image.medium;
         if (vImg && img && img.src !== vImg) img.src = vImg;
 
+        var box = card.querySelector('.img');
+        if (match && box) {
+          var vViews = [];
+          if (match.media && match.media.length) {
+            match.media.forEach(function(m){
+              if (m && m.image && m.image.medium) vViews.push(m.image.medium);
+            });
+          }
+          if (!vViews.length && vImg) vViews = [vImg];
+          if (vViews.length) {
+            box.dataset.views = vViews.join('|');
+            if (box._initCarousel) box._initCarousel(vViews);
+          }
+        }
+
         var priceEl = card.querySelector('.price');
         if (priceEl && match) {
-          var hasSale = match.formatted_sale_price && match.formatted_sale_price !== match.formatted_price;
-          if (hasSale) {
-            priceEl.innerHTML = '<span style="text-decoration:line-through;color:#999;margin-right:4px;">' + match.formatted_price + '</span> ' + match.formatted_sale_price;
-          } else {
-            priceEl.textContent = match.formatted_price;
-          }
+          var ps = parseInt(match.formatted_sale_price || match.formatted_price);
+          priceEl.textContent = (isNaN(ps) ? '' : ps) + (match.currency_symbol || ' ر.س ');
+        }
+
+        var colorEl = card.querySelector('.color');
+        if (colorEl && match && match.attributes) {
+          var vals = [];
+          match.attributes.forEach(function(a){ vals.push(a.value); });
+          colorEl.textContent = vals.join(', ');
         }
       }
 
@@ -640,6 +697,8 @@
       });
 
       applyVariant();
+      var addBtn = card.querySelector('[data-add-variant]');
+      if (addBtn) addBtn.disabled = false;
     })
     .catch(function(err){
       el.style.display = 'none';

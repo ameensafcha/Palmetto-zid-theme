@@ -814,7 +814,13 @@ function updateImages(p) {
   });
 })();
 
-console.log("Full Product Data:", {{ product | tojson | safe }});
+console.log("description exists:", {{ 'true' if product.description is defined else 'false' }});
+console.log("description length:", {{ product.description | length if product.description else 0 }});
+console.log("short_description exists:", {{ 'true' if product.short_description is defined else 'false' }});
+console.log("short_description length:", {{ product.short_description | length if product.short_description else 0 }});
+console.log("body_html exists:", {{ 'true' if product.body_html is defined else 'false' }});
+console.log("details exists:", {{ 'true' if product.details is defined else 'false' }});
+console.log("slug:", "{{ product.slug | default('') }}");
 
 // Baki ka code...
 window.productOptionsChanged = function(selectedProduct) { ... }
