@@ -31,14 +31,15 @@
       --desktop: #008080;
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     html, body { margin: 0; padding: 0; }
+    section[id] { scroll-margin-top: 16px; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
     body {
-      background: var(--desktop);
-      background-image:
-        radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-        radial-gradient(rgba(0,0,0,.05) 1px, transparent 1px);
-      background-size: 3px 3px, 3px 3px;
-      background-position: 0 0, 1px 1px;
+      background: #0f8a85 url('{{ "bg-floral.png" | asset_url }}') repeat;
+      background-size: 480px auto;
       font-family: "Tahoma","MS Sans Serif",Geneva,sans-serif;
       font-size: 11px;
       color: #000;
@@ -47,7 +48,8 @@
     }
     a { color: var(--link); }
     a:visited { color: var(--link-v); }
-    .win + .win{ margin-top: 28px; }
+    section.win{ margin-top: 28px; }
+    section.win:first-of-type{ margin-top: 0; }
     .ar{ direction:rtl; text-align:right; font-family: "Amiri", "Traditional Arabic", "Times New Roman", serif; font-size:18px; line-height:1.85; }
     .ar.small{ font-size:14px; }
     .container { max-width: 960px; margin: 0 auto; width: 96vw; }

@@ -6,8 +6,91 @@
     {
       "type": "checkbox",
       "id": "show",
-      "label": { "ar": "إظهار المحتوى", "en": "Show Content" },
+      "label": { "en": "Show Content" },
       "default": true
+    },
+    {
+      "type": "text",
+      "id": "carpets_title",
+      "label": { "en": "Carpets Section Title" },
+      "default": "The Carpets"
+    },
+    {
+      "type": "textarea",
+      "id": "carpets_intro_en",
+      "label": { "en": "Carpets Intro (English)" },
+      "default": "A small collection of carpet designs by the studio — woven, room-scale, made to order. Each piece carries its own concept. If something catches you, write to us and we'll take it from there."
+    },
+    {
+      "type": "textarea",
+      "id": "carpets_intro_ar",
+      "label": { "en": "Carpets Intro (Arabic)" },
+      "default": "مجموعة من تصاميم السجّاد من الاستوديو — منسوجة، بحجم الغرفة، تُصنع حسب الطلب. كل قطعة تحمل مفهومها الخاص. إن لفتك واحدة منها، اكتب إلينا وسنأخذ الأمر من هناك."
+    },
+    {
+      "type": "list",
+      "id": "carpets",
+      "label": { "en": "Carpets" },
+      "max_items": 10,
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": { "en": "Carpet Name" },
+          "default": "Serenity Carpet"
+        },
+        {
+          "type": "text",
+          "id": "dim",
+          "label": { "en": "Dimensions" },
+          "default": "240 × 160 cm"
+        },
+        {
+          "type": "textarea",
+          "id": "desc_en",
+          "label": { "en": "Description (English)" },
+          "default": "A Persian carpet field invaded by atomic orbits, hazard triangles, and Y2K detritus. The borders repeat a single phrase: \"Running through space and time just to find serenity.\""
+        },
+        {
+          "type": "textarea",
+          "id": "desc_ar",
+          "label": { "en": "Description (Arabic)" },
+          "default": "حقل سجّاد فارسي يقتحمه مدارات ذرّية ومثلّثات تحذير وبقايا حقبة الألفيّة. على الحدود عبارة واحدة تتكرّر: \"Running through space and time just to find serenity\"."
+        },
+        {
+          "type": "image",
+          "id": "img_1",
+          "label": { "en": "Image 1" }
+        },
+        {
+          "type": "image",
+          "id": "img_2",
+          "label": { "en": "Image 2" }
+        },
+        {
+          "type": "image",
+          "id": "img_3",
+          "label": { "en": "Image 3" }
+        },
+        {
+          "type": "checkbox",
+          "id": "wide",
+          "label": { "en": "Wide layout (side-by-side)" },
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "textarea",
+      "id": "carpets_cta_en",
+      "label": { "en": "CTA (English)" },
+      "default": "Made to order. Inquire at palmetto.sa@gmail.com."
+    },
+    {
+      "type": "textarea",
+      "id": "carpets_cta_ar",
+      "label": { "en": "CTA (Arabic)" },
+      "default": "تُصنع حسب الطلب. للاستفسار: palmetto.sa@gmail.com"
     }
   ]
 }

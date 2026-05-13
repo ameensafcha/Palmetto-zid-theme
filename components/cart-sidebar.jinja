@@ -131,6 +131,11 @@
     padding:0 4px; margin-left:3px;
     border-radius:2px;
   }
+  @media (max-width: 480px){
+    .cart-drawer{ width:100vw; }
+    .cart-drawer .cart-item{ grid-template-columns: 44px 1fr auto; gap: 4px 10px; }
+    .cart-drawer .cart-item .ci-img{ width:44px; height:44px; }
+  }
 </style>
 
 <div class="cart-overlay" id="cart-overlay"></div>

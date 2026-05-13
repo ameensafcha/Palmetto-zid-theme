@@ -5,90 +5,104 @@
 **Vitrin/Zid theme** for Palmetto Studios fashion brand.  
 Template language: **Jinja** (`.jinja`).  
 Design: **Windows 95 / Netscape Navigator** retro aesthetic.  
-Bilingual: English + Arabic (RTL, class `.ar`).
+Bilingual: English + Arabic (RTL, class `.ar`).  
+No build tooling. No npm, bundler, linter, or tests. Deployed directly to Zid/Vitrin.
 
 ## Reference
 
-- `example ui/Palmetto Studios.html` — the single source of truth for the design. Every new page/component must match this visual reference.
+- `example ui/Palmetto Studios v2.html` — single source of truth for the design. Match this.
+- `example ui/Palmetto Studios v1.html` — earlier design revision.
 
 ## Architecture
 
 | File | Role |
 |---|---|
-| `layout.jinja` | Base layout. Defines CSS custom properties (Win95 design system), `{% block content %}`, includes header/footer/cart. |
-| `header.jinja` | Hero, icon grid, link rows, alert ribbon, clock JS. All inline `<style>` + HTML. Also defines `.win`, `.titlebar`, `.btn`, `.statusbar`. |
+| `layout.jinja` | Base layout. CSS custom properties (Win95 palette), `{% block content %}`, `window.i18n` JS strings, includes header/footer/cart components. |
+| `header.jinja` | Hero, icon grid, link rows, alert ribbon, clock JS. Also defines `.raise`, `.inset`, `.field`, `.btn`, `.win`, `.titlebar`, `.statusbar`. |
 | `footer.jinja` | Footer with links, copyright. |
-| `cart-drawer.jinja` | Full cart DOM + vanilla JS (no framework). Open/close, add/remove/qty via `[data-add]` buttons. |
-| `templates/home.jinja` | Uses `{% template_components %}` — sections are managed from Zid Theme Editor. No hardcoded content. |
-| `sections/win95-catalog.jinja` | **Dynamic catalog section** — renders Zid products SSR via `safeget(settings, "products.results", [])`. Has `.catalog-head`, `.product-grid`, `.card`, `.badges`, `.seal`, `.statusbar`. |
-| `sections/win95-home-content.jinja` | **Static content section** — all 7 info panels (welcome, about, palm collective, size guide, shipping, returns, contact). Same as original `home.jinja` minus the catalog. |
-| `templates/product.jinja` | **Empty** — needs product detail page. |
-| `templates/cart.jinja` | **Empty** — needs full cart page. |
-| `sections/slider.jinja` | **Empty** — placeholder for hero slider section. |
+| `components/cart-sidebar.jinja` | Cart drawer DOM + CSS (styled Win95 window). Overlay, drawer, item layout, totals, checkout link. |
+| `components/cart-script.jinja` | Cart JS (vanilla). `loadCart()`, `addToCart()`, `updateCartItem()`, `removeCartItem()`, `openCart()`, `closeCart()`. Global functions — callable from inline `onclick`. Event delegation via `[data-add]` and `[data-add-variant]`. |
+| `components/product-card.jinja` | Shared product card component (image, name, price, desc, Add/Details buttons). Used by `templates/products.jinja` and `sections/win95-catalog.jinja`. |
+| `components/pagination.jinja` | Simple prev/next pagination via `?page=X`. Expects `products` object with `page`, `pages_count`, `count`. |
+| `templates/home.jinja` | `{% template_components %}` — sections managed from Zid Theme Editor. |
+| `templates/product.jinja` | **Product detail page** — fully implemented. Gallery, variants, bundles, qty selector, add-to-cart, related products. |
+| `templates/products.jinja` | **Product listing page** — grid of product cards + pagination. Iterates `products.results`. |
+| `templates/cart.jinja` | **Empty** — full cart page not yet implemented. |
+| `sections/win95-catalog.jinja` | Dynamic catalog section — SSR products via `safeget(settings, "products.results", [])`. |
+| `sections/win95-home-content.jinja` | Static content section — 7 info panels (welcome, about, size guide, etc.). |
+| `sections/slider.jinja` + `slider.schema.json` | **Empty** — placeholder for hero slider section. |
 
-## Sections (Theme Editor managed)
+## Two cart pathways (critical)
 
-All sections in `sections/` have a paired `.schema.json`. Settings accessed via `settings.id`.
+| Context | Mechanism | Notes |
+|---|---|---|
+| Listing pages (catalog, products grid) | Global `addToCart(pid, qty, btn)` — `POST /api/v1/cart/items` | Simple product → direct API call. Works for products **without** variants or bundles. |
+| Product detail page | `window.zid.cart.addProduct(options, { showErrorNotification: true })` — Zid SDK | Uses form `#product-form`. Required for variants, bundles. Callback: `window.productOptionsChanged()`. |
 
-- `win95-catalog` — `"type": "products"` lets merchant pick which products to display. Uses `{{ url_for('product_details', slug=product.slug) }}` for links.
-- `win95-home-content` — minimal schema with just show/hide. All content hardcoded.
+Do **not** use `addToCart()` on product detail pages — it bypasses variant selection and bundle validation.
 
-**Product data pattern** (from Zid):
+## Cart API
+
+All cart functions in `cart-script.jinja` are **global**:
+
+| Function | Method | Endpoint |
+|---|---|---|
+| `loadCart()` | GET | `/api/v1/cart` |
+| `addToCart(pid, qty, btn)` | POST | `/api/v1/cart/items` `{ product_id, quantity }` |
+| `updateCartItem(id, qty, btn)` | PATCH | `/api/v1/cart/items/{id}` (form-urlencoded) |
+| `removeCartItem(id, btn)` | DELETE | `/api/v1/cart/items/{id}` |
+
+Cart drawer opens on add; badge count updates from API response. Cart close triggers: Escape key, overlay click, ✕ button, "Continue Shopping".
+
+## Product data pattern (from Zid)
+
 ```
 product.selected_product.formatted_price
 product.selected_product.formatted_sale_price
-product.selected_product.media[0].image.medium
+product.selected_product.media[0].image.full_size (or .medium)
 product.selected_product.in_stock
-product.name, product.slug, product.short_description
+product.selected_product.sku
+product.name, product.slug, product.id, product.short_description
+product.has_variants / product.structure == 'parent'
+product.product_class == 'dynamic_bundle' (bundles)
+product.related_products[] (on product detail page)
+product.categories[0].name
+product.badge.body.en (promo badge)
+product.rating.average, product.rating.total_count
+product.discount_percentage
+product.quantity (stock level; 0 = not infinite stock)
 ```
 
-## How catalog renders products (SSR, no JS fetch)
+## Product listing data (for `templates/products.jinja`)
 
-Merchant picks products in Theme Editor → schema `"type": "products"` → `safeget(settings, "products.results", [])` → `{% for product in ... %}` → Win95-styled cards with `[data-add]` for cart.
-
-## Cart wiring (Zid API)
-
-Cart JS in `cart-drawer.jinja` uses Zid's real Cart API — not a fake JS cart.
-
-| Function | API | Purpose |
-|---|---|---|
-| `loadCart()` | `GET /api/v1/cart` | Fetch cart state, render items, update badge + total |
-| `addToCart(pid, qty, btn)` | `POST /api/v1/cart/items` `{ product_id, quantity }` | Add item, then `loadCart()` + `openCart()` |
-| `updateCartItem(id, qty, btn)` | `PATCH /api/v1/cart/items/{id}` form-urlencoded | Update quantity |
-| `removeCartItem(id, btn)` | `DELETE /api/v1/cart/items/{id}` | Remove item |
-
-All cart functions are **global** — callable from inline `onclick` attributes. Catalog buttons use `onclick="addToCart('{{ product.id }}', 1, this)"`. Cart opens automatically on add. Badge updates from API response.
-
-`window.i18n.addToCart` etc. defined in `layout.jinja` for JS translation strings.
+```jinja
+products.results[] — array of product objects
+products.count — total products
+products.page — current page number
+products.pages_count — total pages
+```
 
 ## Design system
 
-CSS custom properties in `layout.jinja:12-32` define the Win95 palette: `--chrome`, `--hi`, `--lo`, `--tb-1`, `--paper`, `--ink`, `--desktop`, etc.
+CSS custom properties in `layout.jinja:12-32`: `--chrome`, `--hi`, `--hi-2`, `--lo`, `--lo-2`, `--tb-1`, `--tb-2`, `--paper`, `--ink`, `--desktop`, `--warn-yellow`, `--red`, `--green`.
 
-Key classes defined across layout/header/footer: `.win`, `.titlebar`, `.menubar`, `.statusbar`, `.btn`, `.raise`, `.inset`, `.field`, `.icon-grid`, `.card`, `.panel`, `.seal`, `.alert-ribbon`.
+Key classes: `.win`, `.titlebar`, `.menubar`, `.statusbar`, `.btn`, `.raise`, `.inset`, `.field`, `.icon-grid`, `.card`, `.panel`, `.seal`, `.alert-ribbon`.
 
-All styles are **inline in `<style>` tags** within each Jinja file. No external CSS files.
+All styles are **inline in `<style>` tags** within each Jinja file. No external CSS files (except Google Fonts CDN for Amiri).
+
+Font families: `"Times New Roman", serif` for body copy, `"Courier New", monospace` for code/metrics, `"Tahoma", sans-serif` for UI chrome, `"Amiri"` for Arabic.
 
 ## Conventions
 
-- Every text node needs both EN and AR versions. Arabic uses class `.ar` and `dir="rtl"` where needed.
-- Font family: `"Times New Roman", serif` for body copy in panels, `"Courier New", monospace` for code/metrics, `"Tahoma", sans-serif` for UI chrome, `"Amiri"` for Arabic serif.
-- JS is vanilla, no framework. Inline `<script>` inside templates. Cart uses event delegation via `[data-add]` on button click.
-- Schema JSON files (`*.schema.json`) define CMS settings UI for editors. Section schemas use `settings.{id}` directly.
-- Use `{% extends "layout.jinja" %}` and `{% block content %}` for all page templates.
-- Use `{% include '...' %}` for includes.
-- Use `{{ 'path' | asset_url }}` for asset URLs (handled by Zid).
-- `{% vitrin_head %}` and `{% vitrin_body %}` are CMS injection points in layout.
-
-## Empty / WIP files to complete
-
-- `templates/product.jinja` — product detail page
-- `templates/cart.jinja` — full cart page
-- `sections/slider.jinja` + `sections/slider.schema.json` — hero slider section
-- `components/pagination.jinja` — reusable pagination
-- `locale/ar/LC_MESSAGES/messages.po` — empty translations file
-
-## No build / test tooling
-
-No `package.json`, no npm, no bundler, no linter, no test framework.  
-Theme is deployed directly through Zid/Vitrin. No local dev server.
+- Every text node needs both EN and AR. Arabic uses class `.ar` and `dir="rtl"`.
+- Arabic font size is larger (18px default, 15px for small).
+- JS is **vanilla**, no framework. Inline `<script>` in templates.
+- Schema JSON files (`*.schema.json`) define CMS settings UI. Section settings accessed via `settings.id`.
+- All page templates use `{% extends "layout.jinja" %}` and `{% block content %}`.
+- Use `{% include '...' %}` for includes; `{{ 'path' | asset_url }}` for asset URLs.
+- `{% vitrin_head %}` and `{% vitrin_body %}` are CMS injection points.
+- `_('text')` is the server-side i18n function.
+- `window.i18n.{key}` stores JS translation strings (defined in `layout.jinja`).
+- `components/` directory contains reusable partials (product-card, pagination, cart). Include them with path relative to theme root.
+- `main.js` is referenced in layout but loaded from Zid's CDN — it does **not** exist in this repo.
+- `locale/ar/LC_MESSAGES/messages.po` is empty — Arabic translations are inline in templates.

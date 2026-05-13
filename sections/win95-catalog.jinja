@@ -40,7 +40,7 @@
     overflow:hidden;
     cursor: zoom-in;
   }
-  .card .img:hover{ outline: 1px dashed #000; outline-offset:-1px; }
+  .card .img:hover{ outline: 1px dashed #000; }
   .card .img .zoom-hint{
     position:absolute; right:4px; bottom:4px;
     background: rgba(0,0,0,.65); color:#fff;
@@ -95,22 +95,15 @@
   .card .meta .row{ display:flex; align-items:baseline; justify-content:space-between; gap:6px;}
   .card .meta .name{ font-family:"Times New Roman",serif; font-size:15px; font-weight:700;}
   .card .meta .price{ font-family:"Courier New",monospace; font-weight:700; font-size:13px;}
-  .card .meta .color{ font-family:"Times New Roman",serif; font-style:italic; font-size:13px; color:#222; margin-top:2px;}
+  .card .meta .color{ font-family:"Times New Roman",serif; font-style:italic; font-size:13px; color:#222;}
   .card .meta .desc{ font-family:"Times New Roman",serif; font-size:11px; color:#3a3a3a; margin-top:4px; line-height:1.3; }
   .card .meta .desc.ar{ font-size:12px; }
   .card .sizes{
+    display:flex; gap:4px; flex-wrap:wrap;
     padding: 0 8px 6px;
   }
-  .card .sizes .option-row{
-    display:flex; gap:4px; flex-wrap:wrap;
-    margin-bottom:4px;
-  }
-  .card .sizes .option-label{
-    font-family:"Tahoma",sans-serif; font-size:10px; font-weight:700;
-    color:#444; margin-bottom:2px;
-  }
   .card .sizes button{
-    flex:1; min-width:32px;
+    flex:1;
     background:var(--chrome);
     border-style:solid; border-width:2px;
     border-color: var(--hi) var(--lo-2) var(--lo-2) var(--hi);
@@ -173,6 +166,10 @@
   @media (max-width: 760px) {
     .product-grid{ grid-template-columns: repeat(2, 1fr); }
     .badges{ flex-direction:column; align-items:center; }
+    .catalog-head{ grid-template-columns: 1fr; }
+    .catalog-head .l, .catalog-head .r{ display:none; }
+    .catalog-head h2{ font-size:26px; }
+    .seal{ width: 180px; height: 100px; }
   }
 
   .product-grid-wrap{
@@ -192,6 +189,11 @@
 
   @media (max-width: 480px) {
     .product-grid{ grid-template-columns: repeat(1, 1fr); }
+    .pag-bar{ flex-wrap:wrap; gap:6px; padding: 8px 10px 12px; }
+    .pag-bar .btn{ min-width:60px; font-size:10px; }
+    .modal{ width: 92vw; }
+    .modal .body-pad{ padding: 14px; gap:10px;}
+    .modal .dt-meta{ grid-template-columns: 1fr; }
   }
 
   .modal-veil{
@@ -271,9 +273,9 @@
     {% set products_list = safeget(settings, "products.results", []) %}
     {% if products_list | length > 0 %}
       {% for product in products_list %}
-        {% set p = product.selected_product %}
+        {% set p = product.selected_product if product.selected_product else product %}
         {% set img_url = p.media[0].image.medium if p.media and p.media[0] and p.media[0].image and p.media[0].image.medium else '' %}
-        {% set has_sale = p.formatted_sale_price and p.formatted_sale_price != p.formatted_price %}
+        {% set has_sale = p.sale_price and p.price and p.sale_price < p.price %}
         {% set views_imgs = [] %}
         {% for m in p.media %}
           {% if m and m.image and m.image.medium %}
@@ -293,7 +295,7 @@
           <div class="meta">
             <div class="row">
               <div class="name">{{ product.name | truncate(20, True) }}</div>
-              <div class="price">{{ ((p.formatted_sale_price if has_sale else p.formatted_price) | string).split('.')[0] }} {{ p.currency_symbol | default('ر.س') }}</div>
+              <div class="price">{{ (p.sale_price if has_sale else p.price) | int }}{{ p.currency_symbol | default(' ر.س ') }}</div>
             </div>
             {% if product.options and product.options[0] %}
             <div class="color">{{ product.options[0].values | join(', ') }}</div>
@@ -317,7 +319,9 @@
             {% elif is_bundle %}
             <a href="{{ url_for('product_details', slug=product.slug) }}" class="btn primary" style="text-decoration:none;color:#000;">{{ _("View Bundle") }}</a>
             {% elif is_variant %}
-            <button class="btn primary" data-add-variant disabled>{{ _("Add to Cart") }}</button>
+            <button class="btn primary" data-add-variant disabled
+                    data-add-label="{{ _('Add to Cart') }}"
+                    data-sold-label="{{ _('Sold Out') }}">{{ _("Add to Cart") }}</button>
             {% else %}
             <button class="btn primary" data-add>{{ _("Add to Cart") }}</button>
             {% endif %}
@@ -609,17 +613,14 @@
       el.innerHTML = '';
       opts.forEach(function(opt, oi){
         var choices = opt.choices || opt.values || [];
-        var row = document.createElement('div');
-        row.className = 'option-row';
         choices.forEach(function(v){
           var b = document.createElement('button');
           b.type = 'button';
           b.textContent = typeof v === 'object' ? (v.name || v.value || '') : v;
           b.dataset.optIndex = oi;
           b.dataset.choiceVal = b.textContent;
-          row.appendChild(b);
+          el.appendChild(b);
         });
-        el.appendChild(row);
       });
 
       function applyVariant(){
@@ -663,8 +664,10 @@
 
         var priceEl = card.querySelector('.price');
         if (priceEl && match) {
-          var ps = parseInt(match.formatted_sale_price || match.formatted_price);
-          priceEl.textContent = (isNaN(ps) ? '' : ps) + (match.currency_symbol || ' ر.س ');
+          var hasSale = match.sale_price && match.price && match.sale_price < match.price;
+          var priceVal = hasSale ? match.sale_price : match.price;
+          var sym = match.currency_symbol || ' ر.س ';
+          priceEl.textContent = (priceVal != null ? parseInt(priceVal, 10) : '') + sym;
         }
 
         var colorEl = card.querySelector('.color');
@@ -672,6 +675,23 @@
           var vals = [];
           match.attributes.forEach(function(a){ vals.push(a.value); });
           colorEl.textContent = vals.join(', ');
+        }
+
+        var addBtn = card.querySelector('[data-add-variant]');
+        if (addBtn) {
+          var addLabel = addBtn.dataset.addLabel || 'Add to Cart';
+          var soldLabel = addBtn.dataset.soldLabel || 'Sold Out';
+          if (match && match.in_stock) {
+            addBtn.disabled = false;
+            addBtn.textContent = addLabel;
+            addBtn.style.opacity = '';
+            addBtn.style.cursor = '';
+          } else {
+            addBtn.disabled = true;
+            addBtn.textContent = soldLabel;
+            addBtn.style.opacity = '0.5';
+            addBtn.style.cursor = 'not-allowed';
+          }
         }
       }
 
@@ -690,15 +710,13 @@
       el.addEventListener('click', function(e){
         var b = e.target.closest('button');
         if (!b) return;
-        var row = b.parentNode;
-        row.querySelectorAll('button').forEach(function(x){ x.classList.remove('active'); });
+        var oi = b.dataset.optIndex;
+        el.querySelectorAll('button[data-opt-index="' + oi + '"]').forEach(function(x){ x.classList.remove('active'); });
         b.classList.add('active');
         applyVariant();
       });
 
       applyVariant();
-      var addBtn = card.querySelector('[data-add-variant]');
-      if (addBtn) addBtn.disabled = false;
     })
     .catch(function(err){
       el.style.display = 'none';

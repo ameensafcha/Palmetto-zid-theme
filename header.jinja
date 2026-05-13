@@ -162,17 +162,22 @@
 
   .statusbar {
     display: flex;
+    flex-wrap: wrap;
     gap: 4px;
     padding: 3px;
     border-top: 1px solid var(--hi);
   }
   .statusbar .cell {
     flex: 1;
+    min-width: 0;
     padding: 2px 6px;
     border-style: solid;
     border-width: 1px;
     border-color: var(--lo) var(--hi) var(--hi) var(--lo);
     font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .statusbar .cell.fixed { flex: 0 0 auto; min-width: 80px; text-align: center; }
 
@@ -241,7 +246,7 @@
   /* Icon Grid */
   .icon-grid {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(9, 1fr);
     gap: 6px;
     padding: 10px 12px 14px;
   }
@@ -303,23 +308,27 @@
   .linkrow .sep { color: #000; margin: 0 6px; }
   .linkrow.ar{ direction:rtl; font-size:16px; padding-top:6px; padding-bottom:6px; margin-top:-6px;}
 
-  .statusbar{
-    display:flex; gap:4px; padding:3px;
-    border-top:1px solid var(--hi);
-  }
-  .statusbar .cell{
-    flex:1; padding: 2px 6px;
-    border-style:solid; border-width:1px;
-    border-color: var(--lo) var(--hi) var(--hi) var(--lo);
-    font-size:11px;
-  }
-  .statusbar .cell.fixed{ flex:0 0 auto; min-width:80px; text-align:center;}
-
   @media (max-width: 760px) {
-    .icon-grid { grid-template-columns: repeat(4, 1fr); }
+    .icon-grid { grid-template-columns: repeat(3, 1fr); }
     .hero { grid-template-columns: 1fr; gap: 8px; }
     .hero .clock, .hero .palm { justify-self: center; }
     .hero .clock { text-align: center; }
+    .hero .palm { width: 80px; height: 80px; }
+    .hero .palm .glyph { font-size: 38px; }
+    .hero .wordmark .en { font-size: 30px; }
+    .hero .wordmark .ar { font-size: 18px; }
+    .menubar { flex-wrap: wrap; }
+    .linkrow { font-size: 12px; padding: 6px 8px; margin: 4px 8px 10px; }
+    .linkrow.ar { font-size: 14px; }
+    .statusbar .cell.fixed { min-width: 60px; font-size: 10px; padding: 2px 4px; }
+    #cart-btn { font-size: 10px !important; padding: 0 4px !important; }
+  }
+  @media (max-width: 480px) {
+    .alert-ribbon{ width: 100vw; max-width:100%; margin: 10px 0 12px; height: 28px; border-left:none; border-right:none;}
+    .alert-ribbon .marq-inner span { font-size: 11px; }
+    .icon-grid{ grid-template-columns: repeat(2, 1fr); }
+    .titlebar { font-size: 11px; }
+    .titlebar .t-title .ar { display:none; }
   }
 </style>
 
@@ -431,6 +440,25 @@
       <span class="ribbon">NEW!</span>
       <div class="lbl">Palm Tree<br>Collective</div>
     </a>
+    <a href="#carpets" class="ic">
+      <div class="art">
+        <svg width="46" height="40" viewBox="0 0 46 40">
+          <rect x="3" y="6" width="40" height="28" fill="#7d2a2a" stroke="#000" stroke-width="1.4"/>
+          <rect x="6" y="9" width="34" height="22" fill="none" stroke="#f4d56a" stroke-width="1"/>
+          <rect x="9" y="12" width="28" height="16" fill="none" stroke="#f4d56a" stroke-width="0.8"/>
+          <polygon points="23,15 26,20 23,25 20,20" fill="#f4d56a"/>
+          <circle cx="13" cy="15" r="1.2" fill="#f4d56a"/>
+          <circle cx="33" cy="15" r="1.2" fill="#f4d56a"/>
+          <circle cx="13" cy="25" r="1.2" fill="#f4d56a"/>
+          <circle cx="33" cy="25" r="1.2" fill="#f4d56a"/>
+          <g stroke="#7d2a2a" stroke-width="0.8">
+            <line x1="3" y1="34" x2="3" y2="38"/><line x1="7" y1="34" x2="7" y2="38"/><line x1="11" y1="34" x2="11" y2="38"/><line x1="15" y1="34" x2="15" y2="38"/><line x1="19" y1="34" x2="19" y2="38"/><line x1="23" y1="34" x2="23" y2="38"/><line x1="27" y1="34" x2="27" y2="38"/><line x1="31" y1="34" x2="31" y2="38"/><line x1="35" y1="34" x2="35" y2="38"/><line x1="39" y1="34" x2="39" y2="38"/><line x1="43" y1="34" x2="43" y2="38"/>
+          </g>
+        </svg>
+      </div>
+      <span class="ribbon">NEW!</span>
+      <div class="lbl">The<br>Carpets</div>
+    </a>
     <a href="#sizing" class="ic">
       <div class="art">
         <svg width="44" height="44" viewBox="0 0 44 44">
@@ -491,6 +519,7 @@
     <a href="#about">About Us</a><span class="sep">|</span>
     <a href="#catalog">Shop</a><span class="sep">|</span>
     <a href="#palm-collective">Palm Tree Collective</a><span class="sep">|</span>
+    <a href="#carpets">Carpets</a><span class="sep">|</span>
     <a href="#sizing">Size Guide</a><span class="sep">|</span>
     <a href="#shipping">Shipping</a><span class="sep">|</span>
     <a href="#returns">Returns</a><span class="sep">|</span>
@@ -500,6 +529,7 @@
     <a href="#about">عن الاستوديو</a><span class="sep">|</span>
     <a href="#catalog">المتجر</a><span class="sep">|</span>
     <a href="#palm-collective">جمعيّة النخيل</a><span class="sep">|</span>
+    <a href="#carpets">السجّاد</a><span class="sep">|</span>
     <a href="#sizing">دليل المقاسات</a><span class="sep">|</span>
     <a href="#shipping">الشحن</a><span class="sep">|</span>
     <a href="#returns">الإرجاع</a><span class="sep">|</span>

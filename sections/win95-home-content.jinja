@@ -1,4 +1,8 @@
-{% set is_shown = settings.show if settings.show is defined else true %}
+{% if settings.show is defined %}
+  {% set is_shown = settings.show %}
+{% else %}
+  {% set is_shown = true %}
+{% endif %}
 {% if is_shown %}
 <style>
   .panel{
@@ -109,10 +113,183 @@
     padding: 4px 6px; text-align:center;
   }
 
-  @media (max-width: 760px) {
-    .two-col{ grid-template-columns: 1fr; }
-    .two-col > .col-ar{ border-left: none; padding-left: 0; border-top: 1px dashed #b0a890; padding-top: 18px; }
+  .carpets-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+    margin-top: 22px;
   }
+  .carpet-card{
+    background:var(--chrome);
+    border-style:solid; border-width:2px;
+    border-color: var(--hi) var(--lo-2) var(--lo-2) var(--hi);
+    box-shadow: inset 1px 1px 0 var(--hi-2), inset -1px -1px 0 var(--lo);
+    display:flex; flex-direction:column;
+    min-width: 0;
+  }
+  .carpet-card > .titlebar{
+    height: 22px; padding: 0 4px 0 6px;
+    background: linear-gradient(90deg, #7d2a2a, #b85a3b);
+    color:#fff; font-weight:700; font-size:11px;
+    display:flex; align-items:center; gap:4px;
+    flex-shrink:0;
+  }
+  .carpet-card > .titlebar .t-title{ flex:1; padding:0 4px; }
+  .carpet-card > .titlebar .tb-btn{
+    width:16px; height:16px; display:inline-flex; align-items:center; justify-content:center;
+    background:var(--chrome); color:#000; font-size:10px;
+    border-style:solid; border-width:1px;
+    border-color: var(--hi) var(--lo-2) var(--lo-2) var(--hi);
+  }
+  .carpet-card .img{
+    position:relative;
+    aspect-ratio: 3/4;
+    margin: 4px;
+    background:#fffef7;
+    border-style:solid; border-width:2px;
+    border-color: var(--lo) var(--hi) var(--hi) var(--lo);
+    overflow:hidden;
+    cursor: zoom-in;
+  }
+  .carpet-card .img img.prod-img{
+    width:100%; height:100%; object-fit: cover;
+    display:block;
+  }
+  .carpet-card .img .index-badge{
+    display: none;
+  }
+  .carpet-card .body{
+    padding: 8px 10px 12px;
+    display:flex; flex-direction:column; gap:6px;
+    flex:1;
+  }
+  .carpet-card .head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    gap:6px; flex-wrap:wrap;
+    border-bottom: 1px dashed #8a7e62;
+    padding-bottom:4px;
+  }
+  .carpet-card .head .name{
+    font-family: "Times New Roman", serif; font-size: 15px; font-weight: 700; color:#101010;
+  }
+  .carpet-card .head .dim{
+    font-family:"Courier New", monospace; font-size:10px; color:#5a5037;
+  }
+  .carpet-card .desc-en{
+    margin:0;
+    font-family: "Times New Roman", serif; font-size: 12px; font-style: italic; line-height:1.4; color:#1a1a1a;
+  }
+  .carpet-card .desc-ar{
+    margin:0;
+    direction:rtl; text-align:right;
+    font-family: "Amiri", serif; font-size: 13px; line-height:1.55; color:#1a1a1a;
+    border-top: 1px dotted #b0a890; padding-top:4px;
+  }
+  .carpet-card.pending .img{
+    background: repeating-linear-gradient(135deg,#c8b88a 0 8px,#b5a274 8px 16px) !important;
+  }
+  .carpet-card .img .nav-arrow{
+    position:absolute; top:50%; transform: translateY(-50%);
+    width:22px; height:32px;
+    display:grid; place-items:center;
+    background:var(--chrome);
+    border-style:solid; border-width:2px;
+    border-color: var(--hi) var(--lo-2) var(--lo-2) var(--hi);
+    box-shadow: inset 1px 1px 0 var(--hi-2), inset -1px -1px 0 var(--lo);
+    color:#000; font-family:"Tahoma",sans-serif; font-size:14px; font-weight:700;
+    cursor:default;
+    user-select:none;
+    line-height:1;
+    opacity:.92;
+  }
+  .carpet-card .img .nav-arrow:hover{ opacity:1; }
+  .carpet-card .img .nav-arrow:active{
+    border-color: var(--lo) var(--hi) var(--hi) var(--lo);
+    box-shadow: inset 1px 1px 0 var(--lo-2), inset -1px -1px 0 var(--hi-2);
+  }
+  .carpet-card .img .nav-arrow.prev{ left:4px; }
+  .carpet-card .img .nav-arrow.next{ right:4px; }
+  .carpet-card .img .view-count{
+    position:absolute; left:4px; bottom:4px;
+    background: rgba(0,0,0,.65); color:#fff;
+    font-family:"Tahoma",sans-serif; font-size:10px;
+    padding: 1px 5px;
+    pointer-events:none;
+  }
+  .carpet-card .img .zoom-hint{
+    position:absolute; right:4px; bottom:4px;
+    background: rgba(0,0,0,.65); color:#fff;
+    font-family:"Tahoma",sans-serif; font-size:10px;
+    padding: 1px 5px;
+    pointer-events:none;
+    opacity:0; transition: opacity .12s;
+  }
+  .carpet-card .img:hover .zoom-hint{ opacity:1; }
+  .carpets-bottom-row{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 14px;
+  }
+  .carpet-card.wide .body-row{
+    display:grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 0;
+  }
+  .carpet-card.wide .img{
+    aspect-ratio: 5/4;
+    margin: 4px 2px 4px 4px;
+  }
+  .carpet-card.wide .body{
+    padding: 10px 12px 14px;
+  }
+  @media (max-width: 880px){
+    .carpets-bottom-row{ grid-template-columns: 1fr; }
+  }
+  @media (max-width: 720px){
+    .carpet-card.wide .body-row{ grid-template-columns: 1fr; }
+  }
+  .ornaments{
+    display:flex; gap:36px; justify-content:center; align-items:center;
+    flex-wrap:wrap;
+  }
+
+  @media (max-width: 760px) {
+    .panel{ padding: 18px 14px; margin: 8px;}
+    .two-col{ grid-template-columns: 1fr; gap:18px;}
+    .two-col > .col-ar{ border-left: none; padding-left: 0; border-top: 1px dashed #b0a890; padding-top: 14px; }
+    .size-guide .grid{ grid-template-columns: 1fr; gap:18px;}
+    .palm-archive .photos{ grid-template-columns: repeat(2, 1fr); }
+    .contact-grid{ grid-template-columns: 1fr; gap:14px;}
+    .ship-row{ grid-template-columns: 100px 1fr; gap:10px;}
+    .ornaments{ gap:18px;}
+    table.size-table th, table.size-table td{ padding: 4px 6px; font-size:13px;}
+  }
+  @media (max-width: 480px) {
+    .palm-archive .photos{ grid-template-columns: 1fr;}
+    .ship-row{ grid-template-columns: 1fr; }
+    .ship-row .tag{ justify-self:start; }
+    .carpets-grid{ grid-template-columns: 1fr;}
+  }
+  .modal-veil{
+    position:fixed; inset:0;
+    background: rgba(0,0,0,.25);
+    display:none; place-items:center;
+    z-index: 50;
+  }
+  .modal-veil.open{ display:grid; }
+  .modal{
+    width: 360px; max-width: 92vw;
+    background:var(--chrome);
+    border-style:solid; border-width:2px;
+    border-color: var(--hi) var(--lo-2) var(--lo-2) var(--hi);
+    box-shadow: inset 1px 1px 0 var(--hi-2), inset -1px -1px 0 var(--lo), 4px 4px 0 rgba(0,0,0,.3);
+  }
+  .modal .body-pad{ padding: 18px; display:flex; gap:14px; align-items:flex-start;}
+  .modal .icon-warn{ width:40px; height:40px; flex:0 0 40px; border-radius:50%; background:var(--warn-yellow); border:2px solid #000; display:grid; place-items:center; color:#000; font-family:"Times New Roman",serif; font-weight:900; font-size:30px; line-height:1; }
+  .modal .msg{ font-family:"Tahoma",sans-serif; font-size:12px; line-height:1.45;}
+  .modal .actions{ display:flex; gap:8px; justify-content:flex-end; padding: 0 12px 12px; }
+  .modal .actions .btn{ flex: 0 0 80px; }
 </style>
 
 <!-- For New Visitors -->
@@ -165,6 +342,89 @@
   </div>
 </section>
 
+<!-- Meaning Behind: Palmetto -->
+<section class="win" id="meaning">
+  <div class="titlebar">
+    <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,1 9,5 5,9 1,5" fill="#7d2a2a" stroke="#000"/></svg></span>
+    <span class="t-title"><span>Meaning Behind: Palmetto</span><span class="ar">المعنى وراء بالميتو</span></span>
+    <span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span>
+  </div>
+  <div class="panel">
+    <div class="two-col">
+      <div class="col-en">
+        <h3 style="font-size: 34px; line-height:1.05; margin-bottom: 14px;">Meaning Behind:<br>Palmetto</h3>
+        <p style="font-size:15px;">The Palmetto Tree is usually a low-growing, fan-leaved palm. The reason for choosing this as a brand name is because it represents the little kid inside of us designing, creating, and innovating through this lens. I aim to introduce playful elements, nostalgia, and a bit of satire in my design ethos, striving to create products that spark a reaction and a sense of belonging.</p>
+      </div>
+      <div class="col-ar ar">
+        <h3 style="font-size: 30px; line-height:1.15; margin-bottom: 14px; font-family:'Amiri',serif; font-weight:700; font-style:normal;">المعنى وراء:<br>بالميتو</h3>
+        <p>شجرة البالميتو عادةً نخلةٌ قصيرة بأوراق مروحيّة الشكل. سبب اختيارها اسماً للعلامة هو أنّها تمثّل الطفل الصغير الذي يسكن داخلنا — يصمّم ويبتكر ويُبدع عبر هذه العدسة. أسعى إلى إدخال عناصر مرحة، والحنين، وقدر من السخرية في أسلوبي التصميمي، ساعياً لصنع منتجات تُثير ردّ فعل وإحساساً بالانتماء.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin: 26px 0 18px;">
+      <div style="font-style:italic; font-family:'Times New Roman',serif; font-size:15px; color:#222; margin-bottom: 4px;">
+        Wheel of Fortune: Symbol of Wealth in Persian Carpetry
+      </div>
+      <div class="ar" style="font-size:15px; color:#222; margin-bottom: 12px; direction:rtl;">
+        عجلة الحظّ — رمز الوفرة في فنّ السجّاد الفارسي
+      </div>
+      <div class="ornaments" aria-hidden="true">
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linejoin="miter" stroke-linecap="square">
+          <rect x="6" y="6" width="10" height="10"/>
+          <rect x="16" y="16" width="10" height="10"/>
+          <rect x="26" y="6" width="10" height="10"/>
+          <rect x="6" y="26" width="10" height="10"/>
+          <rect x="26" y="26" width="10" height="10"/>
+          <line x1="11" y1="16" x2="11" y2="26"/>
+          <line x1="31" y1="16" x2="31" y2="26"/>
+          <line x1="16" y1="11" x2="26" y2="11"/>
+          <line x1="16" y1="31" x2="26" y2="31"/>
+        </svg>
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" stroke="#1a1a1a" stroke-width="2">
+          <rect x="6" y="22" width="30" height="14"/>
+          <rect x="10" y="14" width="22" height="8"/>
+          <rect x="14" y="6" width="14" height="8"/>
+          <line x1="13" y1="22" x2="13" y2="36"/>
+          <line x1="21" y1="22" x2="21" y2="36"/>
+          <line x1="29" y1="22" x2="29" y2="36"/>
+        </svg>
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linejoin="miter">
+          <polygon points="21,4 26,16 38,21 26,26 21,38 16,26 4,21 16,16"/>
+          <line x1="16" y1="16" x2="26" y2="26"/>
+          <line x1="26" y1="16" x2="16" y2="26"/>
+        </svg>
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" stroke="#1a1a1a" stroke-width="2">
+          <line x1="21" y1="4" x2="21" y2="38"/>
+          <line x1="4" y1="21" x2="38" y2="21"/>
+          <circle cx="21" cy="8" r="3"/>
+          <circle cx="21" cy="34" r="3"/>
+          <circle cx="8" cy="21" r="3"/>
+          <circle cx="34" cy="21" r="3"/>
+          <circle cx="21" cy="21" r="4"/>
+        </svg>
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" stroke="#1a1a1a" stroke-width="2">
+          <circle cx="21" cy="21" r="17"/>
+          <circle cx="21" cy="21" r="13"/>
+          <circle cx="21" cy="21" r="9"/>
+          <circle cx="21" cy="21" r="5"/>
+          <circle cx="21" cy="21" r="1.5" fill="#1a1a1a"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="col-en">
+        <p style="font-size:15px;">The new logo is inspired by the ornaments of a Persian rug. The spiral shape in these ornaments often symbolizes the blessing of wealth and abundance. Hopefully, my brand will give you that feeling of blessing and importance.</p>
+        <p class="signoff">— Palmetto Studios</p>
+      </div>
+      <div class="col-ar ar">
+        <p>الشعار الجديد مستلهَمٌ من زخارف السجّاد الفارسي. غالباً ما يرمز الشكل الحلزونيّ في هذه الزخارف إلى البركة والوفرة. آمل أن تمنحك علامتي ذلك الإحساس بالبركة والقَدْر.</p>
+        <p class="signoff" style="font-style:italic;">— ستوديوهات بالميتو</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Palm Tree Collective -->
 <section class="win palm-archive" id="palm-collective">
   <div class="titlebar">
@@ -212,6 +472,172 @@
       <div class="photo"><div class="cap"><span>No. ___</span><span>[ pending ]</span></div></div>
     </div>
     <p style="text-align:center; font-family:'Courier New', monospace; font-size:11px; color:#5a5037; margin-top:12px;">[ photos pending — Aziz to deliver 6–9 entries · placeholder striped frames shown above ]</p>
+  </div>
+</section>
+
+<!-- The Carpets -->
+<section class="win" id="carpets">
+  <div class="titlebar">
+    <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="2" width="8" height="6" fill="#7d2a2a" stroke="#000"/><line x1="1" y1="4" x2="9" y2="4" stroke="#fff"/><line x1="1" y1="6" x2="9" y2="6" stroke="#fff"/></svg></span>
+    <span class="t-title"><span>{{ settings.carpets_title | default("The Carpets") }}</span><span class="ar">السجّاد</span></span>
+    <span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span>
+  </div>
+  <div class="panel">
+    <div class="two-col">
+      <div class="col-en">
+        <h3 style="margin-bottom:10px;">{{ settings.carpets_title | default("The Carpets") }}</h3>
+        <p>{{ settings.carpets_intro_en | default("A small collection of carpet designs by the studio — woven, room-scale, made to order. Each piece carries its own concept. If something catches you, write to us and we'll take it from there.") }}</p>
+      </div>
+      <div class="col-ar ar" style="font-size:15px; line-height:1.6;">
+        <h3 style="margin-bottom:10px; font-family:'Amiri',serif; font-weight:700;">السجّاد</h3>
+        <p>{{ settings.carpets_intro_ar | default("مجموعة من تصاميم السجّاد من الاستوديو — منسوجة، بحجم الغرفة، تُصنع حسب الطلب. كل قطعة تحمل مفهومها الخاص. إن لفتك واحدة منها، اكتب إلينا وسنأخذ الأمر من هناك.") }}</p>
+      </div>
+    </div>
+
+    {% set carpets = settings.carpets | default([]) %}
+
+    {% macro carpet_card(carpet, is_wide) %}
+      {% set views = [] %}
+      {% if carpet.img_1 %}{% set views = views + [carpet.img_1] %}{% endif %}
+      {% if carpet.img_2 %}{% set views = views + [carpet.img_2] %}{% endif %}
+      {% if carpet.img_3 %}{% set views = views + [carpet.img_3] %}{% endif %}
+      {% set name = carpet.name | default("Carpet") %}
+      <article class="carpet-card{% if is_wide %} wide{% endif %}">
+        <div class="titlebar"><span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3" fill="none" stroke="#fff"/></svg></span><span class="t-title"><span>{{ name }}</span></span><span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span></div>
+        {% if is_wide %}<div class="body-row">{% endif %}
+        <div class="img"{% if views %} data-views="{{ views | join('|') }}"{% endif %}>
+          {% if views %}
+            {% for v in views %}
+              {% if loop.first %}
+            <img src="{{ v }}" class="prod-img" alt="{{ name }}" decoding="async" loading="eager">
+              {% else %}
+            <img src="{{ v }}" class="prod-img" alt="{{ name }}" style="position:absolute;inset:0;opacity:0;transition:opacity 80ms linear;pointer-events:none;" decoding="async" loading="eager">
+              {% endif %}
+            {% endfor %}
+          {% else %}
+          <div style="position:absolute; inset:14px; border:1px dashed rgba(255,255,255,.5);"></div>
+          <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); font-family:'Courier New',monospace; font-size:10px; color:#fffef7; background:rgba(0,0,0,.55); padding:3px 8px; border:1px dashed #fffef7; letter-spacing:1px;">{{ name | lower | replace(" ", "-") }}.jpg</div>
+          {% endif %}
+        </div>
+        {% if is_wide %}<div class="body">{% else %}<div class="body">{% endif %}
+          <div class="head"><div class="name">{{ name }}</div><div class="dim">{{ carpet.dim | default("") }}</div></div>
+          <p class="desc-en">{{ carpet.desc_en | default("") }}</p>
+          <p class="desc-ar">{{ carpet.desc_ar | default("") }}</p>
+        </div>
+        {% if is_wide %}</div>{% endif %}
+      </article>
+    {% endmacro %}
+
+    {% if carpets | length > 0 %}
+
+    <div class="carpets-grid">
+    {% for carpet in carpets %}
+      {% if not carpet.wide %}
+        {{ carpet_card(carpet, false) }}
+      {% endif %}
+    {% endfor %}
+    </div>
+
+    {% set wide_carpets = carpets | selectattr("wide") | list %}
+    {% if wide_carpets | length > 0 %}
+    <div class="carpets-bottom-row">
+    {% for carpet in wide_carpets %}
+      {{ carpet_card(carpet, true) }}
+    {% endfor %}
+    </div>
+    {% endif %}
+
+    {% else %}
+
+    <div class="carpets-grid">
+
+      <article class="carpet-card">
+        <div class="titlebar"><span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3" fill="none" stroke="#fff"/></svg></span><span class="t-title"><span>Serenity Carpet</span></span><span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span></div>
+        <div class="img">
+          <div style="position:absolute; inset:14px; border:1px dashed rgba(255,255,255,.5);"></div>
+          <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); font-family:'Courier New',monospace; font-size:10px; color:#fffef7; background:rgba(0,0,0,.55); padding:3px 8px; border:1px dashed #fffef7; letter-spacing:1px;">serenity-carpet.jpg</div>
+        </div>
+        <div class="body">
+          <div class="head"><div class="name">Serenity Carpet</div><div class="dim">240 × 160 cm</div></div>
+          <p class="desc-en">A Persian carpet field invaded by atomic orbits, hazard triangles, and Y2K detritus. The borders repeat a single phrase: "Running through space and time just to find serenity."</p>
+          <p class="desc-ar">حقل سجّاد فارسي يقتحمه مدارات ذرّية ومثلّثات تحذير وبقايا حقبة الألفيّة. على الحدود عبارة واحدة تتكرّر: "Running through space and time just to find serenity".</p>
+        </div>
+      </article>
+
+      <article class="carpet-card">
+        <div class="titlebar"><span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3" fill="none" stroke="#fff"/></svg></span><span class="t-title"><span>3bsi is Alive</span></span><span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span></div>
+        <div class="img" style="background: repeating-linear-gradient(135deg,#1d1d1d 0 8px,#2a2a2a 8px 16px);">
+          <div style="position:absolute; inset:14px; border:1px dashed rgba(255,255,255,.4);"></div>
+          <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); font-family:'Courier New',monospace; font-size:10px; color:#fffef7; background:rgba(0,0,0,.55); padding:3px 8px; border:1px dashed #fffef7; letter-spacing:1px;">3bsi-is-alive.jpg</div>
+        </div>
+        <div class="body">
+          <div class="head"><div class="name">3bsi is Alive</div><div class="dim">240 × 160 cm</div></div>
+          <p class="desc-en">A Khaleeji folk figure who refused his exit — skeleton in a ghutra, lamp in one hand, bones in the other, attended by teeth, jewels, and crescent moons.</p>
+          <p class="desc-ar">شخصيّة خليجيّة شعبيّة رفضت خروجها — هيكل عظمي بشماغ، فانوس في يدٍ وعظام في الأخرى، يحفّ به أسنان وجواهر وأهلّة.</p>
+        </div>
+      </article>
+
+      <article class="carpet-card">
+        <div class="titlebar"><span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3" fill="none" stroke="#fff"/></svg></span><span class="t-title"><span>Shapes and Ladders</span></span><span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span></div>
+        <div class="img" style="background: repeating-linear-gradient(135deg,#1a1a1a 0 8px,#2d2d2d 8px 16px);">
+          <div style="position:absolute; inset:14px; border:1px dashed rgba(255,255,255,.4);"></div>
+          <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); font-family:'Courier New',monospace; font-size:10px; color:#fffef7; background:rgba(0,0,0,.55); padding:3px 8px; border:1px dashed #fffef7; letter-spacing:1px;">shapes-and-ladders.jpg</div>
+        </div>
+        <div class="body">
+          <div class="head"><div class="name">Shapes and Ladders</div><div class="dim">140 × 220 cm</div></div>
+          <p class="desc-en">A high-contrast monochrome field of folk silhouettes — horse, cherries, palm, crescent, dancer — stitched into a rebus that reads like a board game.</p>
+          <p class="desc-ar">حقل أحادي اللون عالي التباين، ملّف بظلال شعبيّة — حصان، كرز، نخلة، هلال، راقص — تتجمّع كأنّها لوحة لعبة.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="carpets-bottom-row">
+
+      <article class="carpet-card wide">
+        <div class="titlebar"><span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3" fill="none" stroke="#fff"/></svg></span><span class="t-title"><span>Arcadia</span></span><span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span></div>
+        <div class="body-row">
+          <div class="img" style="background: repeating-linear-gradient(45deg,#274b3b 0 8px,#2f5a47 8px 16px);">
+            <div style="position:absolute; inset:14px; border:1px dashed rgba(255,255,255,.5);"></div>
+            <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); font-family:'Courier New',monospace; font-size:10px; color:#fffef7; background:rgba(0,0,0,.55); padding:3px 8px; border:1px dashed #fffef7; letter-spacing:1px;">arcadia.jpg</div>
+          </div>
+          <div class="body">
+            <div class="head"><div class="name">Arcadia</div><div class="dim">140 × 220 cm</div></div>
+            <p class="desc-en">A pixel-rendered Persian carpet interrupted by a 1990s UFO. Classical pastoral form, briefly abducted.</p>
+            <p class="desc-ar">سجّادة فارسيّة بأسلوب البكسل، يقطعها صحن طائر تسعينيّ. شكل رعويّ كلاسيكيّ، يُختطف لحظة.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="carpet-card wide">
+        <div class="titlebar"><span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3" fill="none" stroke="#fff"/></svg></span><span class="t-title"><span>Palmetto Monogram</span></span><span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span></div>
+        <div class="body-row">
+          <div class="img" style="background: repeating-linear-gradient(45deg,#5b4322 0 8px,#6a4f29 8px 16px);">
+            <div style="position:absolute; inset:14px; border:1px dashed rgba(255,255,255,.5);"></div>
+            <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); font-family:'Courier New',monospace; font-size:10px; color:#fffef7; background:rgba(0,0,0,.55); padding:3px 8px; border:1px dashed #fffef7; letter-spacing:1px;">palmetto-monogram.jpg</div>
+          </div>
+          <div class="body">
+            <div class="head"><div class="name">Palmetto Monogram</div><div class="dim">140 × 220 cm</div></div>
+            <p class="desc-en">A monogram in the European luxury tradition — palm trees, dallah, geometric tile, the national emblem. Khaleeji vocabulary in luxury's clothing.</p>
+            <p class="desc-ar">مونوغرام في تقليد دور الأزياء الأوروبيّة — نخيل، دلال، زليج هندسي، الشعار الوطني. مفردات خليجيّة بلباس الترف.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    {% endif %}
+
+    <div class="two-col" style="margin-top:22px; padding-top:14px; border-top:1px dashed #b0a890;">
+      <div class="col-en">
+        <p style="margin:0;">{{ settings.carpets_cta_en | default("Made to order. Inquire at <a href=\"mailto:palmetto.sa@gmail.com\">palmetto.sa@gmail.com</a>.") }}</p>
+        <p class="signoff" style="margin-top:6px;">— Palmetto Studios</p>
+      </div>
+      <div class="col-ar ar" style="font-size:15px; line-height:1.5;">
+        <p style="margin:0;">{{ settings.carpets_cta_ar | default("تُصنع حسب الطلب. للاستفسار: palmetto.sa@gmail.com") }}</p>
+        <p class="signoff" style="font-style:italic; margin-top:6px;">— ستوديوهات بالميتو</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -318,12 +744,18 @@
         <p>If your order hasn't arrived in the expected window, write to us and we'll track it down.</p>
         <p class="signoff">— Palmetto Studios</p>
       </div>
-      <div class="col-ar ar">
+      <div class="col-ar ar" style="font-size:15px; line-height:1.5;">
         <p style="margin-top:0;">بالميتو يشحن إلى جميع أنحاء العالم.</p>
-        <p><b>المملكة العربية السعودية</b> — تُشحن الطلبات خلال يوم إلى يومَي عمل، وتصل خلال يومَين إلى خمسة أيام عمل بحسب مدينتك. الشحن الداخلي مجّاني للطلبات التي تتجاوز ٣٥٠ ريال.</p>
-        <p><b>الشحن الدولي</b> — تختلف الرسوم وأوقات التوصيل بحسب الوجهة وطريقة الشحن. تُحتسب جميعها عند إتمام الطلب، لتكون الكلفة كاملةً واضحةً قبل الدفع.</p>
-        <p>إن لم يصل طلبك خلال المدة المتوقّعة، لا تتردّد في الكتابة إلينا وسنتتبّعه لك.</p>
-        <p class="signoff" style="font-style:italic;">— ستوديوهات بالميتو</p>
+        <div class="ship-row" style="grid-template-columns: 130px 1fr; direction:rtl;">
+          <div class="tag" style="font-family:'Amiri',serif; font-size:13px; line-height:1.2; font-weight:400;">المملكة العربية السعودية</div>
+          <div style="font-size:15px; line-height:1.5; font-weight:400;">تُشحن الطلبات خلال يوم إلى يومَي عمل، وتصل خلال يومَين إلى خمسة أيام عمل بحسب مدينتك. الشحن الداخلي مجّاني للطلبات التي تتجاوز ٣٥٠ ريال.</div>
+        </div>
+        <div class="ship-row" style="grid-template-columns: 130px 1fr; direction:rtl;">
+          <div class="tag" style="font-family:'Amiri',serif; font-size:13px; line-height:1.2; font-weight:400;">الشحن الدولي</div>
+          <div style="font-size:15px; line-height:1.5; font-weight:400;">تختلف الرسوم وأوقات التوصيل بحسب الوجهة وطريقة الشحن. تُحتسب جميعها عند إتمام الطلب، لتكون الكلفة كاملةً واضحةً قبل الدفع.</div>
+        </div>
+        <p style="font-weight:400;">إن لم يصل طلبك خلال المدة المتوقّعة، لا تتردّد في الكتابة إلينا وسنتتبّعه لك.</p>
+        <p class="signoff" style="font-style:italic; font-weight:400;">— ستوديوهات بالميتو</p>
       </div>
     </div>
   </div>
@@ -402,4 +834,104 @@
     </div>
   </div>
 </section>
+
+<!-- Lightbox -->
+<div class="modal-veil" id="lightbox-veil" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+  <div class="modal" style="width: min(720px, 94vw);">
+    <div class="titlebar">
+      <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="1" width="8" height="8" fill="#fff" stroke="#000"/><circle cx="5" cy="5" r="2" fill="none" stroke="#000"/></svg></span>
+      <span class="t-title" id="lightbox-title">Image Viewer</span>
+      <span class="tb-btn" data-close-lb>_</span>
+      <span class="tb-btn" data-close-lb>▢</span>
+      <span class="tb-btn" data-close-lb>✕</span>
+    </div>
+    <div style="padding: 8px; background: var(--chrome);">
+      <div style="background:#fffef7; border-style:solid; border-width:2px; border-color: var(--lo) var(--hi) var(--hi) var(--lo); padding:6px;">
+        <img id="lightbox-img" src="" alt="" style="display:block; width:100%; height:auto; max-height: 70vh; object-fit: contain;">
+      </div>
+      <div id="lightbox-cap" style="font-family:'Times New Roman',serif; font-size:14px; padding: 8px 4px 2px; display:flex; justify-content:space-between; align-items:baseline; gap:10px;">
+        <span></span><span class="mono" style="font-family:'Courier New',monospace; font-size:12px; color:#444;"></span>
+      </div>
+    </div>
+    <div class="actions"><button class="btn primary" data-close-lb>Close</button></div>
+  </div>
+</div>
+
+<script>
+console.log('=== CARPET SECTION DEBUG ===');
+document.querySelectorAll('.carpet-card').forEach(function(c, i){
+  console.log('Carpet ' + i + ':', c.querySelector('.name') ? c.querySelector('.name').textContent.trim() : 'no name');
+  var img = c.querySelector('.img');
+  console.log('  data-views:', img ? img.dataset.views : 'no img');
+  console.log('  imgs found:', img ? img.querySelectorAll('img').length : 0);
+});
+document.querySelectorAll('.carpet-card .img[data-views]').forEach(function(box){
+  var first = box.querySelector('img');
+  if (!first) return;
+  var views = box.dataset.views.split('|');
+  var imgs = views.map(function(u, idx){
+    var im = (idx === 0) ? first : document.createElement('img');
+    im.src = u; im.className = 'prod-img'; im.alt = first.alt || '';
+    im.style.position='absolute'; im.style.inset='0';
+    im.style.opacity = (idx === 0) ? '1' : '0';
+    im.style.transition = 'opacity 80ms linear';
+    im.style.pointerEvents = 'none';
+    im.decoding='async'; im.loading='eager';
+    if (idx !== 0) box.appendChild(im);
+    return im;
+  });
+  var i = 0;
+  var counter = document.createElement('div');
+  counter.className = 'view-count';
+  counter.textContent = '1/' + views.length;
+  box.appendChild(counter);
+  function go(d){
+    var p = i;
+    i = (i + d + views.length) % views.length;
+    imgs[i].style.opacity='1';
+    imgs[p].style.opacity='0';
+    counter.textContent = (i+1) + '/' + views.length;
+  }
+  var pb = document.createElement('button');
+  pb.type='button'; pb.className='nav-arrow prev'; pb.setAttribute('aria-label','Previous view'); pb.textContent='◀';
+  var nb = document.createElement('button');
+  nb.type='button'; nb.className='nav-arrow next'; nb.setAttribute('aria-label','Next view'); nb.textContent='▶';
+  pb.addEventListener('click', function(e){ e.stopPropagation(); go(-1); });
+  nb.addEventListener('click', function(e){ e.stopPropagation(); go(1); });
+  box.appendChild(pb); box.appendChild(nb);
+});
+
+var lb = document.getElementById('lightbox-veil');
+var lbImg = document.getElementById('lightbox-img');
+var lbTitle = document.getElementById('lightbox-title');
+var lbCap = document.getElementById('lightbox-cap');
+
+document.querySelectorAll('.carpet-card .img').forEach(function(box){
+  box.insertAdjacentHTML('beforeend', '<span class="zoom-hint">click to enlarge</span>');
+  box.addEventListener('click', function(e){
+    if (e.target.closest('.nav-arrow')) return;
+    var card = box.closest('.carpet-card');
+    var name = card.querySelector('.name').textContent.trim();
+    var dim = card.querySelector('.dim') ? card.querySelector('.dim').textContent.trim() : '';
+    var imgs = box.querySelectorAll('img');
+    var img = null;
+    imgs.forEach(function(im){ if (im.style.opacity !== '0') img = im; });
+    if (!img) img = imgs[0];
+    if (!img) return;
+    lbImg.src = img.src;
+    lbImg.alt = img.alt || name;
+    lbTitle.textContent = name + (dim ? ' — ' + dim : '');
+    lbCap.children[0].textContent = name + (dim ? ' — ' + dim : '');
+    lbCap.children[1].textContent = (img.src.split('/').pop());
+    lb.classList.add('open');
+  });
+});
+
+lb.addEventListener('click', function(e){
+  if (e.target === lb || e.target.matches('[data-close-lb]')) lb.classList.remove('open');
+});
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') lb.classList.remove('open');
+});
+</script>
 {% endif %}
