@@ -296,22 +296,22 @@
 <section class="win" id="welcome">
   <div class="titlebar">
     <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="2" width="8" height="6" fill="#ffd84a" stroke="#000"/></svg></span>
-    <span class="t-title"><span>For New Visitors</span><span class="ar">للزوّار الجدد</span></span>
+    <span class="t-title"><span>{{ settings.welcome_title_en | default("For New Visitors") }}</span><span class="ar">{{ settings.welcome_title_ar | default("للزوّار الجدد") }}</span></span>
     <span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span>
   </div>
   <div class="panel">
     <div class="two-col">
       <div class="col-en">
-        <p>If this is your first time here — welcome. You've landed on the home of Palmetto Studios, a creative studio that uses fashion as its medium.</p>
-        <p>What you'll find on the site: the current catalog of essentials, a lookbook, and the studio's ongoing work. New collections drop episodically rather than seasonally — each one a new world rather than a new wardrobe — so the site changes shape over time. What's here today won't be what's here next time.</p>
-        <p>If you want the deeper context, the About page covers what the studio is and how it works. Otherwise, take your time, and feel free to write to us if anything catches your eye.</p>
-        <p class="signoff">— Palmetto Studios</p>
+        {% if settings.welcome_p1_en is defined and settings.welcome_p1_en %}<p>{{ settings.welcome_p1_en }}</p>{% endif %}
+        {% if settings.welcome_p2_en is defined and settings.welcome_p2_en %}<p>{{ settings.welcome_p2_en }}</p>{% endif %}
+        {% if settings.welcome_p3_en is defined and settings.welcome_p3_en %}<p>{{ settings.welcome_p3_en }}</p>{% endif %}
+        {% if settings.welcome_signoff_en is defined and settings.welcome_signoff_en %}<p class="signoff">{{ settings.welcome_signoff_en }}</p>{% endif %}
       </div>
       <div class="col-ar ar">
-        <p>إن كانت هذه زيارتك الأولى — أهلاً بك. لقد وصلت إلى موقع ستوديوهات بالميتو، استوديو إبداعي يتّخذ الأزياء وسيطَه.</p>
-        <p>ما ستجده هنا: مجموعة الأساسيات الحالية، وكتاب المظهر، والأعمال الجارية للاستوديو. المجموعات الجديدة تصدر على شكل حلقات — كلٌّ منها عالم جديد لا موسم جديد — لذا يتبدّل الموقع شكله مع الوقت. ما هو هنا اليوم ليس بالضرورة ما سيكون هنا غداً.</p>
-        <p>إن كنت تبحث عن السياق الأعمق، صفحة "عن الاستوديو" تشرح ما هو وكيف يعمل. وإلا، خذ وقتك، وتجوّل، ولا تتردّد في الكتابة إلينا إن لفتك شيء.</p>
-        <p class="signoff" style="font-style:italic;">— ستوديوهات بالميتو</p>
+        {% if settings.welcome_p1_ar is defined and settings.welcome_p1_ar %}<p>{{ settings.welcome_p1_ar }}</p>{% endif %}
+        {% if settings.welcome_p2_ar is defined and settings.welcome_p2_ar %}<p>{{ settings.welcome_p2_ar }}</p>{% endif %}
+        {% if settings.welcome_p3_ar is defined and settings.welcome_p3_ar %}<p>{{ settings.welcome_p3_ar }}</p>{% endif %}
+        {% if settings.welcome_signoff_ar is defined and settings.welcome_signoff_ar %}<p class="signoff" style="font-style:italic;">{{ settings.welcome_signoff_ar }}</p>{% endif %}
       </div>
     </div>
   </div>
@@ -321,22 +321,22 @@
 <section class="win" id="about">
   <div class="titlebar">
     <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="1" width="8" height="8" fill="#7d2a2a" stroke="#000"/><rect x="2" y="2" width="6" height="6" fill="#fff"/></svg></span>
-    <span class="t-title"><span>About Palmetto Studios</span><span class="ar">عن ستوديوهات بالميتو</span></span>
+    <span class="t-title"><span>{{ settings.about_title_en | default("About Palmetto Studios") }}</span><span class="ar">{{ settings.about_title_ar | default("عن ستوديوهات بالميتو") }}</span></span>
     <span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span>
   </div>
   <div class="panel">
     <div class="two-col">
       <div class="col-en">
-        <p>Palmetto Studios is a creative studio that uses fashion as its primary medium. Its core practice is world-building through art direction and design — each collection is an episode, a self-contained world with its own visual language, references, and lore.</p>
-        <p>The studio operates from Saudi Arabia and is built on four ideas that show up in everything it makes: nostalgia, Arabic identity, satire, and playfulness. Drops are thematic rather than seasonal — a new collection is a new world, not a new wardrobe.</p>
-        <p>Apparel is where the studio enters, not where it ends. Palmetto is built to expand into objects, collaborations, spaces, and cultural projects.</p>
-        <p style="font-family:'Times New Roman',serif; font-size:17px; font-style:italic; margin-top:18px; border-top:1px dashed #b0a890; padding-top:12px;">Most fashion brands sell product. Palmetto sells worlds. The product is how you enter them.</p>
+        {% if settings.about_p1_en is defined and settings.about_p1_en %}<p>{{ settings.about_p1_en }}</p>{% endif %}
+        {% if settings.about_p2_en is defined and settings.about_p2_en %}<p>{{ settings.about_p2_en }}</p>{% endif %}
+        {% if settings.about_p3_en is defined and settings.about_p3_en %}<p>{{ settings.about_p3_en }}</p>{% endif %}
+        {% if settings.about_quote_en is defined and settings.about_quote_en %}<p style="font-family:'Times New Roman',serif; font-size:17px; font-style:italic; margin-top:18px; border-top:1px dashed #b0a890; padding-top:12px;">{{ settings.about_quote_en }}</p>{% endif %}
       </div>
       <div class="col-ar ar">
-        <p>ستوديوهات بالميتو استوديو إبداعي يتّخذ الأزياء وسيطَه الأساسي. ممارسته الجوهرية هي بناء العوالم عبر الإخراج الفني والتصميم — كل مجموعة حلقة قائمة بذاتها، عالم مستقل بلغته البصرية ومرجعياته وحكاياته.</p>
-        <p>يعمل الاستوديو من المملكة العربية السعودية، وقائم على أربع أفكار تتجلّى في كل ما يصنعه: الحنين، والهوية العربية، والسخرية، والمرح. الإصدارات موضوعاتية لا موسمية — كل مجموعة جديدة عالمٌ جديد، لا خزانة ملابس جديدة.</p>
-        <p>الأزياء هي مدخل الاستوديو، لا منتهاه. بالميتو مبنيّ ليتوسّع في الأشياء والتعاونات والفضاءات والمشاريع الثقافية.</p>
-        <p style="font-size:20px; font-style:italic; margin-top:18px; border-top:1px dashed #b0a890; padding-top:12px;">معظم دور الأزياء تبيع منتجات. بالميتو يبيع عوالم — والمنتج هو بابك إليها.</p>
+        {% if settings.about_p1_ar is defined and settings.about_p1_ar %}<p>{{ settings.about_p1_ar }}</p>{% endif %}
+        {% if settings.about_p2_ar is defined and settings.about_p2_ar %}<p>{{ settings.about_p2_ar }}</p>{% endif %}
+        {% if settings.about_p3_ar is defined and settings.about_p3_ar %}<p>{{ settings.about_p3_ar }}</p>{% endif %}
+        {% if settings.about_quote_ar is defined and settings.about_quote_ar %}<p style="font-size:20px; font-style:italic; margin-top:18px; border-top:1px dashed #b0a890; padding-top:12px;">{{ settings.about_quote_ar }}</p>{% endif %}
       </div>
     </div>
   </div>
@@ -346,28 +346,24 @@
 <section class="win" id="meaning">
   <div class="titlebar">
     <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,1 9,5 5,9 1,5" fill="#7d2a2a" stroke="#000"/></svg></span>
-    <span class="t-title"><span>Meaning Behind: Palmetto</span><span class="ar">المعنى وراء بالميتو</span></span>
+    <span class="t-title"><span>{{ settings.meaning_title_en | default("Meaning Behind: Palmetto") }}</span><span class="ar">{{ settings.meaning_title_ar | default("المعنى وراء بالميتو") }}</span></span>
     <span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span>
   </div>
   <div class="panel">
     <div class="two-col">
       <div class="col-en">
-        <h3 style="font-size: 34px; line-height:1.05; margin-bottom: 14px;">Meaning Behind:<br>Palmetto</h3>
-        <p style="font-size:15px;">The Palmetto Tree is usually a low-growing, fan-leaved palm. The reason for choosing this as a brand name is because it represents the little kid inside of us designing, creating, and innovating through this lens. I aim to introduce playful elements, nostalgia, and a bit of satire in my design ethos, striving to create products that spark a reaction and a sense of belonging.</p>
+        {% if settings.meaning_h3_en is defined and settings.meaning_h3_en %}<h3 style="font-size: 34px; line-height:1.05; margin-bottom: 14px;">{{ settings.meaning_h3_en }}</h3>{% endif %}
+        {% if settings.meaning_p1_en is defined and settings.meaning_p1_en %}<p style="font-size:15px;">{{ settings.meaning_p1_en }}</p>{% endif %}
       </div>
       <div class="col-ar ar">
-        <h3 style="font-size: 30px; line-height:1.15; margin-bottom: 14px; font-family:'Amiri',serif; font-weight:700; font-style:normal;">المعنى وراء:<br>بالميتو</h3>
-        <p>شجرة البالميتو عادةً نخلةٌ قصيرة بأوراق مروحيّة الشكل. سبب اختيارها اسماً للعلامة هو أنّها تمثّل الطفل الصغير الذي يسكن داخلنا — يصمّم ويبتكر ويُبدع عبر هذه العدسة. أسعى إلى إدخال عناصر مرحة، والحنين، وقدر من السخرية في أسلوبي التصميمي، ساعياً لصنع منتجات تُثير ردّ فعل وإحساساً بالانتماء.</p>
+        {% if settings.meaning_h3_ar is defined and settings.meaning_h3_ar %}<h3 style="font-size: 30px; line-height:1.15; margin-bottom: 14px; font-family:'Amiri',serif; font-weight:700; font-style:normal;">{{ settings.meaning_h3_ar }}</h3>{% endif %}
+        {% if settings.meaning_p1_ar is defined and settings.meaning_p1_ar %}<p>{{ settings.meaning_p1_ar }}</p>{% endif %}
       </div>
     </div>
 
     <div style="text-align:center; margin: 26px 0 18px;">
-      <div style="font-style:italic; font-family:'Times New Roman',serif; font-size:15px; color:#222; margin-bottom: 4px;">
-        Wheel of Fortune: Symbol of Wealth in Persian Carpetry
-      </div>
-      <div class="ar" style="font-size:15px; color:#222; margin-bottom: 12px; direction:rtl;">
-        عجلة الحظّ — رمز الوفرة في فنّ السجّاد الفارسي
-      </div>
+      {% if settings.meaning_caption_en is defined and settings.meaning_caption_en %}<div style="font-style:italic; font-family:'Times New Roman',serif; font-size:15px; color:#222; margin-bottom: 4px;">{{ settings.meaning_caption_en }}</div>{% endif %}
+      {% if settings.meaning_caption_ar is defined and settings.meaning_caption_ar %}<div class="ar" style="font-size:15px; color:#222; margin-bottom: 12px; direction:rtl;">{{ settings.meaning_caption_ar }}</div>{% endif %}
       <div class="ornaments" aria-hidden="true">
         <svg width="42" height="42" viewBox="0 0 42 42" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linejoin="miter" stroke-linecap="square">
           <rect x="6" y="6" width="10" height="10"/>
@@ -414,12 +410,12 @@
 
     <div class="two-col">
       <div class="col-en">
-        <p style="font-size:15px;">The new logo is inspired by the ornaments of a Persian rug. The spiral shape in these ornaments often symbolizes the blessing of wealth and abundance. Hopefully, my brand will give you that feeling of blessing and importance.</p>
-        <p class="signoff">— Palmetto Studios</p>
+        {% if settings.meaning_p2_en is defined and settings.meaning_p2_en %}<p style="font-size:15px;">{{ settings.meaning_p2_en }}</p>{% endif %}
+        {% if settings.meaning_signoff_en is defined and settings.meaning_signoff_en %}<p class="signoff">{{ settings.meaning_signoff_en }}</p>{% endif %}
       </div>
       <div class="col-ar ar">
-        <p>الشعار الجديد مستلهَمٌ من زخارف السجّاد الفارسي. غالباً ما يرمز الشكل الحلزونيّ في هذه الزخارف إلى البركة والوفرة. آمل أن تمنحك علامتي ذلك الإحساس بالبركة والقَدْر.</p>
-        <p class="signoff" style="font-style:italic;">— ستوديوهات بالميتو</p>
+        {% if settings.meaning_p2_ar is defined and settings.meaning_p2_ar %}<p>{{ settings.meaning_p2_ar }}</p>{% endif %}
+        {% if settings.meaning_signoff_ar is defined and settings.meaning_signoff_ar %}<p class="signoff" style="font-style:italic;">{{ settings.meaning_signoff_ar }}</p>{% endif %}
       </div>
     </div>
   </div>
@@ -429,14 +425,14 @@
 <section class="win palm-archive" id="palm-collective">
   <div class="titlebar">
     <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><polygon points="5,1 9,5 5,5 5,9" fill="#2e7d32" stroke="#000"/><rect x="4" y="5" width="2" height="4" fill="#7a4f1c"/></svg></span>
-    <span class="t-title"><span>Palm Tree Collective</span><span class="ar">جمعيّة النخيل</span></span>
+    <span class="t-title"><span>{{ settings.palm_title_en | default("Palm Tree Collective") }}</span><span class="ar">{{ settings.palm_title_ar | default("جمعيّة النخيل") }}</span></span>
     <span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span>
   </div>
   <div class="panel">
     <div class="two-col">
       <div class="col-en">
-        <p>An ongoing studio archive of palm trees — photographed in the field and catalogued by number, location, and date. New entries added when something worth adding turns up.</p>
-        <p style="font-style:italic; margin-top:8px; margin-bottom:6px;">Selected entries:</p>
+        {% if settings.palm_intro_en is defined and settings.palm_intro_en %}<p>{{ settings.palm_intro_en }}</p>{% endif %}
+        {% if settings.palm_selected_en is defined and settings.palm_selected_en %}<p style="font-style:italic; margin-top:8px; margin-bottom:6px;">{{ settings.palm_selected_en }}</p>{% endif %}
         <div class="list">
           <div><span class="num">Palm No. 001</span> <span class="dots">— Khobar, 2024</span></div>
           <div><span class="num">Palm No. 002</span> <span class="dots">— Hofuf, 2024</span></div>
@@ -445,13 +441,13 @@
           <div><span class="num">Palm No. 112</span> <span class="dots">— Eastern Province, undated</span></div>
         </div>
         <div class="archive-link">
-          [ <a href="#palm-collective">View the full archive</a> ]
+          [ <a href="#palm-collective">{{ settings.palm_link_en | default("View the full archive") }}</a> ]
         </div>
-        <p class="signoff" style="text-align:center; margin-top:8px;">— Palmetto Studios</p>
+        {% if settings.palm_signoff_en is defined and settings.palm_signoff_en %}<p class="signoff" style="text-align:center; margin-top:8px;">{{ settings.palm_signoff_en }}</p>{% endif %}
       </div>
       <div class="col-ar ar">
-        <p>أرشيف مستمرّ للاستوديو يضمّ صوراً لأشجار نخيل — تُلتقط ميدانيّاً وتُفهرس بحسب الرقم والموقع والتاريخ. تُضاف الإدخالات الجديدة حين يطرأ ما يستحقّ الإضافة.</p>
-        <p style="font-style:italic; margin-top:8px; margin-bottom:6px;">مختارات من الأرشيف:</p>
+        {% if settings.palm_intro_ar is defined and settings.palm_intro_ar %}<p>{{ settings.palm_intro_ar }}</p>{% endif %}
+        {% if settings.palm_selected_ar is defined and settings.palm_selected_ar %}<p style="font-style:italic; margin-top:8px; margin-bottom:6px;">{{ settings.palm_selected_ar }}</p>{% endif %}
         <div class="list" dir="rtl" style="font-family:'Amiri',serif; font-size:16px; line-height:2;">
           <div>نخلة رقم ٠٠١ — الخبر، ٢٠٢٤</div>
           <div>نخلة رقم ٠٠٢ — الهفوف، ٢٠٢٤</div>
@@ -459,8 +455,8 @@
           <div>نخلة رقم ٠٤٧ — الرياض، ٢٠٢٤</div>
           <div>نخلة رقم ١١٢ — المنطقة الشرقية، غير مؤرّخة</div>
         </div>
-        <div class="archive-link" style="font-family:'Amiri',serif;">[ <a href="#palm-collective">تصفّح الأرشيف الكامل</a> ]</div>
-        <p class="signoff" style="text-align:center; font-style:italic; margin-top:8px;">— ستوديوهات بالميتو</p>
+        <div class="archive-link" style="font-family:'Amiri',serif;">[ <a href="#palm-collective">{{ settings.palm_link_ar | default("تصفّح الأرشيف الكامل") }}</a> ]</div>
+        {% if settings.palm_signoff_ar is defined and settings.palm_signoff_ar %}<p class="signoff" style="text-align:center; font-style:italic; margin-top:8px;">{{ settings.palm_signoff_ar }}</p>{% endif %}
       </div>
     </div>
     <div class="photos" aria-label="Palm photo archive (placeholders)">
@@ -471,7 +467,7 @@
       <div class="photo"><div class="cap"><span>No. 112</span><span>E. Province · n.d.</span></div></div>
       <div class="photo"><div class="cap"><span>No. ___</span><span>[ pending ]</span></div></div>
     </div>
-    <p style="text-align:center; font-family:'Courier New', monospace; font-size:11px; color:#5a5037; margin-top:12px;">[ photos pending — Aziz to deliver 6–9 entries · placeholder striped frames shown above ]</p>
+    {% if settings.palm_note is defined and settings.palm_note %}<p style="text-align:center; font-family:'Courier New', monospace; font-size:11px; color:#5a5037; margin-top:12px;">{{ settings.palm_note }}</p>{% endif %}
   </div>
 </section>
 
@@ -479,7 +475,7 @@
 <section class="win" id="carpets">
   <div class="titlebar">
     <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="2" width="8" height="6" fill="#7d2a2a" stroke="#000"/><line x1="1" y1="4" x2="9" y2="4" stroke="#fff"/><line x1="1" y1="6" x2="9" y2="6" stroke="#fff"/></svg></span>
-    <span class="t-title"><span>{{ settings.carpets_title | default("The Carpets") }}</span><span class="ar">السجّاد</span></span>
+    <span class="t-title"><span>{{ settings.carpets_title | default("The Carpets") }}</span><span class="ar">{{ settings.carpets_title_ar | default("\u0627\u0644\u0633\u062c\u0651\u0627\u062f") }}</span></span>
     <span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span>
   </div>
   <div class="panel">
@@ -489,7 +485,7 @@
         <p>{{ settings.carpets_intro_en | default("A small collection of carpet designs by the studio — woven, room-scale, made to order. Each piece carries its own concept. If something catches you, write to us and we'll take it from there.") }}</p>
       </div>
       <div class="col-ar ar" style="font-size:15px; line-height:1.6;">
-        <h3 style="margin-bottom:10px; font-family:'Amiri',serif; font-weight:700;">السجّاد</h3>
+        <h3 style="margin-bottom:10px; font-family:'Amiri',serif; font-weight:700;">{{ settings.carpets_title_ar | default("\u0627\u0644\u0633\u062c\u0651\u0627\u062f") }}</h3>
         <p>{{ settings.carpets_intro_ar | default("مجموعة من تصاميم السجّاد من الاستوديو — منسوجة، بحجم الغرفة، تُصنع حسب الطلب. كل قطعة تحمل مفهومها الخاص. إن لفتك واحدة منها، اكتب إلينا وسنأخذ الأمر من هناك.") }}</p>
       </div>
     </div>
@@ -631,11 +627,11 @@
     <div class="two-col" style="margin-top:22px; padding-top:14px; border-top:1px dashed #b0a890;">
       <div class="col-en">
         <p style="margin:0;">{{ settings.carpets_cta_en | default("Made to order. Inquire at <a href=\"mailto:palmetto.sa@gmail.com\">palmetto.sa@gmail.com</a>.") }}</p>
-        <p class="signoff" style="margin-top:6px;">— Palmetto Studios</p>
+        {% if settings.carpets_signoff_en is defined and settings.carpets_signoff_en %}<p class="signoff" style="margin-top:6px;">{{ settings.carpets_signoff_en }}</p>{% endif %}
       </div>
       <div class="col-ar ar" style="font-size:15px; line-height:1.5;">
         <p style="margin:0;">{{ settings.carpets_cta_ar | default("تُصنع حسب الطلب. للاستفسار: palmetto.sa@gmail.com") }}</p>
-        <p class="signoff" style="font-style:italic; margin-top:6px;">— ستوديوهات بالميتو</p>
+        {% if settings.carpets_signoff_ar is defined and settings.carpets_signoff_ar %}<p class="signoff" style="font-style:italic; margin-top:6px;">{{ settings.carpets_signoff_ar }}</p>{% endif %}
       </div>
     </div>
   </div>
@@ -645,7 +641,7 @@
 <section class="win size-guide" id="sizing">
   <div class="titlebar">
     <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="3" width="8" height="4" fill="#f4d56a" stroke="#000"/></svg></span>
-    <span class="t-title"><span>Size Guide</span><span class="ar">دليل المقاسات</span></span>
+    <span class="t-title"><span>{{ settings.sizing_title_en | default("Size Guide") }}</span><span class="ar">{{ settings.sizing_title_ar | default("دليل المقاسات") }}</span></span>
     <span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span>
   </div>
   <div class="panel">
@@ -672,13 +668,13 @@
           </svg>
         </div>
         <div class="legend">
-          A — Chest (pit to pit, ½)<br>
-          B — Body length (shoulder → hem)<br>
-          C — Sleeve (shoulder seam → cuff)
+          A — Chest (pit to pit, &frac12;)<br>
+          B — Body length (shoulder &rarr; hem)<br>
+          C — Sleeve (shoulder seam &rarr; cuff)
         </div>
       </div>
       <div>
-        <p style="margin-top:0;">Apparel is unisex, oversized fit, with dropped shoulders. For a more fitted look, size down. If you're between sizes, size up.</p>
+        {% if settings.sizing_intro_en is defined and settings.sizing_intro_en %}<p style="margin-top:0;">{{ settings.sizing_intro_en }}</p>{% endif %}
         <table class="size-table" aria-label="Size chart in centimetres and inches">
           <thead>
             <tr><th>Size</th><th>A — Chest</th><th>B — Length</th><th>C — Sleeve</th></tr>
@@ -692,14 +688,14 @@
             <tr><td class="size">XXL</td> <td>71 cm <span class="imp">/ 28.0″</span></td>  <td>81 cm <span class="imp">/ 31.9″</span></td>  <td>21 cm <span class="imp">/ 8.3″</span></td></tr>
           </tbody>
         </table>
-        <div class="footnote">Measurements may vary by 1–2 cm. Sleeve measured from the dropped shoulder seam — values reflect the cut, not arm length.</div>
-        <p style="margin-top:14px;">If anything's unclear, write to us — we'll help you figure it out.</p>
-        <p class="signoff">— Palmetto Studios</p>
+        {% if settings.sizing_footnote_en is defined and settings.sizing_footnote_en %}<div class="footnote">{{ settings.sizing_footnote_en }}</div>{% endif %}
+        {% if settings.sizing_closing_en is defined and settings.sizing_closing_en %}<p style="margin-top:14px;">{{ settings.sizing_closing_en }}</p>{% endif %}
+        {% if settings.sizing_signoff_en is defined and settings.sizing_signoff_en %}<p class="signoff">{{ settings.sizing_signoff_en }}</p>{% endif %}
 
         <hr style="border:none; border-top:1px dashed #b0a890; margin:18px 0;">
 
         <div class="ar">
-          <p style="margin-top:0;">الملابس بقصّة فضفاضة (أوفرسايز) للجنسَين، بأكتاف منسدلة. إن كنت تفضّل قصّةً أضيق، انزل مقاساً. إن كنت بين مقاسَين، اصعد مقاساً.</p>
+          {% if settings.sizing_intro_ar is defined and settings.sizing_intro_ar %}<p style="margin-top:0;">{{ settings.sizing_intro_ar }}</p>{% endif %}
           <table class="size-table" dir="rtl" aria-label="جدول المقاسات">
             <thead>
               <tr><th>المقاس</th><th>A — الصدر</th><th>B — الطول</th><th>C — الكُمّ</th></tr>
@@ -713,9 +709,9 @@
               <tr><td class="size">XXL</td> <td>٧١ سم</td>  <td>٨١ سم</td>  <td>٢١ سم</td></tr>
             </tbody>
           </table>
-          <div class="footnote" style="font-size:13px;">قد تتفاوت المقاسات بمقدار ١–٢ سم.</div>
-          <p style="margin-top:10px;">إن كان لديك أي استفسار حول المقاس، اكتب إلينا وسنساعدك.</p>
-          <p class="signoff" style="font-style:italic;">— ستوديوهات بالميتو</p>
+          {% if settings.sizing_footnote_ar is defined and settings.sizing_footnote_ar %}<div class="footnote" style="font-size:13px;">{{ settings.sizing_footnote_ar }}</div>{% endif %}
+          {% if settings.sizing_closing_ar is defined and settings.sizing_closing_ar %}<p style="margin-top:10px;">{{ settings.sizing_closing_ar }}</p>{% endif %}
+          {% if settings.sizing_signoff_ar is defined and settings.sizing_signoff_ar %}<p class="signoff" style="font-style:italic;">{{ settings.sizing_signoff_ar }}</p>{% endif %}
         </div>
       </div>
     </div>
@@ -726,36 +722,36 @@
 <section class="win" id="shipping">
   <div class="titlebar">
     <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="3" width="6" height="4" fill="#fff" stroke="#000"/><circle cx="3" cy="8" r="1" fill="#000"/><circle cx="7" cy="8" r="1" fill="#000"/></svg></span>
-    <span class="t-title"><span>Shipping</span><span class="ar">الشحن</span></span>
+    <span class="t-title"><span>{{ settings.shipping_title_en | default("Shipping") }}</span><span class="ar">{{ settings.shipping_title_ar | default("الشحن") }}</span></span>
     <span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span>
   </div>
   <div class="panel">
     <div class="two-col">
       <div class="col-en">
-        <p style="margin-top:0;">Palmetto ships worldwide.</p>
+        {% if settings.shipping_intro_en is defined and settings.shipping_intro_en %}<p style="margin-top:0;">{{ settings.shipping_intro_en }}</p>{% endif %}
         <div class="ship-row">
-          <div class="tag">Saudi Arabia</div>
-          <div>Orders ship within <b>1–2 business days</b> and arrive within <b>2–5 business days</b> depending on your city. <b>Free domestic shipping</b> on orders over <b>350 SAR</b>.</div>
+          <div class="tag">{{ settings.shipping_sa_tag_en | default("Saudi Arabia") }}</div>
+          <div>{{ settings.shipping_sa_content_en | default('Orders ship within <b>1\u20132 business days</b> and arrive within <b>2\u20135 business days</b> depending on your city. <b>Free domestic shipping</b> on orders over <b>350 SAR</b>.') }}</div>
         </div>
         <div class="ship-row">
-          <div class="tag">International</div>
-          <div>Rates and delivery times vary by destination and shipping method. Both are calculated at checkout, so you'll see the full cost before you pay.</div>
+          <div class="tag">{{ settings.shipping_intl_tag_en | default("International") }}</div>
+          <div>{{ settings.shipping_intl_content_en | default('Rates and delivery times vary by destination and shipping method. Both are calculated at checkout, so you\'ll see the full cost before you pay.') }}</div>
         </div>
-        <p>If your order hasn't arrived in the expected window, write to us and we'll track it down.</p>
-        <p class="signoff">— Palmetto Studios</p>
+        {% if settings.shipping_closing_en is defined and settings.shipping_closing_en %}<p>{{ settings.shipping_closing_en }}</p>{% endif %}
+        {% if settings.shipping_signoff_en is defined and settings.shipping_signoff_en %}<p class="signoff">{{ settings.shipping_signoff_en }}</p>{% endif %}
       </div>
       <div class="col-ar ar" style="font-size:15px; line-height:1.5;">
-        <p style="margin-top:0;">بالميتو يشحن إلى جميع أنحاء العالم.</p>
+        {% if settings.shipping_intro_ar is defined and settings.shipping_intro_ar %}<p style="margin-top:0;">{{ settings.shipping_intro_ar }}</p>{% endif %}
         <div class="ship-row" style="grid-template-columns: 130px 1fr; direction:rtl;">
-          <div class="tag" style="font-family:'Amiri',serif; font-size:13px; line-height:1.2; font-weight:400;">المملكة العربية السعودية</div>
-          <div style="font-size:15px; line-height:1.5; font-weight:400;">تُشحن الطلبات خلال يوم إلى يومَي عمل، وتصل خلال يومَين إلى خمسة أيام عمل بحسب مدينتك. الشحن الداخلي مجّاني للطلبات التي تتجاوز ٣٥٠ ريال.</div>
+          <div class="tag" style="font-family:'Amiri',serif; font-size:13px; line-height:1.2; font-weight:400;">{{ settings.shipping_sa_tag_ar | default("\u0627\u0644\u0645\u0645\u0644\u0643\u0629 \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u0627\u0644\u0633\u0639\u0648\u062f\u064a\u0629") }}</div>
+          <div style="font-size:15px; line-height:1.5; font-weight:400;">{{ settings.shipping_sa_content_ar | default("\u062a\u064f\u0634\u062d\u0646 \u0627\u0644\u0637\u0644\u0628\u0627\u062a \u062e\u0644\u0627\u0644 \u064a\u0648\u0645 \u0625\u0644\u0649 \u064a\u0648\u0645\u064e\u064a \u0639\u0645\u0644\u060c \u0648\u062a\u0635\u0644 \u062e\u0644\u0627\u0644 \u064a\u0648\u0645\u064e\u064a\u0646 \u0625\u0644\u0649 \u062e\u0645\u0633\u0629 \u0623\u064a\u0627\u0645 \u0639\u0645\u0644 \u0628\u062d\u0633\u0628 \u0645\u062f\u064a\u0646\u062a\u0643. \u0627\u0644\u0634\u062d\u0646 \u0627\u0644\u062f\u0627\u062e\u0644\u064a \u0645\u062c\u0651\u0627\u0646\u064a \u0644\u0644\u0637\u0644\u0628\u0627\u062a \u0627\u0644\u062a\u064a \u062a\u062a\u062c\u0627\u0648\u0632 \u0663\u0665\u0660 \u0631\u064a\u0627\u0644.") }}</div>
         </div>
         <div class="ship-row" style="grid-template-columns: 130px 1fr; direction:rtl;">
-          <div class="tag" style="font-family:'Amiri',serif; font-size:13px; line-height:1.2; font-weight:400;">الشحن الدولي</div>
-          <div style="font-size:15px; line-height:1.5; font-weight:400;">تختلف الرسوم وأوقات التوصيل بحسب الوجهة وطريقة الشحن. تُحتسب جميعها عند إتمام الطلب، لتكون الكلفة كاملةً واضحةً قبل الدفع.</div>
+          <div class="tag" style="font-family:'Amiri',serif; font-size:13px; line-height:1.2; font-weight:400;">{{ settings.shipping_intl_tag_ar | default("\u0627\u0644\u0634\u062d\u0646 \u0627\u0644\u062f\u0648\u0644\u064a") }}</div>
+          <div style="font-size:15px; line-height:1.5; font-weight:400;">{{ settings.shipping_intl_content_ar | default("\u062a\u062e\u062a\u0644\u0641 \u0627\u0644\u0631\u0633\u0648\u0645 \u0648\u0623\u0648\u0642\u0627\u062a \u0627\u0644\u062a\u0648\u0635\u064a\u0644 \u0628\u062d\u0633\u0628 \u0627\u0644\u0648\u062c\u0647\u0629 \u0648\u0637\u0631\u064a\u0642\u0629 \u0627\u0644\u0634\u062d\u0646. \u062a\u064f\u062d\u062a\u0633\u0628 \u062c\u0645\u064a\u0639\u0647\u0627 \u0639\u0646\u062f \u0625\u062a\u0645\u0627\u0645 \u0627\u0644\u0637\u0644\u0628\u060c \u0644\u062a\u0643\u0648\u0646 \u0627\u0644\u0643\u0644\u0641\u0629 \u0643\u0627\u0645\u0644\u0629\u064b \u0648\u0627\u0636\u062d\u0629\u064b \u0642\u0628\u0644 \u0627\u0644\u062f\u0641\u0639.") }}</div>
         </div>
-        <p style="font-weight:400;">إن لم يصل طلبك خلال المدة المتوقّعة، لا تتردّد في الكتابة إلينا وسنتتبّعه لك.</p>
-        <p class="signoff" style="font-style:italic; font-weight:400;">— ستوديوهات بالميتو</p>
+        {% if settings.shipping_closing_ar is defined and settings.shipping_closing_ar %}<p style="font-weight:400;">{{ settings.shipping_closing_ar }}</p>{% endif %}
+        {% if settings.shipping_signoff_ar is defined and settings.shipping_signoff_ar %}<p class="signoff" style="font-style:italic; font-weight:400;">{{ settings.shipping_signoff_ar }}</p>{% endif %}
       </div>
     </div>
   </div>
@@ -765,22 +761,22 @@
 <section class="win" id="returns">
   <div class="titlebar">
     <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><polygon points="2,5 5,2 5,4 8,4 8,8 5,8 5,8" fill="none" stroke="#000"/></svg></span>
-    <span class="t-title"><span>Returns</span><span class="ar">الإرجاع</span></span>
+    <span class="t-title"><span>{{ settings.returns_title_en | default("Returns") }}</span><span class="ar">{{ settings.returns_title_ar | default("الإرجاع") }}</span></span>
     <span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span>
   </div>
   <div class="panel">
     <div class="two-col">
       <div class="col-en">
-        <p style="margin-top:0;">Returns are available for orders shipped within Saudi Arabia.</p>
-        <p>You have <b>30 days</b> from the date your order arrives to return it. Items must be unworn, unwashed, with original tags attached. Return shipping is on us — write to us and we'll arrange the pickup. Refunds are processed within 5–7 business days of the item arriving back at the studio.</p>
-        <p><b>International orders are final sale.</b> If something arrives damaged or incorrect, write to us and we'll make it right.</p>
-        <p class="signoff">— Palmetto Studios</p>
+        {% if settings.returns_p1_en is defined and settings.returns_p1_en %}<p style="margin-top:0;">{{ settings.returns_p1_en }}</p>{% endif %}
+        {% if settings.returns_p2_en is defined and settings.returns_p2_en %}<p>{{ settings.returns_p2_en }}</p>{% endif %}
+        {% if settings.returns_p3_en is defined and settings.returns_p3_en %}<p>{{ settings.returns_p3_en }}</p>{% endif %}
+        {% if settings.returns_signoff_en is defined and settings.returns_signoff_en %}<p class="signoff">{{ settings.returns_signoff_en }}</p>{% endif %}
       </div>
       <div class="col-ar ar">
-        <p style="margin-top:0;">تتوفّر خدمة الإرجاع للطلبات داخل المملكة العربية السعودية.</p>
-        <p>لديك ثلاثون يوماً من تاريخ استلامك للطلب لإرجاعه. يجب أن تكون القطعة غير مستخدمة وغير مغسولة، مع بطاقاتها الأصلية. شحن الإرجاع علينا — اكتب إلينا وسنتولّى ترتيب الاستلام. تُعالَج عمليات استرداد المبلغ خلال خمسة إلى سبعة أيام عمل من وصول القطعة إلى الاستوديو.</p>
-        <p>الطلبات الدولية نهائية وغير قابلة للإرجاع. إن وصلك طلب تالف أو غير صحيح، اكتب إلينا وسنُصلح الأمر.</p>
-        <p class="signoff" style="font-style:italic;">— ستوديوهات بالميتو</p>
+        {% if settings.returns_p1_ar is defined and settings.returns_p1_ar %}<p style="margin-top:0;">{{ settings.returns_p1_ar }}</p>{% endif %}
+        {% if settings.returns_p2_ar is defined and settings.returns_p2_ar %}<p>{{ settings.returns_p2_ar }}</p>{% endif %}
+        {% if settings.returns_p3_ar is defined and settings.returns_p3_ar %}<p>{{ settings.returns_p3_ar }}</p>{% endif %}
+        {% if settings.returns_signoff_ar is defined and settings.returns_signoff_ar %}<p class="signoff" style="font-style:italic;">{{ settings.returns_signoff_ar }}</p>{% endif %}
       </div>
     </div>
   </div>
@@ -790,46 +786,46 @@
 <section class="win" id="contact">
   <div class="titlebar">
     <span class="tb-btn"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="2" width="8" height="3" rx="1" fill="#222" stroke="#000"/><rect x="1" y="5" width="8" height="3" fill="#ddd" stroke="#000"/></svg></span>
-    <span class="t-title"><span>Contact</span><span class="ar">التواصل</span></span>
+    <span class="t-title"><span>{{ settings.contact_title_en | default("Contact") }}</span><span class="ar">{{ settings.contact_title_ar | default("التواصل") }}</span></span>
     <span class="tb-btn">_</span><span class="tb-btn">▢</span><span class="tb-btn">✕</span>
   </div>
   <div class="panel">
     <div class="two-col">
       <div class="col-en">
-        <p style="margin-top:0;">For inquiries, collaborations, and anything else — get in touch.</p>
+        {% if settings.contact_intro_en is defined and settings.contact_intro_en %}<p style="margin-top:0;">{{ settings.contact_intro_en }}</p>{% endif %}
         <div class="contact-grid" style="grid-template-columns:1fr;">
           <div class="field-row" style="grid-template-columns:90px 1fr;">
             <div class="lbl">Email:</div>
-            <div class="val"><a href="mailto:palmetto.sa@gmail.com">palmetto.sa@gmail.com</a></div>
+            <div class="val"><a href="mailto:{{ settings.contact_email | default('palmetto.sa@gmail.com') }}">{{ settings.contact_email | default('palmetto.sa@gmail.com') }}</a></div>
           </div>
           <div class="field-row" style="grid-template-columns:90px 1fr;">
             <div class="lbl">Instagram:</div>
-            <div class="val"><a href="https://instagram.com/palmetto.studios" target="_blank" rel="noopener">@palmetto.studios</a></div>
+            <div class="val"><a href="{{ settings.contact_instagram | default('https://instagram.com/palmetto.studios') }}" target="_blank" rel="noopener">{{ settings.contact_instagram | default('https://instagram.com/palmetto.studios') | replace("https://instagram.com/", "@") }}</a></div>
           </div>
           <div class="field-row" style="grid-template-columns:90px 1fr;">
             <div class="lbl">Studio:</div>
-            <div class="val">Khobar, Saudi Arabia</div>
+            <div class="val">{{ settings.contact_studio_en | default("Khobar, Saudi Arabia") }}</div>
           </div>
         </div>
-        <p class="signoff">— Palmetto Studios</p>
+        {% if settings.contact_signoff_en is defined and settings.contact_signoff_en %}<p class="signoff">{{ settings.contact_signoff_en }}</p>{% endif %}
       </div>
       <div class="col-ar ar">
-        <p style="margin-top:0;">للاستفسارات والتعاونات وكل ما عدا ذلك — لا تتردّد في الكتابة إلينا.</p>
+        {% if settings.contact_intro_ar is defined and settings.contact_intro_ar %}<p style="margin-top:0;">{{ settings.contact_intro_ar }}</p>{% endif %}
         <div class="contact-grid" style="grid-template-columns:1fr; direction:rtl;">
           <div class="field-row" style="grid-template-columns:120px 1fr;">
             <div class="lbl" style="text-align:left;">البريد الإلكتروني:</div>
-            <div class="val">palmetto.sa@gmail.com</div>
+            <div class="val">{{ settings.contact_email | default('palmetto.sa@gmail.com') }}</div>
           </div>
           <div class="field-row" style="grid-template-columns:120px 1fr;">
             <div class="lbl" style="text-align:left;">إنستغرام:</div>
-            <div class="val">‎@palmetto.studios</div>
+            <div class="val">{{ settings.contact_instagram | default('https://instagram.com/palmetto.studios') | replace("https://instagram.com/", "@") }}</div>
           </div>
           <div class="field-row" style="grid-template-columns:120px 1fr;">
             <div class="lbl" style="text-align:left;">الاستوديو:</div>
-            <div class="val">الخبر، المملكة العربية السعودية</div>
+            <div class="val">{{ settings.contact_studio_ar | default("\u0627\u0644\u062e\u0628\u0631\u060c \u0627\u0644\u0645\u0645\u0644\u0643\u0629 \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u0627\u0644\u0633\u0639\u0648\u062f\u064a\u0629") }}</div>
           </div>
         </div>
-        <p class="signoff" style="font-style:italic;">— ستوديوهات بالميتو</p>
+        {% if settings.contact_signoff_ar is defined and settings.contact_signoff_ar %}<p class="signoff" style="font-style:italic;">{{ settings.contact_signoff_ar }}</p>{% endif %}
       </div>
     </div>
   </div>

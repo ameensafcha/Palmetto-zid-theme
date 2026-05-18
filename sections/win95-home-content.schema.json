@@ -11,26 +11,291 @@
     },
     {
       "type": "text",
+      "id": "welcome_title_en",
+      "label": { "en": "[Section 1] Welcome Title (English)" },
+      "default": "For New Visitors"
+    },
+    {
+      "type": "text",
+      "id": "welcome_title_ar",
+      "label": { "en": "[Section 1] Welcome Title (Arabic)" },
+      "default": "للزوّار الجدد"
+    },
+    {
+      "type": "textarea",
+      "id": "welcome_p1_en",
+      "label": { "en": "[Section 1] Paragraph 1 (English)" },
+      "default": "If this is your first time here — welcome. You've landed on the home of Palmetto Studios, a creative studio that uses fashion as its medium."
+    },
+    {
+      "type": "textarea",
+      "id": "welcome_p2_en",
+      "label": { "en": "[Section 1] Paragraph 2 (English)" },
+      "default": "What you'll find on the site: the current catalog of essentials, a lookbook, and the studio's ongoing work. New collections drop episodically rather than seasonally — each one a new world rather than a new wardrobe — so the site changes shape over time. What's here today won't be what's here next time."
+    },
+    {
+      "type": "textarea",
+      "id": "welcome_p3_en",
+      "label": { "en": "[Section 1] Paragraph 3 (English)" },
+      "default": "If you want the deeper context, the About page covers what the studio is and how it works. Otherwise, take your time, and feel free to write to us if anything catches your eye."
+    },
+    {
+      "type": "text",
+      "id": "welcome_signoff_en",
+      "label": { "en": "[Section 1] Welcome Signoff (English)" },
+      "default": "— Palmetto Studios"
+    },
+    {
+      "type": "textarea",
+      "id": "welcome_p1_ar",
+      "label": { "en": "[Section 1] Paragraph 1 (Arabic)" },
+      "default": "إن كانت هذه زيارتك الأولى — أهلاً بك. لقد وصلت إلى موقع ستوديوهات بالميتو، استوديو إبداعي يتّخذ الأزياء وسيطَه."
+    },
+    {
+      "type": "textarea",
+      "id": "welcome_p2_ar",
+      "label": { "en": "[Section 1] Paragraph 2 (Arabic)" },
+      "default": "ما ستجده هنا: مجموعة الأساسيات الحالية، وكتاب المظهر، والأعمال الجارية للاستوديو. المجموعات الجديدة تصدر على شكل حلقات — كلٌّ منها عالم جديد لا موسم جديد — لذا يتبدّل الموقع شكله مع الوقت. ما هو هنا اليوم ليس بالضرورة ما سيكون هنا غداً."
+    },
+    {
+      "type": "textarea",
+      "id": "welcome_p3_ar",
+      "label": { "en": "[Section 1] Paragraph 3 (Arabic)" },
+      "default": "إن كنت تبحث عن السياق الأعمق، صفحة \"عن الاستوديو\" تشرح ما هو وكيف يعمل. وإلا، خذ وقتك، وتجوّل، ولا تتردّد في الكتابة إلينا إن لفتك شيء."
+    },
+    {
+      "type": "text",
+      "id": "welcome_signoff_ar",
+      "label": { "en": "[Section 1] Welcome Signoff (Arabic)" },
+      "default": "— ستوديوهات بالميتو"
+    },
+    {
+      "type": "text",
+      "id": "about_title_en",
+      "label": { "en": "[Section 2] About Title (English)" },
+      "default": "About Palmetto Studios"
+    },
+    {
+      "type": "text",
+      "id": "about_title_ar",
+      "label": { "en": "[Section 2] About Title (Arabic)" },
+      "default": "عن ستوديوهات بالميتو"
+    },
+    {
+      "type": "textarea",
+      "id": "about_p1_en",
+      "label": { "en": "[Section 2] Paragraph 1 (English)" },
+      "default": "Palmetto Studios is a creative studio that uses fashion as its primary medium. Its core practice is world-building through art direction and design — each collection is an episode, a self-contained world with its own visual language, references, and lore."
+    },
+    {
+      "type": "textarea",
+      "id": "about_p2_en",
+      "label": { "en": "[Section 2] Paragraph 2 (English)" },
+      "default": "The studio operates from Saudi Arabia and is built on four ideas that show up in everything it makes: nostalgia, Arabic identity, satire, and playfulness. Drops are thematic rather than seasonal — a new collection is a new world, not a new wardrobe."
+    },
+    {
+      "type": "textarea",
+      "id": "about_p3_en",
+      "label": { "en": "[Section 2] Paragraph 3 (English)" },
+      "default": "Apparel is where the studio enters, not where it ends. Palmetto is built to expand into objects, collaborations, spaces, and cultural projects."
+    },
+    {
+      "type": "textarea",
+      "id": "about_quote_en",
+      "label": { "en": "[Section 2] Quote (English)" },
+      "default": "Most fashion brands sell product. Palmetto sells worlds. The product is how you enter them."
+    },
+    {
+      "type": "textarea",
+      "id": "about_p1_ar",
+      "label": { "en": "[Section 2] Paragraph 1 (Arabic)" },
+      "default": "ستوديوهات بالميتو استوديو إبداعي يتّخذ الأزياء وسيطَه الأساسي. ممارسته الجوهرية هي بناء العوالم عبر الإخراج الفني والتصميم — كل مجموعة حلقة قائمة بذاتها، عالم مستقل بلغته البصرية ومرجعياته وحكاياته."
+    },
+    {
+      "type": "textarea",
+      "id": "about_p2_ar",
+      "label": { "en": "[Section 2] Paragraph 2 (Arabic)" },
+      "default": "يعمل الاستوديو من المملكة العربية السعودية، وقائم على أربع أفكار تتجلّى في كل ما يصنعه: الحنين، والهوية العربية، والسخرية، والمرح. الإصدارات موضوعاتية لا موسمية — كل مجموعة جديدة عالمٌ جديد، لا خزانة ملابس جديدة."
+    },
+    {
+      "type": "textarea",
+      "id": "about_p3_ar",
+      "label": { "en": "[Section 2] Paragraph 3 (Arabic)" },
+      "default": "الأزياء هي مدخل الاستوديو، لا منتهاه. بالميتو مبنيّ ليتوسّع في الأشياء والتعاونات والفضاءات والمشاريع الثقافية."
+    },
+    {
+      "type": "textarea",
+      "id": "about_quote_ar",
+      "label": { "en": "[Section 2] Quote (Arabic)" },
+      "default": "معظم دور الأزياء تبيع منتجات. بالميتو يبيع عوالم — والمنتج هو بابك إليها."
+    },
+
+    {
+      "type": "text",
+      "id": "meaning_title_en",
+      "label": { "en": "[Section 3] Meaning Title (English)" },
+      "default": "Meaning Behind: Palmetto"
+    },
+    {
+      "type": "text",
+      "id": "meaning_title_ar",
+      "label": { "en": "[Section 3] Meaning Title (Arabic)" },
+      "default": "المعنى وراء بالميتو"
+    },
+    {
+      "type": "text",
+      "id": "meaning_h3_en",
+      "label": { "en": "[Section 3] Heading (English)" },
+      "default": "Meaning Behind:<br>Palmetto"
+    },
+    {
+      "type": "text",
+      "id": "meaning_h3_ar",
+      "label": { "en": "[Section 3] Heading (Arabic)" },
+      "default": "المعنى وراء:<br>بالميتو"
+    },
+    {
+      "type": "textarea",
+      "id": "meaning_p1_en",
+      "label": { "en": "[Section 3] Paragraph 1 (English)" },
+      "default": "The Palmetto Tree is usually a low-growing, fan-leaved palm. The reason for choosing this as a brand name is because it represents the little kid inside of us designing, creating, and innovating through this lens. I aim to introduce playful elements, nostalgia, and a bit of satire in my design ethos, striving to create products that spark a reaction and a sense of belonging."
+    },
+    {
+      "type": "text",
+      "id": "meaning_caption_en",
+      "label": { "en": "[Section 3] Ornament Caption (English)" },
+      "default": "Wheel of Fortune: Symbol of Wealth in Persian Carpetry"
+    },
+    {
+      "type": "text",
+      "id": "meaning_caption_ar",
+      "label": { "en": "[Section 3] Ornament Caption (Arabic)" },
+      "default": "عجلة الحظّ — رمز الوفرة في فنّ السجّاد الفارسي"
+    },
+    {
+      "type": "textarea",
+      "id": "meaning_p2_en",
+      "label": { "en": "[Section 3] Paragraph 2 (English)" },
+      "default": "The new logo is inspired by the ornaments of a Persian rug. The spiral shape in these ornaments often symbolizes the blessing of wealth and abundance. Hopefully, my brand will give you that feeling of blessing and importance."
+    },
+    {
+      "type": "text",
+      "id": "meaning_signoff_en",
+      "label": { "en": "[Section 3] Signoff (English)" },
+      "default": "— Palmetto Studios"
+    },
+    {
+      "type": "textarea",
+      "id": "meaning_p1_ar",
+      "label": { "en": "[Section 3] Paragraph 1 (Arabic)" },
+      "default": "شجرة البالميتو عادةً نخلةٌ قصيرة بأوراق مروحيّة الشكل. سبب اختيارها اسماً للعلامة هو أنّها تمثّل الطفل الصغير الذي يسكن داخلنا — يصمّم ويبتكر ويُبدع عبر هذه العدسة. أسعى إلى إدخال عناصر مرحة، والحنين، وقدر من السخرية في أسلوبي التصميمي، ساعياً لصنع منتجات تُثير ردّ فعل وإحساساً بالانتماء."
+    },
+    {
+      "type": "textarea",
+      "id": "meaning_p2_ar",
+      "label": { "en": "[Section 3] Paragraph 2 (Arabic)" },
+      "default": "الشعار الجديد مستلهَمٌ من زخارف السجّاد الفارسي. غالباً ما يرمز الشكل الحلزونيّ في هذه الزخارف إلى البركة والوفرة. آمل أن تمنحك علامتي ذلك الإحساس بالبركة والقَدْر."
+    },
+    {
+      "type": "text",
+      "id": "meaning_signoff_ar",
+      "label": { "en": "[Section 3] Signoff (Arabic)" },
+      "default": "— ستوديوهات بالميتو"
+    },
+    {
+      "type": "text",
+      "id": "palm_title_en",
+      "label": { "en": "[Section 4] Palm Title (English)" },
+      "default": "Palm Tree Collective"
+    },
+    {
+      "type": "text",
+      "id": "palm_title_ar",
+      "label": { "en": "[Section 4] Palm Title (Arabic)" },
+      "default": "جمعيّة النخيل"
+    },
+    {
+      "type": "textarea",
+      "id": "palm_intro_en",
+      "label": { "en": "[Section 4] Intro (English)" },
+      "default": "An ongoing studio archive of palm trees — photographed in the field and catalogued by number, location, and date. New entries added when something worth adding turns up."
+    },
+    {
+      "type": "text",
+      "id": "palm_selected_en",
+      "label": { "en": "[Section 4] Selected Label (English)" },
+      "default": "Selected entries:"
+    },
+    {
+      "type": "text",
+      "id": "palm_link_en",
+      "label": { "en": "[Section 4] Archive Link Text (English)" },
+      "default": "View the full archive"
+    },
+    {
+      "type": "textarea",
+      "id": "palm_note",
+      "label": { "en": "[Section 4] Photos Note" },
+      "default": "[ photos pending — Aziz to deliver 6\u20139 entries \u00b7 placeholder striped frames shown above ]"
+    },
+    {
+      "type": "text",
+      "id": "palm_signoff_en",
+      "label": { "en": "[Section 4] Signoff (English)" },
+      "default": "\u2014 Palmetto Studios"
+    },
+    {
+      "type": "textarea",
+      "id": "palm_intro_ar",
+      "label": { "en": "[Section 4] Intro (Arabic)" },
+      "default": "\u0623\u0631\u0634\u064a\u0641 \u0645\u0633\u062a\u0645\u0631\u0651 \u0644\u0644\u0627\u0633\u062a\u0648\u062f\u064a\u0648 \u064a\u0636\u0645\u0651 \u0635\u0648\u0631\u0627\u064b \u0644\u0623\u0634\u062c\u0627\u0631 \u0646\u062e\u064a\u0644 \u2014 \u062a\u064f\u0644\u062a\u0642\u0637 \u0645\u064a\u062f\u0627\u0646\u064a\u0651\u0627\u064b \u0648\u062a\u064f\u0641\u0647\u0631\u0633 \u0628\u062d\u0633\u0628 \u0627\u0644\u0631\u0642\u0645 \u0648\u0627\u0644\u0645\u0648\u0642\u0639 \u0648\u0627\u0644\u062a\u0627\u0631\u064a\u062e. \u062a\u064f\u0636\u0627\u0641 \u0627\u0644\u0625\u062f\u062e\u0627\u0644\u0627\u062a \u0627\u0644\u062c\u062f\u064a\u062f\u0629 \u062d\u064a\u0646 \u064a\u0637\u0631\u0623 \u0645\u0627 \u064a\u0633\u062a\u062d\u0642\u0651 \u0627\u0644\u0625\u0636\u0627\u0641\u0629."
+    },
+    {
+      "type": "text",
+      "id": "palm_selected_ar",
+      "label": { "en": "[Section 4] Selected Label (Arabic)" },
+      "default": "\u0645\u062e\u062a\u0627\u0631\u0627\u062a \u0645\u0646 \u0627\u0644\u0623\u0631\u0634\u064a\u0641:"
+    },
+    {
+      "type": "text",
+      "id": "palm_link_ar",
+      "label": { "en": "[Section 4] Archive Link Text (Arabic)" },
+      "default": "\u062a\u0635\u0641\u0651\u062d \u0627\u0644\u0623\u0631\u0634\u064a\u0641 \u0627\u0644\u0643\u0627\u0645\u0644"
+    },
+    {
+      "type": "text",
+      "id": "palm_signoff_ar",
+      "label": { "en": "[Section 4] Signoff (Arabic)" },
+      "default": "\u2014 \u0633\u062a\u0648\u062f\u064a\u0648\u0647\u0627\u062a \u0628\u0627\u0644\u0645\u064a\u062a\u0648"
+    },
+    {
+      "type": "text",
       "id": "carpets_title",
-      "label": { "en": "Carpets Section Title" },
+      "label": { "en": "[Section 5] Carpets Title (English)" },
       "default": "The Carpets"
+    },
+    {
+      "type": "text",
+      "id": "carpets_title_ar",
+      "label": { "en": "[Section 5] Carpets Title (Arabic)" },
+      "default": "\u0627\u0644\u0633\u062c\u0651\u0627\u062f"
     },
     {
       "type": "textarea",
       "id": "carpets_intro_en",
-      "label": { "en": "Carpets Intro (English)" },
-      "default": "A small collection of carpet designs by the studio — woven, room-scale, made to order. Each piece carries its own concept. If something catches you, write to us and we'll take it from there."
+      "label": { "en": "[Section 5] Intro (English)" },
+      "default": "A small collection of carpet designs by the studio \u2014 woven, room-scale, made to order. Each piece carries its own concept. If something catches you, write to us and we'll take it from there."
     },
     {
       "type": "textarea",
       "id": "carpets_intro_ar",
-      "label": { "en": "Carpets Intro (Arabic)" },
-      "default": "مجموعة من تصاميم السجّاد من الاستوديو — منسوجة، بحجم الغرفة، تُصنع حسب الطلب. كل قطعة تحمل مفهومها الخاص. إن لفتك واحدة منها، اكتب إلينا وسنأخذ الأمر من هناك."
+      "label": { "en": "[Section 5] Intro (Arabic)" },
+      "default": "\u0645\u062c\u0645\u0648\u0639\u0629 \u0645\u0646 \u062a\u0635\u0627\u0645\u064a\u0645 \u0627\u0644\u0633\u062c\u0651\u0627\u062f \u0645\u0646 \u0627\u0644\u0627\u0633\u062a\u0648\u062f\u064a\u0648 \u2014 \u0645\u0646\u0633\u0648\u062c\u0629\u060c \u0628\u062d\u062c\u0645 \u0627\u0644\u063a\u0631\u0641\u0629\u060c \u062a\u064f\u0635\u0646\u0639 \u062d\u0633\u0628 \u0627\u0644\u0637\u0644\u0628. \u0643\u0644 \u0642\u0637\u0639\u0629 \u062a\u062d\u0645\u0644 \u0645\u0641\u0647\u0648\u0645\u0647\u0627 \u0627\u0644\u062e\u0627\u0635. \u0625\u0646 \u0644\u0641\u062a\u0643 \u0648\u0627\u062d\u062f\u0629 \u0645\u0646\u0647\u0627\u060c \u0627\u0643\u062a\u0628 \u0625\u0644\u064a\u0646\u0627 \u0648\u0633\u0646\u0623\u062e\u0630 \u0627\u0644\u0623\u0645\u0631 \u0645\u0646 \u0647\u0646\u0627\u0643."
     },
     {
       "type": "list",
       "id": "carpets",
-      "label": { "en": "Carpets" },
+      "label": { "en": "[Section 5] Carpets" },
       "max_items": 10,
       "settings": [
         {
@@ -43,7 +308,7 @@
           "type": "text",
           "id": "dim",
           "label": { "en": "Dimensions" },
-          "default": "240 × 160 cm"
+          "default": "240 \u00d7 160 cm"
         },
         {
           "type": "textarea",
@@ -55,7 +320,7 @@
           "type": "textarea",
           "id": "desc_ar",
           "label": { "en": "Description (Arabic)" },
-          "default": "حقل سجّاد فارسي يقتحمه مدارات ذرّية ومثلّثات تحذير وبقايا حقبة الألفيّة. على الحدود عبارة واحدة تتكرّر: \"Running through space and time just to find serenity\"."
+          "default": "\u062d\u0642\u0644 \u0633\u062c\u0651\u0627\u062f \u0641\u0627\u0631\u0633\u064a \u064a\u0642\u062a\u062d\u0645\u0647 \u0645\u062f\u0627\u0631\u0627\u062a \u0630\u0631\u0651\u064a\u0629 \u0648\u0645\u062b\u0644\u0651\u062b\u0627\u062a \u062a\u062d\u0630\u064a\u0631 \u0648\u0628\u0642\u0627\u064a\u0627 \u062d\u0642\u0628\u0629 \u0627\u0644\u0623\u0644\u0641\u064a\u0651\u0629. \u0639\u0644\u0649 \u0627\u0644\u062d\u062f\u0648\u062f \u0639\u0628\u0627\u0631\u0629 \u0648\u0627\u062d\u062f\u0629 \u062a\u062a\u0643\u0631\u0651\u0631: \"Running through space and time just to find serenity\"."
         },
         {
           "type": "image",
@@ -83,14 +348,302 @@
     {
       "type": "textarea",
       "id": "carpets_cta_en",
-      "label": { "en": "CTA (English)" },
+      "label": { "en": "[Section 5] CTA (English)" },
       "default": "Made to order. Inquire at palmetto.sa@gmail.com."
     },
     {
       "type": "textarea",
       "id": "carpets_cta_ar",
-      "label": { "en": "CTA (Arabic)" },
-      "default": "تُصنع حسب الطلب. للاستفسار: palmetto.sa@gmail.com"
+      "label": { "en": "[Section 5] CTA (Arabic)" },
+      "default": "\u062a\u064f\u0635\u0646\u0639 \u062d\u0633\u0628 \u0627\u0644\u0637\u0644\u0628. \u0644\u0644\u0627\u0633\u062a\u0641\u0633\u0627\u0631: palmetto.sa@gmail.com"
+    },
+    {
+      "type": "text",
+      "id": "carpets_signoff_en",
+      "label": { "en": "[Section 5] Signoff (English)" },
+      "default": "\u2014 Palmetto Studios"
+    },
+    {
+      "type": "text",
+      "id": "carpets_signoff_ar",
+      "label": { "en": "[Section 5] Signoff (Arabic)" },
+      "default": "\u2014 \u0633\u062a\u0648\u062f\u064a\u0648\u0647\u0627\u062a \u0628\u0627\u0644\u0645\u064a\u062a\u0648"
+    },
+    {
+      "type": "text",
+      "id": "sizing_title_en",
+      "label": { "en": "[Section 6] Sizing Title (English)" },
+      "default": "Size Guide"
+    },
+    {
+      "type": "text",
+      "id": "sizing_title_ar",
+      "label": { "en": "[Section 6] Sizing Title (Arabic)" },
+      "default": "\u062f\u0644\u064a\u0644 \u0627\u0644\u0645\u0642\u0627\u0633\u0627\u062a"
+    },
+    {
+      "type": "textarea",
+      "id": "sizing_intro_en",
+      "label": { "en": "[Section 6] Intro (English)" },
+      "default": "Apparel is unisex, oversized fit, with dropped shoulders. For a more fitted look, size down. If you're between sizes, size up."
+    },
+    {
+      "type": "textarea",
+      "id": "sizing_footnote_en",
+      "label": { "en": "[Section 6] Footnote (English)" },
+      "default": "Measurements may vary by 1\u20132 cm. Sleeve measured from the dropped shoulder seam \u2014 values reflect the cut, not arm length."
+    },
+    {
+      "type": "textarea",
+      "id": "sizing_closing_en",
+      "label": { "en": "[Section 6] Closing (English)" },
+      "default": "If anything's unclear, write to us \u2014 we'll help you figure it out."
+    },
+    {
+      "type": "text",
+      "id": "sizing_signoff_en",
+      "label": { "en": "[Section 6] Signoff (English)" },
+      "default": "\u2014 Palmetto Studios"
+    },
+    {
+      "type": "textarea",
+      "id": "sizing_intro_ar",
+      "label": { "en": "[Section 6] Intro (Arabic)" },
+      "default": "\u0627\u0644\u0645\u0644\u0627\u0628\u0633 \u0628\u0642\u0635\u0651\u0629 \u0641\u0636\u0641\u0627\u0636\u0629 (\u0623\u0648\u0641\u0631\u0633\u0627\u064a\u0632) \u0644\u0644\u062c\u0646\u0633\u064a\u0646\u060c \u0628\u0623\u0643\u062a\u0627\u0641 \u0645\u0646\u0633\u062f\u0644\u0629. \u0625\u0646 \u0643\u0646\u062a \u062a\u0641\u0636\u0651\u0644 \u0642\u0635\u0651\u0629\u064b \u0623\u0636\u064a\u0642\u060c \u0627\u0646\u0632\u0644 \u0645\u0642\u0627\u0633\u0627\u064b. \u0625\u0646 \u0643\u0646\u062a \u0628\u064a\u0646 \u0645\u0642\u0627\u0633\u064a\u0646\u060c \u0627\u0635\u0639\u062f \u0645\u0642\u0627\u0633\u0627\u064b."
+    },
+    {
+      "type": "textarea",
+      "id": "sizing_footnote_ar",
+      "label": { "en": "[Section 6] Footnote (Arabic)" },
+      "default": "\u0642\u062f \u062a\u062a\u0641\u0627\u0648\u062a \u0627\u0644\u0645\u0642\u0627\u0633\u0627\u062a \u0628\u0645\u0642\u062f\u0627\u0631 \u0661\u2013\u0662 \u0633\u0645."
+    },
+    {
+      "type": "textarea",
+      "id": "sizing_closing_ar",
+      "label": { "en": "[Section 6] Closing (Arabic)" },
+      "default": "\u0625\u0646 \u0643\u0627\u0646 \u0644\u062f\u064a\u0643 \u0623\u064a \u0627\u0633\u062a\u0641\u0633\u0627\u0631 \u062d\u0648\u0644 \u0627\u0644\u0645\u0642\u0627\u0633\u060c \u0627\u0643\u062a\u0628 \u0625\u0644\u064a\u0646\u0627 \u0648\u0633\u0646\u0633\u0627\u0639\u062f\u0643."
+    },
+    {
+      "type": "text",
+      "id": "sizing_signoff_ar",
+      "label": { "en": "[Section 6] Signoff (Arabic)" },
+      "default": "\u2014 \u0633\u062a\u0648\u062f\u064a\u0648\u0647\u0627\u062a \u0628\u0627\u0644\u0645\u064a\u062a\u0648"
+    },
+    {
+      "type": "text",
+      "id": "shipping_title_en",
+      "label": { "en": "[Section 7] Shipping Title (English)" },
+      "default": "Shipping"
+    },
+    {
+      "type": "text",
+      "id": "shipping_title_ar",
+      "label": { "en": "[Section 7] Shipping Title (Arabic)" },
+      "default": "\u0627\u0644\u0634\u062d\u0646"
+    },
+    {
+      "type": "text",
+      "id": "shipping_intro_en",
+      "label": { "en": "[Section 7] Intro (English)" },
+      "default": "Palmetto ships worldwide."
+    },
+    {
+      "type": "text",
+      "id": "shipping_sa_tag_en",
+      "label": { "en": "[Section 7] Saudi Arabia Tag (English)" },
+      "default": "Saudi Arabia"
+    },
+    {
+      "type": "textarea",
+      "id": "shipping_sa_content_en",
+      "label": { "en": "[Section 7] Saudi Arabia Content (English)" },
+      "default": "Orders ship within <b>1\u20132 business days</b> and arrive within <b>2\u20135 business days</b> depending on your city. <b>Free domestic shipping</b> on orders over <b>350 SAR</b>."
+    },
+    {
+      "type": "text",
+      "id": "shipping_intl_tag_en",
+      "label": { "en": "[Section 7] International Tag (English)" },
+      "default": "International"
+    },
+    {
+      "type": "textarea",
+      "id": "shipping_intl_content_en",
+      "label": { "en": "[Section 7] International Content (English)" },
+      "default": "Rates and delivery times vary by destination and shipping method. Both are calculated at checkout, so you'll see the full cost before you pay."
+    },
+    {
+      "type": "textarea",
+      "id": "shipping_closing_en",
+      "label": { "en": "[Section 7] Closing (English)" },
+      "default": "If your order hasn't arrived in the expected window, write to us and we'll track it down."
+    },
+    {
+      "type": "text",
+      "id": "shipping_signoff_en",
+      "label": { "en": "[Section 7] Signoff (English)" },
+      "default": "\u2014 Palmetto Studios"
+    },
+    {
+      "type": "text",
+      "id": "shipping_intro_ar",
+      "label": { "en": "[Section 7] Intro (Arabic)" },
+      "default": "\u0628\u0627\u0644\u0645\u064a\u062a\u0648 \u064a\u0634\u062d\u0646 \u0625\u0644\u0649 \u062c\u0645\u064a\u0639 \u0623\u0646\u062d\u0627\u0621 \u0627\u0644\u0639\u0627\u0644\u0645."
+    },
+    {
+      "type": "text",
+      "id": "shipping_sa_tag_ar",
+      "label": { "en": "[Section 7] Saudi Arabia Tag (Arabic)" },
+      "default": "\u0627\u0644\u0645\u0645\u0644\u0643\u0629 \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u0627\u0644\u0633\u0639\u0648\u062f\u064a\u0629"
+    },
+    {
+      "type": "textarea",
+      "id": "shipping_sa_content_ar",
+      "label": { "en": "[Section 7] Saudi Arabia Content (Arabic)" },
+      "default": "\u062a\u064f\u0634\u062d\u0646 \u0627\u0644\u0637\u0644\u0628\u0627\u062a \u062e\u0644\u0627\u0644 \u064a\u0648\u0645 \u0625\u0644\u0649 \u064a\u0648\u0645\u064e\u064a \u0639\u0645\u0644\u060c \u0648\u062a\u0635\u0644 \u062e\u0644\u0627\u0644 \u064a\u0648\u0645\u064e\u064a\u0646 \u0625\u0644\u0649 \u062e\u0645\u0633\u0629 \u0623\u064a\u0627\u0645 \u0639\u0645\u0644 \u0628\u062d\u0633\u0628 \u0645\u062f\u064a\u0646\u062a\u0643. \u0627\u0644\u0634\u062d\u0646 \u0627\u0644\u062f\u0627\u062e\u0644\u064a \u0645\u062c\u0651\u0627\u0646\u064a \u0644\u0644\u0637\u0644\u0628\u0627\u062a \u0627\u0644\u062a\u064a \u062a\u062a\u062c\u0627\u0648\u0632 \u0663\u0665\u0660 \u0631\u064a\u0627\u0644."
+    },
+    {
+      "type": "text",
+      "id": "shipping_intl_tag_ar",
+      "label": { "en": "[Section 7] International Tag (Arabic)" },
+      "default": "\u0627\u0644\u0634\u062d\u0646 \u0627\u0644\u062f\u0648\u0644\u064a"
+    },
+    {
+      "type": "textarea",
+      "id": "shipping_intl_content_ar",
+      "label": { "en": "[Section 7] International Content (Arabic)" },
+      "default": "\u062a\u062e\u062a\u0644\u0641 \u0627\u0644\u0631\u0633\u0648\u0645 \u0648\u0623\u0648\u0642\u0627\u062a \u0627\u0644\u062a\u0648\u0635\u064a\u0644 \u0628\u062d\u0633\u0628 \u0627\u0644\u0648\u062c\u0647\u0629 \u0648\u0637\u0631\u064a\u0642\u0629 \u0627\u0644\u0634\u062d\u0646. \u062a\u064f\u062d\u062a\u0633\u0628 \u062c\u0645\u064a\u0639\u0647\u0627 \u0639\u0646\u062f \u0625\u062a\u0645\u0627\u0645 \u0627\u0644\u0637\u0644\u0628\u060c \u0644\u062a\u0643\u0648\u0646 \u0627\u0644\u0643\u0644\u0641\u0629 \u0643\u0627\u0645\u0644\u0629\u064b \u0648\u0627\u0636\u062d\u0629\u064b \u0642\u0628\u0644 \u0627\u0644\u062f\u0641\u0639."
+    },
+    {
+      "type": "textarea",
+      "id": "shipping_closing_ar",
+      "label": { "en": "[Section 7] Closing (Arabic)" },
+      "default": "\u0625\u0646 \u0644\u0645 \u064a\u0635\u0644 \u0637\u0644\u0628\u0643 \u062e\u0644\u0627\u0644 \u0627\u0644\u0645\u062f\u0629 \u0627\u0644\u0645\u062a\u0648\u0642\u0651\u0639\u0629\u060c \u0644\u0627 \u062a\u062a\u0631\u062f\u0651\u062f \u0641\u064a \u0627\u0644\u0643\u062a\u0627\u0628\u0629 \u0625\u0644\u064a\u0646\u0627 \u0648\u0633\u0646\u062a\u062a\u0628\u0651\u0639\u0647 \u0644\u0643."
+    },
+    {
+      "type": "text",
+      "id": "shipping_signoff_ar",
+      "label": { "en": "[Section 7] Signoff (Arabic)" },
+      "default": "\u2014 \u0633\u062a\u0648\u062f\u064a\u0648\u0647\u0627\u062a \u0628\u0627\u0644\u0645\u064a\u062a\u0648"
+    },
+    {
+      "type": "text",
+      "id": "returns_title_en",
+      "label": { "en": "[Section 8] Returns Title (English)" },
+      "default": "Returns"
+    },
+    {
+      "type": "text",
+      "id": "returns_title_ar",
+      "label": { "en": "[Section 8] Returns Title (Arabic)" },
+      "default": "\u0627\u0644\u0625\u0631\u062c\u0627\u0639"
+    },
+    {
+      "type": "textarea",
+      "id": "returns_p1_en",
+      "label": { "en": "[Section 8] Paragraph 1 (English)" },
+      "default": "Returns are available for orders shipped within Saudi Arabia."
+    },
+    {
+      "type": "textarea",
+      "id": "returns_p2_en",
+      "label": { "en": "[Section 8] Paragraph 2 (English)" },
+      "default": "You have <b>30 days</b> from the date your order arrives to return it. Items must be unworn, unwashed, with original tags attached. Return shipping is on us \u2014 write to us and we'll arrange the pickup. Refunds are processed within 5\u20137 business days of the item arriving back at the studio."
+    },
+    {
+      "type": "textarea",
+      "id": "returns_p3_en",
+      "label": { "en": "[Section 8] Paragraph 3 (English)" },
+      "default": "<b>International orders are final sale.</b> If something arrives damaged or incorrect, write to us and we'll make it right."
+    },
+    {
+      "type": "text",
+      "id": "returns_signoff_en",
+      "label": { "en": "[Section 8] Signoff (English)" },
+      "default": "\u2014 Palmetto Studios"
+    },
+    {
+      "type": "textarea",
+      "id": "returns_p1_ar",
+      "label": { "en": "[Section 8] Paragraph 1 (Arabic)" },
+      "default": "\u062a\u062a\u0648\u0641\u0651\u0631 \u062e\u062f\u0645\u0629 \u0627\u0644\u0625\u0631\u062c\u0627\u0639 \u0644\u0644\u0637\u0644\u0628\u0627\u062a \u062f\u0627\u062e\u0644 \u0627\u0644\u0645\u0645\u0644\u0643\u0629 \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u0627\u0644\u0633\u0639\u0648\u062f\u064a\u0629."
+    },
+    {
+      "type": "textarea",
+      "id": "returns_p2_ar",
+      "label": { "en": "[Section 8] Paragraph 2 (Arabic)" },
+      "default": "\u0644\u062f\u064a\u0643 \u062b\u0644\u0627\u062b\u0648\u0646 \u064a\u0648\u0645\u0627\u064b \u0645\u0646 \u062a\u0627\u0631\u064a\u062e \u0627\u0633\u062a\u0644\u0627\u0645\u0643 \u0644\u0644\u0637\u0644\u0628 \u0644\u0625\u0631\u062c\u0627\u0639\u0647. \u064a\u062c\u0628 \u0623\u0646 \u062a\u0643\u0648\u0646 \u0627\u0644\u0642\u0637\u0639\u0629 \u063a\u064a\u0631 \u0645\u0633\u062a\u062e\u062f\u0645\u0629 \u0648\u063a\u064a\u0631 \u0645\u063a\u0633\u0648\u0644\u0629\u060c \u0645\u0639 \u0628\u0637\u0627\u0642\u0627\u062a\u0647\u0627 \u0627\u0644\u0623\u0635\u0644\u064a\u0629. \u0634\u062d\u0646 \u0627\u0644\u0625\u0631\u062c\u0627\u0639 \u0639\u0644\u064a\u0646\u0627 \u2014 \u0627\u0643\u062a\u0628 \u0625\u0644\u064a\u0646\u0627 \u0648\u0633\u0646\u062a\u0648\u0644\u0651\u0649 \u062a\u0631\u062a\u064a\u0628 \u0627\u0644\u0627\u0633\u062a\u0644\u0627\u0645. \u062a\u064f\u0639\u0627\u0644\u064e\u062c \u0639\u0645\u0644\u064a\u0627\u062a \u0627\u0633\u062a\u0631\u062f\u0627\u062f \u0627\u0644\u0645\u0628\u0644\u063a \u062e\u0644\u0627\u0644 \u062e\u0645\u0633\u0629 \u0625\u0644\u0649 \u0633\u0628\u0639\u0629 \u0623\u064a\u0627\u0645 \u0639\u0645\u0644 \u0645\u0646 \u0648\u0635\u0648\u0644 \u0627\u0644\u0642\u0637\u0639\u0629 \u0625\u0644\u0649 \u0627\u0644\u0627\u0633\u062a\u0648\u062f\u064a\u0648."
+    },
+    {
+      "type": "textarea",
+      "id": "returns_p3_ar",
+      "label": { "en": "[Section 8] Paragraph 3 (Arabic)" },
+      "default": "\u0627\u0644\u0637\u0644\u0628\u0627\u062a \u0627\u0644\u062f\u0648\u0644\u064a\u0629 \u0646\u0647\u0627\u0626\u064a\u0629 \u0648\u063a\u064a\u0631 \u0642\u0627\u0628\u0644\u0629 \u0644\u0644\u0625\u0631\u062c\u0627\u0639. \u0625\u0646 \u0648\u0635\u0644\u0643 \u0637\u0644\u0628 \u062a\u0627\u0644\u0641 \u0623\u0648 \u063a\u064a\u0631 \u0635\u062d\u064a\u062d\u060c \u0627\u0643\u062a\u0628 \u0625\u0644\u064a\u0646\u0627 \u0648\u0633\u0646\u064f\u0635\u0644\u062d \u0627\u0644\u0623\u0645\u0631."
+    },
+    {
+      "type": "text",
+      "id": "returns_signoff_ar",
+      "label": { "en": "[Section 8] Signoff (Arabic)" },
+      "default": "\u2014 \u0633\u062a\u0648\u062f\u064a\u0648\u0647\u0627\u062a \u0628\u0627\u0644\u0645\u064a\u062a\u0648"
+    },
+    {
+      "type": "text",
+      "id": "contact_title_en",
+      "label": { "en": "[Section 9] Contact Title (English)" },
+      "default": "Contact"
+    },
+    {
+      "type": "text",
+      "id": "contact_title_ar",
+      "label": { "en": "[Section 9] Contact Title (Arabic)" },
+      "default": "\u0627\u0644\u062a\u0648\u0627\u0635\u0644"
+    },
+    {
+      "type": "text",
+      "id": "contact_intro_en",
+      "label": { "en": "[Section 9] Intro (English)" },
+      "default": "For inquiries, collaborations, and anything else \u2014 get in touch."
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": { "en": "[Section 9] Email Address" },
+      "default": "palmetto.sa@gmail.com"
+    },
+    {
+      "type": "text",
+      "id": "contact_instagram",
+      "label": { "en": "[Section 9] Instagram URL" },
+      "default": "https://instagram.com/palmetto.studios"
+    },
+    {
+      "type": "text",
+      "id": "contact_studio_en",
+      "label": { "en": "[Section 9] Studio Location (English)" },
+      "default": "Khobar, Saudi Arabia"
+    },
+    {
+      "type": "text",
+      "id": "contact_signoff_en",
+      "label": { "en": "[Section 9] Signoff (English)" },
+      "default": "\u2014 Palmetto Studios"
+    },
+    {
+      "type": "text",
+      "id": "contact_intro_ar",
+      "label": { "en": "[Section 9] Intro (Arabic)" },
+      "default": "\u0644\u0644\u0627\u0633\u062a\u0641\u0633\u0627\u0631\u0627\u062a \u0648\u0627\u0644\u062a\u0639\u0627\u0648\u0646\u0627\u062a \u0648\u0643\u0644 \u0645\u0627 \u0639\u062f\u0627 \u0630\u0644\u0643 \u2014 \u0644\u0627 \u062a\u062a\u0631\u062f\u0651\u062f \u0641\u064a \u0627\u0644\u0643\u062a\u0627\u0628\u0629 \u0625\u0644\u064a\u0646\u0627."
+    },
+    {
+      "type": "text",
+      "id": "contact_studio_ar",
+      "label": { "en": "[Section 9] Studio Location (Arabic)" },
+      "default": "\u0627\u0644\u062e\u0628\u0631\u060c \u0627\u0644\u0645\u0645\u0644\u0643\u0629 \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u0627\u0644\u0633\u0639\u0648\u062f\u064a\u0629"
+    },
+    {
+      "type": "text",
+      "id": "contact_signoff_ar",
+      "label": { "en": "[Section 9] Signoff (Arabic)" },
+      "default": "\u2014 \u0633\u062a\u0648\u062f\u064a\u0648\u0647\u0627\u062a \u0628\u0627\u0644\u0645\u064a\u062a\u0648"
     }
   ]
 }
