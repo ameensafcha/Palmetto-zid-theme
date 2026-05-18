@@ -854,13 +854,6 @@
 </div>
 
 <script>
-console.log('=== CARPET SECTION DEBUG ===');
-document.querySelectorAll('.carpet-card').forEach(function(c, i){
-  console.log('Carpet ' + i + ':', c.querySelector('.name') ? c.querySelector('.name').textContent.trim() : 'no name');
-  var img = c.querySelector('.img');
-  console.log('  data-views:', img ? img.dataset.views : 'no img');
-  console.log('  imgs found:', img ? img.querySelectorAll('img').length : 0);
-});
 document.querySelectorAll('.carpet-card .img[data-views]').forEach(function(box){
   var first = box.querySelector('img');
   if (!first) return;

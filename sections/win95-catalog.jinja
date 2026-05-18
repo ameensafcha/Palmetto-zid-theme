@@ -19,8 +19,13 @@
   .catalog-head .sub-ar{ font-size:18px; margin-top:2px;}
 
   .product-grid{
-    display:grid; grid-template-columns: repeat(4, 1fr); gap:12px;
+    display:flex; flex-wrap:wrap; gap:12px;
     padding: 14px;
+    justify-content:center;
+  }
+  .product-grid > .card{
+    flex: 0 0 calc((100% - 36px) / 4);
+    max-width: calc((100% - 36px) / 4);
   }
   .card{
     background:var(--chrome);
@@ -164,7 +169,10 @@
   .seal .ar{ font-size:12px; font-weight:700; font-style:normal; margin-top:2px; line-height:1.2;}
 
   @media (max-width: 760px) {
-    .product-grid{ grid-template-columns: repeat(2, 1fr); }
+    .product-grid > .card{
+      flex: 0 0 calc((100% - 12px) / 2);
+      max-width: calc((100% - 12px) / 2);
+    }
     .badges{ flex-direction:column; align-items:center; }
     .catalog-head{ grid-template-columns: 1fr; }
     .catalog-head .l, .catalog-head .r{ display:none; }
@@ -188,7 +196,10 @@
   .pag-bar .btn:disabled{ opacity:0.4; cursor:not-allowed; }
 
   @media (max-width: 480px) {
-    .product-grid{ grid-template-columns: repeat(1, 1fr); }
+    .product-grid > .card{
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
     .pag-bar{ flex-wrap:wrap; gap:6px; padding: 8px 10px 12px; }
     .pag-bar .btn{ min-width:60px; font-size:10px; }
     .modal{ width: 92vw; }
@@ -303,7 +314,8 @@
             {% if product.short_description and not product.options %}
             <div class="desc">{{ product.short_description | striptags | truncate(60) }}</div>
             {% endif %}
-            <span class="longdesc" style="display:none">{{ product.description }}</span>
+            <div class="longdesc" style="display:none">{{ product.description | safe }}</div>
+            <div class="shortdesc" style="display:none">{{ product.short_description | striptags }}</div>
           </div>
           {% if product.has_variants %}
           <div class="sizes js-variant-loader" data-pid="{{ product.id }}">
@@ -403,11 +415,15 @@
       <span class="t-title" id="catalog-dv-title">{{ _("Product Details") }}</span>
       <span class="tb-btn" data-close-dv>✕</span>
     </div>
-    <div class="body-pad stack" style="padding:16px 18px;">
-      <div class="dt-name" id="catalog-dv-name"></div>
-      <div class="dt-color" id="catalog-dv-color"></div>
-      <div class="dt-body" id="catalog-dv-body"></div>
-      <div class="dt-meta" id="catalog-dv-meta"></div>
+    <div class="body-pad" style="display:block; padding:16px 18px;">
+      <div id="details-name" style="font-family:'Times New Roman',serif; font-size:20px; font-weight:700;"></div>
+      <div id="details-shortdesc" style="font-family:'Times New Roman',serif; font-style:italic; font-size:14px; color:#333; margin-bottom:10px;"></div>
+      <div style="font-family:'Times New Roman',serif; font-size:14px; line-height:1.6;">
+        <p id="details-intro-en" style="margin: 0 0 8px;"></p>
+        <p id="details-intro-ar" style="margin: 0; direction:rtl; text-align:right; font-family:'Amiri',serif; font-size:15px;"></p>
+      </div>
+      <div id="details-specs" style="margin-top:12px; padding-top:10px; border-top:1px dashed #b0a890; font-family:'Tahoma',sans-serif; font-size:11px; color:#222; display:grid; grid-template-columns: 1fr 1fr; gap:6px 14px;"></div>
+      <div style="margin-top:10px; font-family:'Tahoma',sans-serif; font-size:11px; color:#000;"><b>Price:</b> <span id="details-price" class="mono" style="font-family:'Courier New',monospace;"></span></div>
     </div>
     <div class="actions"><button class="btn primary" data-close-dv>{{ _("OK") }}</button></div>
   </div>
@@ -417,15 +433,6 @@
 (function(){
   var grid = document.querySelector('.product-grid');
   var cards = grid ? Array.from(grid.querySelectorAll('.card')) : [];
-
-  function getCardData(card){
-    return {
-      name: (card.querySelector('.name') || {}).textContent || '',
-      color: (card.querySelector('.color') || {}).textContent || '',
-      price: (card.querySelector('.price') || {}).textContent || '',
-      desc: (card.querySelector('.desc') || {}).textContent || ''
-    };
-  }
 
   // ---- Image carousel per card (reusable init) ----
   cards.forEach(function(card){
@@ -499,16 +506,17 @@
     if (!box) return;
     box.addEventListener('click', function(e){
       if (e.target.closest('.nav-arrow')) return;
-      var data = getCardData(card);
       var imgs = box.querySelectorAll('img');
       var img = null;
       imgs.forEach(function(im){ if (im.style.opacity !== '0') img = im; });
       if (!img) img = imgs[0];
       if (!img || !img.src) return;
+      var cardName = (card.querySelector('.name') || {}).textContent || '';
+      var cardColor = (card.querySelector('.color') || {}).textContent || '';
       lbImg.src = img.src;
-      lbImg.alt = data.name;
-      lbTitle.textContent = data.name + (data.color ? ' — ' + data.color : '');
-      lbCap.children[0].textContent = data.name;
+      lbImg.alt = cardName;
+      lbTitle.textContent = cardName + (cardColor ? ' — ' + cardColor : '');
+      lbCap.children[0].textContent = cardName;
       lbCap.children[1].textContent = img.src.split('/').pop();
       lb.classList.add('open');
     });
@@ -519,34 +527,134 @@
 
   // ---- Details modal ----
   var dv = document.getElementById('catalog-dv');
-  var dvName = document.getElementById('catalog-dv-name');
-  var dvColor = document.getElementById('catalog-dv-color');
-  var dvBody = document.getElementById('catalog-dv-body');
-  var dvMeta = document.getElementById('catalog-dv-meta');
+  var dName = document.getElementById('details-name');
+  var dShort = document.getElementById('details-shortdesc');
+  var dIntroEn = document.getElementById('details-intro-en');
+  var dIntroAr = document.getElementById('details-intro-ar');
+  var dSpecs = document.getElementById('details-specs');
+  var dPrice = document.getElementById('details-price');
   cards.forEach(function(card){
     var btn = card.querySelector('[data-details]');
     if (!btn) return;
     btn.addEventListener('click', function(){
-      var data = getCardData(card);
-      dvName.textContent = data.name;
-      dvColor.textContent = data.color;
-      dvColor.style.display = data.color ? '' : 'none';
-      var dd = card._parsedDesc;
-      if (dd) {
-        dvBody.innerHTML = dd.textHtml;
-        var g = '<div><b>Price:</b> <span class="mono" style="font-family:\'Courier New\',monospace;">' + data.price + '</span></div>';
-        for (var pi = 0; pi < dd.pairs.length; pi++) {
-          g += '<div><b>' + dd.pairs[pi].label + ':</b> ' + dd.pairs[pi].value + '</div>';
-        }
-        dvMeta.innerHTML = g;
-      } else {
-        var longDesc = card.querySelector('.longdesc');
-        dvBody.innerHTML = longDesc ? longDesc.innerHTML : '<p>No description available.</p>';
-        dvMeta.innerHTML = '<div><b>Price:</b> <span class="mono" style="font-family:\'Courier New\',monospace;">' + data.price + '</span></div>';
-      }
+      var pid = btn.getAttribute('data-details') || card.getAttribute('data-product') || '';
+      console.group('[catalog details] click pid=' + pid);
+      console.log('location.origin:', window.location.origin);
+      console.log('location.pathname:', window.location.pathname);
+      console.log('cache hit?:', !!descCache[pid]);
+      console.log('cached parts:', descCache[pid]);
+      dName.textContent = (card.querySelector('.name') || {}).textContent || '';
+      dShort.textContent = (card.querySelector('.shortdesc') || {}).textContent || '';
+      dPrice.textContent = (card.querySelector('.price') || {}).textContent || '';
+      console.log('name:', dName.textContent);
+      console.log('short:', dShort.textContent);
+      console.log('price:', dPrice.textContent);
+      dIntroEn.textContent = '';
+      dIntroAr.textContent = '';
+      dSpecs.innerHTML = '';
       dv.classList.add('open');
+      loadProductDescription(pid, function(parts){
+        console.log('[catalog details] populated parts:', parts);
+        dIntroEn.textContent = parts.intro_en || '';
+        dIntroAr.textContent = parts.intro_ar || '';
+        dSpecs.innerHTML = '';
+        parts.specs.forEach(function(s){
+          var cell = document.createElement('div');
+          cell.innerHTML = '<b>' + s.key + ':</b> ' + s.val;
+          dSpecs.appendChild(cell);
+        });
+        console.log('-> intro_en in DOM:', dIntroEn.textContent);
+        console.log('-> intro_ar in DOM:', dIntroAr.textContent);
+        console.log('-> specs rendered:', dSpecs.children.length);
+        console.groupEnd();
+      });
     });
   });
+
+  // ---- Description fetch + multi-<p> parser ----
+  var descCache = {};
+  function parseDescriptionHtml(html){
+    var out = { intro_en: '', intro_ar: '', specs: [] };
+    if (!html) return out;
+
+    // Parse HTML via DOM so we don't care which tag wraps each line
+    // (<p>, <div>, <strong> inside, nested <div><div>… etc all work).
+    var root;
+    try {
+      var doc = new DOMParser().parseFromString('<div id="__wrap">' + html + '</div>', 'text/html');
+      root = doc.getElementById('__wrap');
+    } catch(e) { root = null; }
+
+    // Collect leaf-ish blocks: prefer the deepest <p>/<div> that has its own text,
+    // so <div><div>Care: …</div></div> yields just the inner block once.
+    function collectBlocks(node, acc){
+      if (!node) return acc;
+      var kids = Array.from(node.children || []);
+      var blockKids = kids.filter(function(k){
+        var t = k.tagName;
+        return t === 'P' || t === 'DIV' || t === 'LI';
+      });
+      if (!blockKids.length) {
+        if ((node.textContent || '').trim()) acc.push(node);
+        return acc;
+      }
+      blockKids.forEach(function(k){ collectBlocks(k, acc); });
+      return acc;
+    }
+
+    var blocks = root ? collectBlocks(root, []) : [];
+
+    if (!blocks.length) {
+      // No structured blocks — dump as EN intro (tags stripped)
+      out.intro_en = (root ? (root.textContent || '') : html.replace(/<[^>]*>/g, '')).trim();
+      return out;
+    }
+
+    blocks.forEach(function(b){
+      var text = (b.textContent || '').replace(/\s+/g, ' ').trim();
+      if (!text) return;
+      var isArabic = /[؀-ۿ]/.test(text);
+      var ci = text.indexOf(':');
+      var keyHead = ci > 0 ? text.substring(0, ci).trim() : '';
+      var valTail = ci > 0 ? text.substring(ci + 1).trim() : '';
+      var isKeyValue = ci > 0 && ci < 40 && keyHead.length > 0 && keyHead.length < 30 && valTail.length > 0 && !/[؀-ۿ]/.test(keyHead);
+      if (isKeyValue) {
+        out.specs.push({ key: keyHead, val: valTail });
+      } else if (isArabic && !out.intro_ar) {
+        out.intro_ar = text;
+      } else if (!out.intro_en) {
+        out.intro_en = text;
+      }
+    });
+    return out;
+  }
+  function loadProductDescription(pid, cb){
+    if (!pid) { console.warn('[catalog details] no pid, returning empty'); cb({ intro_en:'', intro_ar:'', specs:[] }); return; }
+    if (descCache[pid]) { console.log('[catalog details] using cached parts for pid=' + pid); cb(descCache[pid]); return; }
+    var url = '/api/v1/products/' + pid;
+    console.log('[catalog details] fetching:', url);
+    fetch(url, {
+      headers: { 'Accept': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }
+    })
+    .then(function(r){
+      console.log('[catalog details] fetch status:', r.status, 'ok=' + r.ok, 'url=' + r.url);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .then(function(product){
+      console.log('[catalog details] product fetched:', product);
+      console.log('[catalog details] product.description (raw):', product && product.description);
+      var parts = parseDescriptionHtml(product && product.description ? product.description : '');
+      console.log('[catalog details] parsed parts:', parts);
+      descCache[pid] = parts;
+      cb(parts);
+    })
+    .catch(function(err){
+      console.error('[catalog details] fetch FAILED:', err);
+      descCache[pid] = { intro_en:'', intro_ar:'', specs:[] };
+      cb(descCache[pid]);
+    });
+  }
   dv.addEventListener('click', function(e){
     if (e.target === dv || e.target.matches('[data-close-dv]')) dv.classList.remove('open');
   });
@@ -577,6 +685,8 @@
     })
     .then(function(product){
       console.log("API /api/v1/products/" + pid + " response:", product);
+      // Prime details cache so the modal shows instantly when user clicks Details
+      try { descCache[pid] = parseDescriptionHtml(product && product.description ? product.description : ''); } catch(e){}
       var opts = product.options || [];
       if (!opts.length) {
         el.style.display = 'none';
@@ -695,17 +805,11 @@
         }
       }
 
-      var sv = product.selected_variant;
-      if (sv && sv.attributes) {
-        sv.attributes.forEach(function(attr){
-          var btn = el.querySelector('button[data-choice-val="' + attr.value + '"]');
-          if (btn) btn.classList.add('active');
-        });
-      }
-      if (!el.querySelector('.active')) {
-        var firstBtn = el.querySelector('button');
-        if (firstBtn) firstBtn.classList.add('active');
-      }
+      // Default: select the FIRST choice in each option group (ignore API's selected_variant)
+      opts.forEach(function(_, oi){
+        var firstInGroup = el.querySelector('button[data-opt-index="' + oi + '"]');
+        if (firstInGroup) firstInGroup.classList.add('active');
+      });
 
       el.addEventListener('click', function(e){
         var b = e.target.closest('button');
